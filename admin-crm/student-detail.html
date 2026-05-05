@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRM - Student Detail</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: { 50:'#EEF2FF',100:'#E0E7FF',200:'#C7D2FE',300:'#A5B4FC',400:'#818CF8',500:'#6366F1',600:'#4F46E5',700:'#4338CA',800:'#3730A3',900:'#312E81' },
+        neutral: { 50:'#F8FAFC',100:'#F1F5F9',200:'#E2E8F0',300:'#CBD5E1',400:'#94A3B8',500:'#64748B',600:'#475569',700:'#334155',800:'#1E293B',900:'#0F172A' },
+      },
+      fontFamily: { sans: ['Inter','sans-serif'] },
+    }
+  }
+}
+</script>
+<style>
+  body { font-family:'Inter',sans-serif; background:#F1F5F9; }
+  .tab-active { color:#4338CA; border-bottom:2px solid #4338CA; font-weight:600; }
+  .label-text { font-size: 10px; font-weight: 700; color: #94A3B8; letter-spacing: 0.05em; text-transform: uppercase; }
+  .value-text { font-size: 14px; font-weight: 600; color: #1E293B; }
+</style>
+</head>
+<body class="text-neutral-900 antialiased">
+<div class="flex min-h-screen">
+  <!-- Sidebar -->
+  <aside class="w-56 bg-white border-r border-neutral-200 flex flex-col sticky top-0 h-screen shrink-0">
+    <div class="p-5 flex items-center gap-2 border-b border-neutral-100">
+      <div class="w-8 h-8 rounded-lg bg-primary-600 flex items-center justify-center text-white font-bold text-sm">C</div>
+      <span class="font-extrabold text-lg tracking-tight text-neutral-900">CRM</span>
+      <button class="ml-auto text-neutral-500 hover:text-neutral-700"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2v2m0 16v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M2 12h2m16 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+    </div>
+
+    <nav class="flex-1 overflow-y-auto pb-4">
+      <div class="sidebar-section">DASHBOARD</div>
+      <div class="px-3">
+        <a href="admin-crm.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-50 hover:text-neutral-800 text-sm font-medium transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          Dashboard CRM
+        </a>
+      </div>
+
+      <div class="sidebar-section">MAIN MENU</div>
+      <div class="px-3 space-y-0.5">
+        <a href="#" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-50 hover:text-neutral-800 text-sm font-medium transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          Branch
+        </a>
+        <a href="#" class="flex items-center justify-between gap-2.5 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-50 hover:text-neutral-800 text-sm font-medium transition-all">
+          <span class="flex items-center gap-2.5">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
+            Product
+          </span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+        <a href="kelola-produk-cabang.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-50 hover:text-neutral-800 text-sm font-medium transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          Branch Product
+        </a>
+        <a href="#" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-50 hover:text-neutral-800 text-sm font-medium transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          Prospect
+        </a>
+        <a href="#" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-50 hover:text-neutral-800 text-sm font-medium transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+          Transaction
+        </a>
+      </div>
+
+      <div class="sidebar-section">OTHERS</div>
+      <div class="px-3 space-y-0.5">
+        <a href="student-list.html" class="nav-active flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          Student
+        </a>
+      </div>
+    </nav>
+
+    <div class="p-3 border-t border-neutral-100">
+      <button class="w-full flex items-center gap-2 px-3 py-2 text-neutral-600 hover:text-red-500 hover:bg-red-50 rounded-lg text-sm transition-all">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+        Logout
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="flex-1 flex flex-col min-h-screen">
+    <header class="bg-white border-b border-neutral-200 px-8 py-4 flex items-center gap-4 sticky top-0 z-10">
+      <a href="student-list.html" class="text-neutral-500 hover:text-neutral-900 transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      </a>
+      <h1 class="text-xl font-extrabold text-neutral-900">Student Detail Profile</h1>
+    </header>
+
+    <div class="p-8 space-y-8">
+      <!-- Profile Header Card -->
+      <div class="bg-white rounded-2xl border border-neutral-200 p-8 shadow-sm flex items-center gap-8">
+        <div class="w-24 h-24 rounded-2xl bg-primary-100 flex items-center justify-center text-primary-600 text-3xl font-black shadow-inner">FA</div>
+        <div class="flex-1">
+          <h2 class="text-2xl font-black text-neutral-900 mb-1">Felix Anderson</h2>
+          <p class="text-neutral-600 font-medium">Student ID: <span class="text-neutral-900">STU-88291</span> • Member since Jan 2026</p>
+        </div>
+        <div class="flex gap-3">
+          <button class="px-6 py-2.5 border border-neutral-200 rounded-xl font-bold text-sm text-neutral-700 hover:bg-neutral-50">Edit Profile</button>
+          <button class="px-6 py-2.5 bg-primary-600 text-white rounded-xl font-bold text-sm shadow-lg shadow-primary-200">Send Message</button>
+        </div>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="grid grid-cols-3 gap-8">
+        <!-- Student & Parent Information -->
+        <div class="col-span-2 space-y-8">
+          <div class="bg-white rounded-2xl border border-neutral-200 p-8 shadow-sm">
+            <h3 class="text-sm font-black uppercase tracking-widest text-neutral-500 mb-8 border-b border-neutral-100 pb-4">Personal Information</h3>
+            <div class="grid grid-cols-2 gap-y-8">
+              <div>
+                <p class="label-text mb-1">Email Address</p>
+                <p class="value-text">felix.a@example.com</p>
+              </div>
+              <div>
+                <p class="label-text mb-1">Phone Number</p>
+                <p class="value-text">+62 812-3456-7890</p>
+              </div>
+              <div>
+                <p class="label-text mb-1">Current Education</p>
+                <p class="value-text">Senior High School (Grade 12)</p>
+              </div>
+              <div>
+                <p class="label-text mb-1">Address</p>
+                <p class="value-text">Jl. Kemang Raya No. 12, Jakarta Selatan</p>
+              </div>
+            </div>
+
+            <h3 class="text-sm font-black uppercase tracking-widest text-neutral-500 mt-12 mb-8 border-b border-neutral-100 pb-4">Parent Information</h3>
+            <div class="grid grid-cols-2 gap-y-8">
+              <div>
+                <p class="label-text mb-1">Parent Name</p>
+                <p class="value-text">Robert Anderson</p>
+              </div>
+              <div>
+                <p class="label-text mb-1">Relationship</p>
+                <p class="value-text">Father</p>
+              </div>
+              <div>
+                <p class="label-text mb-1">Parent Phone</p>
+                <p class="value-text">+62 811-9988-7766</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transactions Section -->
+          <div class="bg-white rounded-2xl border border-neutral-200 p-8 shadow-sm">
+            <h3 class="text-sm font-black uppercase tracking-widest text-neutral-500 mb-6">Student Transactions</h3>
+            <div class="overflow-hidden border border-neutral-100 rounded-xl">
+              <table class="w-full">
+                <thead class="bg-neutral-50 text-left">
+                  <tr>
+                    <th class="px-6 py-4 label-text">Order ID</th>
+                    <th class="px-6 py-4 label-text">Course Name</th>
+                    <th class="px-6 py-4 label-text">Status</th>
+                    <th class="px-6 py-4 label-text text-right">Amount</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-neutral-100">
+                  <tr>
+                    <td class="px-6 py-4 text-sm font-bold">#ORD-101</td>
+                    <td class="px-6 py-4 text-sm text-neutral-700">TOEFL Prep Mastery</td>
+                    <td class="px-6 py-4">
+                      <span class="px-2 py-1 bg-green-50 text-green-600 text-[10px] font-bold rounded-full">Success</span>
+                    </td>
+                    <td class="px-6 py-4 text-sm font-black text-right">Rp 2.500.000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Performance Sidebar Section -->
+        <div class="space-y-6">
+          <div class="bg-white rounded-2xl border border-neutral-200 p-8 shadow-sm">
+            <h3 class="text-sm font-black uppercase tracking-widest text-neutral-500 mb-6">Student Performance</h3>
+            <div class="space-y-8">
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-orange-50 text-orange-500 flex items-center justify-center font-black text-xl">4</div>
+                <div>
+                  <p class="text-xs font-bold text-neutral-800 uppercase tracking-tighter">Courses Done</p>
+                  <p class="text-[10px] text-neutral-500 font-medium">Out of 6 enrolled</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-500 flex items-center justify-center font-black text-xl">12</div>
+                <div>
+                  <p class="text-xs font-bold text-neutral-800 uppercase tracking-tighter">Certificates</p>
+                  <p class="text-[10px] text-neutral-500 font-medium">Digital & Physical</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-xl bg-green-50 text-green-500 flex items-center justify-center font-black text-xl">28</div>
+                <div>
+                  <p class="text-xs font-bold text-neutral-800 uppercase tracking-tighter">Tests Completed</p>
+                  <p class="text-[10px] text-neutral-500 font-medium">Avg Score: 85%</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-10 pt-10 border-t border-neutral-100">
+              <h4 class="text-[10px] font-black text-neutral-500 uppercase tracking-widest mb-4">Classes Taken</h4>
+              <div class="space-y-3">
+                <div class="p-3 bg-neutral-50 rounded-xl">
+                  <p class="text-xs font-bold text-neutral-900">TOEFL Prep Mastery</p>
+                  <p class="text-[10px] text-neutral-600">92% Attendance</p>
+                </div>
+                <div class="p-3 bg-neutral-50 rounded-xl">
+                  <p class="text-xs font-bold text-neutral-900">Advanced Writing</p>
+                  <p class="text-[10px] text-neutral-600">85% Attendance</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

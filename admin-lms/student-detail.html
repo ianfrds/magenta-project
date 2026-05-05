@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magenta LMS - Student Detail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neutral: {
+                            50: '#F8F9FA', 100: '#F1F3F5', 200: '#E9ECEF', 300: '#DEE2E6',
+                            400: '#CED4DA', 500: '#ADB5BD', 600: '#868E96', 700: '#495057',
+                            800: '#343A40', 900: '#212529',
+                        },
+                        primary: {
+                            50: '#E7F5FF', 100: '#D0EBFF', 200: '#A5D8FF', 300: '#74C0FC',
+                            400: '#4DABF7', 500: '#339AF0', 600: '#228BE6', 700: '#1C7ED6',
+                            800: '#1971C2', 900: '#0D47A1',
+                        },
+                        magenta: {
+                            50: '#FFF0F6', 100: '#FFDEEB', 200: '#FCC2D7', 300: '#FAA2C1',
+                            400: '#F783AC', 500: '#F06595', 600: '#E64980', 700: '#D6336C',
+                            800: '#C2255C', 900: '#880E4F',
+                        }
+                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    boxShadow: {
+                        'premium': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8F9FA; }
+        .tab-btn.active { color: #339AF0; border-bottom: 2px solid #339AF0; }
+        .performance-card { transition: all 0.2s; }
+        .performance-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); }
+    </style>
+</head>
+<body class="text-neutral-900 antialiased">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white border-r border-neutral-200 flex flex-col sticky top-0 h-screen">
+            <div class="p-6 flex items-center gap-3">
+                <div class="w-10 h-10 bg-magenta-500 rounded-xl flex items-center justify-center text-white font-bold text-xl">M</div>
+                <span class="font-extrabold text-xl tracking-tight">Magenta<span class="text-magenta-500">LMS</span></span>
+            </div>
+            
+            <nav class="flex-1 px-4 space-y-1">
+                <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-neutral-600 hover:text-primary-600 hover:bg-neutral-50 rounded-xl font-medium transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    Dashboard
+                </a>
+                <a href="student-list.html" class="flex items-center gap-3 px-4 py-3 text-primary-700 bg-primary-50 rounded-xl font-semibold transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    Student
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-neutral-600 hover:text-primary-600 hover:bg-neutral-50 rounded-xl font-medium transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.247 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    My Courses
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-neutral-600 hover:text-primary-600 hover:bg-neutral-50 rounded-xl font-medium transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    Analytics
+                </a>
+                <a href="payment-history.html" class="flex items-center gap-3 px-4 py-3 text-neutral-600 hover:text-primary-600 hover:bg-neutral-50 rounded-xl font-medium transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Payment History
+                </a>
+
+                <!-- Quiz Menu -->
+                <div class="relative group">
+                    <div class="flex items-center justify-between px-4 py-3 text-neutral-600 hover:text-magenta-600 hover:bg-magenta-50 rounded-xl font-medium transition-all cursor-pointer" onclick="document.getElementById('quiz-submenu').classList.toggle('hidden')">
+                        <div class="flex items-center gap-3">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Quiz
+                        </div>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <!-- Submenu -->
+                    <div id="quiz-submenu" class="hidden mt-1 pl-11 pr-4 space-y-1">
+                        <a href="quiz-list.html" class="block px-3 py-2 text-sm text-neutral-600 hover:text-magenta-600 hover:bg-magenta-50 rounded-lg transition-all">Quiz List</a>
+                        <a href="#" class="block px-3 py-2 text-sm text-neutral-600 hover:text-magenta-600 hover:bg-magenta-50 rounded-lg transition-all">Create Quiz</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="p-4 mt-auto border-t border-neutral-100">
+                <button class="w-full flex items-center justify-center gap-2 px-4 py-2 text-neutral-600 hover:text-alert-error hover:bg-neutral-50 rounded-lg transition-all">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-10 overflow-y-auto">
+            <!-- Header with Back Button -->
+            <div class="flex items-center gap-4 mb-8">
+                <a href="student-list.html" class="w-10 h-10 border border-neutral-200 rounded-full flex items-center justify-center hover:bg-neutral-50 transition-all text-neutral-700">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </a>
+                <div>
+                    <h1 class="text-2xl font-extrabold text-neutral-900 tracking-tight">Student Detail</h1>
+                    <p class="text-sm text-neutral-600">Viewing profile for <span class="font-bold text-neutral-800">Felix Anderson</span></p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-12 gap-8">
+                <!-- Profile Summary Sidebar -->
+                <div class="col-span-4 space-y-6">
+                    <div class="bg-white rounded-3xl border border-neutral-100 shadow-premium p-8 text-center">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" class="w-32 h-32 rounded-full mx-auto mb-6 bg-primary-50 border-4 border-white shadow-lg">
+                        <h2 class="text-xl font-black text-neutral-900">Felix Anderson</h2>
+                        <p class="text-sm text-neutral-500 mb-6">ID: STU-88291</p>
+                        <div class="flex flex-col gap-2">
+                            <button class="w-full py-3 bg-primary-500 text-white rounded-xl font-bold text-sm hover:bg-primary-600 transition-all">Edit Profile</button>
+                            <button class="w-full py-3 border border-neutral-200 text-neutral-700 rounded-xl font-bold text-sm hover:bg-neutral-50 transition-all">Reset Password</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-3xl border border-neutral-100 shadow-premium p-8">
+                        <h3 class="text-xs font-black uppercase tracking-widest text-neutral-500 mb-6">Quick Stats</h3>
+                        <div class="space-y-6">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-neutral-600">Attendance Rate</span>
+                                <span class="text-sm font-black text-green-600">92%</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-neutral-600">Courses Finished</span>
+                                <span class="text-sm font-black text-neutral-900">4</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm text-neutral-600">Total XP</span>
+                                <span class="text-sm font-black text-magenta-500">12,450 XP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabs Section -->
+                <div class="col-span-8">
+                    <!-- Tab Header -->
+                    <div class="flex gap-8 border-b border-neutral-100 mb-8 overflow-x-auto">
+                        <button onclick="switchTab('info')" class="tab-btn active px-4 py-4 text-sm font-bold transition-all" id="tab-info">Information</button>
+                        <button onclick="switchTab('transactions')" class="tab-btn px-4 py-4 text-sm font-bold text-neutral-500 transition-all" id="tab-transactions">Transactions</button>
+                        <button onclick="switchTab('performance')" class="tab-btn px-4 py-4 text-sm font-bold text-neutral-500 transition-all" id="tab-performance">Performance</button>
+                    </div>
+
+                    <!-- Information Tab -->
+                    <div id="content-info" class="space-y-8">
+                        <div class="bg-white rounded-3xl border border-neutral-100 p-8 shadow-sm">
+                            <h3 class="text-sm font-black uppercase tracking-widest text-neutral-500 mb-6">Student Information</h3>
+                            <div class="grid grid-cols-2 gap-y-6 gap-x-8">
+                                <div>
+                                    <p class="text-[10px] font-black uppercase text-neutral-500 mb-1">Full Name</p>
+                                    <p class="text-sm font-bold text-neutral-800">Felix Anderson</p>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-black uppercase text-neutral-500 mb-1">Email Address</p>
+                                    <p class="text-sm font-bold text-neutral-800">felix.a@example.com</p>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-black uppercase text-neutral-500 mb-1">Phone Number</p>
+                                    <p class="text-sm font-bold text-neutral-800">+62 812-3456-7890</p>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-black uppercase text-neutral-500 mb-1">Birth Date</p>
+                                    <p class="text-sm font-bold text-neutral-800">12 April 2005</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-3xl border border-neutral-100 p-8 shadow-sm">
+                            <h3 class="text-sm font-black uppercase tracking-widest text-neutral-500 mb-6">Parent Information</h3>
+                            <div class="grid grid-cols-2 gap-y-6 gap-x-8">
+                                <div>
+                                    <p class="text-[10px] font-black uppercase text-neutral-500 mb-1">Parent Name</p>
+                                    <p class="text-sm font-bold text-neutral-800">Robert Anderson</p>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-black uppercase text-neutral-500 mb-1">Relationship</p>
+                                    <p class="text-sm font-bold text-neutral-800">Father</p>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-black uppercase text-neutral-500 mb-1">Phone Number</p>
+                                    <p class="text-sm font-bold text-neutral-800">+62 811-9988-7766</p>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] font-black uppercase text-neutral-500 mb-1">Emergency Email</p>
+                                    <p class="text-sm font-bold text-neutral-800">robert.a@example.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Transactions Tab -->
+                    <div id="content-transactions" class="hidden space-y-6">
+                        <div class="bg-white rounded-3xl border border-neutral-100 shadow-sm overflow-hidden">
+                            <table class="w-full">
+                                <thead class="bg-neutral-50 border-b border-neutral-100">
+                                    <tr class="text-left">
+                                        <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-neutral-500">Order ID</th>
+                                        <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-neutral-500">Date</th>
+                                        <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-neutral-500">Amount</th>
+                                        <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-neutral-500">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-neutral-50">
+                                    <tr>
+                                        <td class="px-6 py-5 text-sm font-bold">#ORD-2026-001</td>
+                                        <td class="px-6 py-5 text-sm">15 Mar 2026</td>
+                                        <td class="px-6 py-5 text-sm font-black">Rp. 2.450.000</td>
+                                        <td class="px-6 py-5">
+                                            <span class="px-3 py-1 bg-green-50 text-green-600 text-[10px] font-bold rounded-full">Paid</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-5 text-sm font-bold">#ORD-2026-042</td>
+                                        <td class="px-6 py-5 text-sm">02 Feb 2026</td>
+                                        <td class="px-6 py-5 text-sm font-black">Rp. 1.200.000</td>
+                                        <td class="px-6 py-5">
+                                            <span class="px-3 py-1 bg-cyan-50 text-cyan-600 text-[10px] font-bold rounded-full">Installment</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Performance Tab -->
+                    <div id="content-performance" class="hidden space-y-8">
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="bg-white p-6 rounded-3xl border border-neutral-100 performance-card">
+                                <p class="text-[10px] font-black uppercase text-neutral-500 mb-2">Certificates</p>
+                                <p class="text-3xl font-black text-magenta-500">12</p>
+                                <p class="text-[10px] font-bold text-neutral-500 mt-1">Completed across all levels</p>
+                            </div>
+                            <div class="bg-white p-6 rounded-3xl border border-neutral-100 performance-card">
+                                <p class="text-[10px] font-black uppercase text-neutral-500 mb-2">Tests Completed</p>
+                                <p class="text-3xl font-black text-primary-500">28</p>
+                                <p class="text-[10px] font-bold text-neutral-500 mt-1">Avg Score: 8.5/10</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-3xl border border-neutral-100 p-8 shadow-sm">
+                            <h3 class="text-sm font-black uppercase tracking-widest text-neutral-500 mb-6">Current Classes & Attendance</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-bold text-neutral-800">TOEFL Prep Mastery</span>
+                                        <span class="text-xs font-black text-primary-500">95% Attendance</span>
+                                    </div>
+                                    <div class="w-full h-2 bg-neutral-50 rounded-full overflow-hidden">
+                                        <div class="h-full bg-primary-500" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="text-sm font-bold text-neutral-800">Academic Writing</span>
+                                        <span class="text-xs font-black text-primary-500">88% Attendance</span>
+                                    </div>
+                                    <div class="w-full h-2 bg-neutral-50 rounded-full overflow-hidden">
+                                        <div class="h-full bg-primary-500" style="width: 88%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-3xl border border-neutral-100 p-8 shadow-sm">
+                            <h3 class="text-sm font-black uppercase tracking-widest text-neutral-500 mb-6">Course Progress</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="p-4 bg-neutral-50 rounded-2xl flex items-center gap-4">
+                                    <div class="w-10 h-10 bg-green-100 text-green-600 rounded-xl flex items-center justify-center font-bold text-xs">✓</div>
+                                    <div>
+                                        <p class="text-xs font-bold text-neutral-800">Introduction to IELTS</p>
+                                        <p class="text-[10px] text-neutral-500">Completed 12 Jan 2026</p>
+                                    </div>
+                                </div>
+                                <div class="p-4 bg-neutral-50 rounded-2xl flex items-center gap-4">
+                                    <div class="w-10 h-10 bg-primary-50 text-primary-500 rounded-xl flex items-center justify-center font-bold text-xs">80%</div>
+                                    <div>
+                                        <p class="text-xs font-bold text-neutral-800">Advanced Structure</p>
+                                        <p class="text-[10px] text-neutral-500">8 of 10 Modules finished</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function switchTab(tab) {
+            // Hide all contents
+            document.getElementById('content-info').classList.add('hidden');
+            document.getElementById('content-transactions').classList.add('hidden');
+            document.getElementById('content-performance').classList.add('hidden');
+
+            // Deactivate all buttons
+            document.getElementById('tab-info').classList.remove('active');
+            document.getElementById('tab-info').classList.add('text-neutral-500');
+            document.getElementById('tab-transactions').classList.remove('active');
+            document.getElementById('tab-transactions').classList.add('text-neutral-500');
+            document.getElementById('tab-performance').classList.remove('active');
+            document.getElementById('tab-performance').classList.add('text-neutral-500');
+
+            // Show selected content and activate button
+            document.getElementById('content-' + tab).classList.remove('hidden');
+            document.getElementById('tab-' + tab).classList.add('active');
+            document.getElementById('tab-' + tab).classList.remove('text-neutral-500');
+        }
+    </script>
+</body>
+</html>

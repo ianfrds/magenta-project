@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Magenta LMS - Payment History</title>
+    <title>Magenta LMS - Student List</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
@@ -25,18 +25,12 @@
                             50: '#FFF0F6', 100: '#FFDEEB', 200: '#FCC2D7', 300: '#FAA2C1',
                             400: '#F783AC', 500: '#F06595', 600: '#E64980', 700: '#D6336C',
                             800: '#C2255C', 900: '#880E4F',
-                        },
-                        alert: {
-                            error: '#F44336',
-                            success: '#4CAF50',
-                            warning: '#FFEB3B',
                         }
                     },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
                     boxShadow: {
                         'premium': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02)',
+                        'premium-hover': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
                     }
                 }
             }
@@ -44,8 +38,8 @@
     </script>
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #F8F9FA; }
-        .label-text { font-size: 0.75rem; color: #6C757D; font-weight: 600; text-transform: uppercase; } /* Darker gray */
-        .value-text { font-size: 0.9375rem; color: #212529; font-weight: 600; }
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+        .nav-active { background: #EEF2FF; color: #339AF0; font-weight: 600; }
     </style>
 </head>
 <body class="text-neutral-900 antialiased">
@@ -56,25 +50,25 @@
                 <div class="w-10 h-10 bg-magenta-500 rounded-xl flex items-center justify-center text-white font-bold text-xl">M</div>
                 <span class="font-extrabold text-xl tracking-tight">Magenta<span class="text-magenta-500">LMS</span></span>
             </div>
-
+            
             <nav class="flex-1 px-4 space-y-1">
                 <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-neutral-600 hover:text-primary-600 hover:bg-neutral-50 rounded-xl font-medium transition-all">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                     Dashboard
                 </a>
-                <a href="student-list.html" class="flex items-center gap-3 px-4 py-3 text-neutral-600 hover:text-primary-600 hover:bg-neutral-50 rounded-xl font-medium transition-all">
+                <a href="student-list.html" class="flex items-center gap-3 px-4 py-3 text-primary-700 bg-primary-50 rounded-xl font-semibold transition-all">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                     Student
                 </a>
                 <a href="#" class="flex items-center gap-3 px-4 py-3 text-neutral-600 hover:text-primary-600 hover:bg-neutral-50 rounded-xl font-medium transition-all">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.247 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     My Courses
                 </a>
                 <a href="#" class="flex items-center gap-3 px-4 py-3 text-neutral-600 hover:text-primary-600 hover:bg-neutral-50 rounded-xl font-medium transition-all">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
                     Analytics
                 </a>
-                <a href="payment-history.html" class="flex items-center gap-3 px-4 py-3 text-primary-700 bg-primary-50 rounded-xl font-semibold transition-all">
+                <a href="payment-history.html" class="flex items-center gap-3 px-4 py-3 text-neutral-600 hover:text-primary-600 hover:bg-neutral-50 rounded-xl font-medium transition-all">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                     Payment History
                 </a>
@@ -108,86 +102,108 @@
         <main class="flex-1 p-10 overflow-y-auto">
             <header class="flex justify-between items-center mb-10">
                 <div>
-                    <h1 class="text-3xl font-extrabold text-neutral-900 tracking-tight">Payment History</h1>
-                    <p class="text-neutral-600 mt-1">Manage and track all your course orders and installments.</p>
+                    <h1 class="text-3xl font-extrabold text-neutral-900 tracking-tight">Student Management</h1>
+                    <p class="text-neutral-600 mt-1">Manage, monitor and analyze student profiles and performance.</p>
                 </div>
+                <button class="px-6 py-2.5 bg-magenta-500 text-white rounded-xl font-bold shadow-lg shadow-magenta-200 hover:bg-magenta-600 hover:-translate-y-0.5 transition-all">Add New Student</button>
             </header>
 
-            <!-- Filters & Search -->
-            <div class="bg-white p-4 rounded-2xl border border-neutral-100 shadow-premium mb-8 flex items-center justify-between">
-                <div class="flex gap-4">
-                    <select class="px-4 py-2 bg-neutral-50 border border-neutral-200 rounded-xl text-sm font-semibold text-neutral-700 focus:outline-none focus:ring-2 focus:ring-magenta-500/20">
-                        <option>All Status</option>
-                        <option>Paid</option>
-                        <option>Partially Paid</option>
-                        <option>Pending</option>
+            <!-- Filters -->
+            <div class="bg-white p-4 rounded-2xl border border-neutral-100 shadow-premium mb-8 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex gap-4 flex-1 max-w-2xl">
+                    <div class="relative flex-1">
+                        <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        <input type="text" placeholder="Search student name, ID, or email..." class="w-full pl-10 pr-4 py-2.5 bg-neutral-50 border border-neutral-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/20">
+                    </div>
+                    <select class="px-4 py-2.5 bg-neutral-50 border border-neutral-200 rounded-xl text-sm font-semibold text-neutral-700">
+                        <option>All Classes</option>
+                        <option>TOEFL Prep A</option>
+                        <option>IELTS Mastery B</option>
+                        <option>Business English</option>
                     </select>
-                    <input type="text" placeholder="Search Order ID..." class="px-4 py-2 bg-neutral-50 border border-neutral-200 rounded-xl text-sm font-medium text-neutral-700 focus:outline-none focus:ring-2 focus:ring-magenta-500/20 w-64">
                 </div>
-                <div class="text-sm font-bold text-neutral-600">Total 124 Orders</div>
+                <div class="text-sm font-bold text-neutral-600">Total 1,248 Students</div>
             </div>
 
-            <!-- Order List -->
+            <!-- Student Table -->
             <div class="bg-white rounded-2xl border border-neutral-100 shadow-premium overflow-hidden">
                 <table class="w-full">
                     <thead>
                         <tr class="bg-neutral-50 border-b border-neutral-100 text-left">
-                            <th class="px-6 py-4 label-text">Order Info</th>
-                            <th class="px-6 py-4 label-text">Product</th>
-                            <th class="px-6 py-4 label-text">Total Amount</th>
-                            <th class="px-6 py-4 label-text text-center">Status</th>
-                            <th class="px-6 py-4 label-text text-right">Action</th>
+                            <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-neutral-500">Student Info</th>
+                            <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-neutral-500">Class</th>
+                            <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-neutral-500">Performance</th>
+                            <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-neutral-500">Status</th>
+                            <th class="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-neutral-500 text-right">Action</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-neutral-50">
-                        <!-- Order Row 1 -->
-                        <tr class="hover:bg-neutral-50 transition-colors group">
+                        <!-- Student Row 1 -->
+                        <tr class="hover:bg-neutral-50/50 transition-colors group">
                             <td class="px-6 py-5">
-                                <div class="font-extrabold text-neutral-900">#019DD892</div>
-                                <div class="text-xs font-semibold text-neutral-600 mt-0.5">29 Apr 2026, 16:29</div>
+                                <div class="flex items-center gap-3">
+                                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" class="w-10 h-10 rounded-full bg-primary-50 border border-primary-100">
+                                    <div>
+                                        <div class="font-bold text-neutral-900">Felix Anderson</div>
+                                        <div class="text-xs text-neutral-600">ID: STU-88291</div>
+                                    </div>
+                                </div>
                             </td>
                             <td class="px-6 py-5">
-                                <div class="font-bold text-neutral-800">Magenta Language Course - Level C</div>
-                                <div class="text-xs font-medium text-neutral-600">Installment Plan</div>
+                                <div class="text-sm font-semibold text-neutral-700">TOEFL Prep A</div>
+                                <div class="text-[10px] text-neutral-500">Joined Mar 2026</div>
                             </td>
                             <td class="px-6 py-5">
-                                <div class="font-black text-neutral-900">Rp. 309.000</div>
-                                <div class="text-[10px] font-bold text-green-600 uppercase">Paid Rp. 154.500</div>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-24 h-1.5 bg-neutral-100 rounded-full overflow-hidden">
+                                        <div class="h-full bg-green-500" style="width: 85%"></div>
+                                    </div>
+                                    <span class="text-xs font-bold text-neutral-700">85%</span>
+                                </div>
                             </td>
-                            <td class="px-6 py-5 text-center">
-                                <span class="px-3 py-1 bg-cyan-50 text-cyan-600 text-[10px] font-bold rounded-full">Partially Paid</span>
+                            <td class="px-6 py-5">
+                                <span class="px-3 py-1 bg-green-50 text-green-600 text-[10px] font-bold rounded-full">Active</span>
                             </td>
                             <td class="px-6 py-5 text-right">
-                                <a href="order-detail.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-neutral-200 rounded-xl text-xs font-bold text-neutral-700 hover:border-magenta-500 hover:text-magenta-500 transition-all shadow-sm">
+                                <a href="student-detail.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-neutral-200 rounded-xl text-xs font-bold text-neutral-700 hover:border-magenta-500 hover:text-magenta-500 transition-all shadow-sm">
                                     View Detail
                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                                 </a>
                             </td>
                         </tr>
-                        <!-- Order Row 2 -->
-                        <tr class="hover:bg-neutral-50 transition-colors group">
+                        <!-- Student Row 2 -->
+                        <tr class="hover:bg-neutral-50/50 transition-colors group">
                             <td class="px-6 py-5">
-                                <div class="font-extrabold text-neutral-900">#019DD700</div>
-                                <div class="text-xs font-semibold text-neutral-600 mt-0.5">25 Apr 2026, 10:15</div>
+                                <div class="flex items-center gap-3">
+                                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" class="w-10 h-10 rounded-full bg-magenta-50 border border-magenta-100">
+                                    <div>
+                                        <div class="font-bold text-neutral-900">Sarah Jenkins</div>
+                                        <div class="text-xs text-neutral-600">ID: STU-88302</div>
+                                    </div>
+                                </div>
                             </td>
                             <td class="px-6 py-5">
-                                <div class="font-bold text-neutral-800">Business English for Professionals</div>
-                                <div class="text-xs font-medium text-neutral-600">Full Payment</div>
+                                <div class="text-sm font-semibold text-neutral-700">Business English</div>
+                                <div class="text-[10px] text-neutral-500">Joined Feb 2026</div>
                             </td>
                             <td class="px-6 py-5">
-                                <div class="font-black text-neutral-900">Rp. 750.000</div>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-24 h-1.5 bg-neutral-100 rounded-full overflow-hidden">
+                                        <div class="h-full bg-orange-500" style="width: 62%"></div>
+                                    </div>
+                                    <span class="text-xs font-bold text-neutral-700">62%</span>
+                                </div>
                             </td>
-                            <td class="px-6 py-5 text-center">
-                                <span class="px-3 py-1 bg-green-50 text-green-600 text-[10px] font-bold rounded-full">Paid</span>
+                            <td class="px-6 py-5">
+                                <span class="px-3 py-1 bg-green-50 text-green-600 text-[10px] font-bold rounded-full">Active</span>
                             </td>
                             <td class="px-6 py-5 text-right">
-                                <a href="#" class="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-neutral-200 rounded-xl text-xs font-bold text-neutral-700 hover:border-magenta-500 hover:text-magenta-500 transition-all shadow-sm">
+                                <a href="student-detail.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-neutral-200 rounded-xl text-xs font-bold text-neutral-700 hover:border-magenta-500 hover:text-magenta-500 transition-all shadow-sm">
                                     View Detail
                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                                 </a>
                             </td>
                         </tr>
-                        <!-- More rows... -->
                     </tbody>
                 </table>
             </div>
