@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magenta LMS - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neutral: {
+                            50: '#F8F9FA', 100: '#F1F3F5', 200: '#E9ECEF', 300: '#DEE2E6',
+                            400: '#CED4DA', 500: '#ADB5BD', 600: '#868E96', 700: '#495057',
+                            800: '#343A40', 900: '#212529',
+                        },
+                        primary: {
+                            50: '#E7F5FF', 100: '#D0EBFF', 200: '#A5D8FF', 300: '#74C0FC',
+                            400: '#4DABF7', 500: '#339AF0', 600: '#228BE6', 700: '#1C7ED6',
+                            800: '#1971C2', 900: '#0D47A1',
+                        },
+                        magenta: {
+                            50: '#FFF0F6', 100: '#FFDEEB', 200: '#FCC2D7', 300: '#FAA2C1',
+                            400: '#F783AC', 500: '#F06595', 600: '#E64980', 700: '#D6336C',
+                            800: '#C2255C', 900: '#880E4F',
+                        },
+                        joowara: {
+                            50: '#FFF8E1', 100: '#FFECB3', 200: '#FFE082', 300: '#FFD54F',
+                            400: '#FFC107', 500: '#FFB300', 600: '#FFA000', 700: '#FF8F00',
+                            800: '#F57C00', 900: '#E65100',
+                        },
+                        kidz: {
+                            50: '#F3E5F5', 100: '#E1BEE7', 200: '#CE93D8', 300: '#BA68C8',
+                            400: '#AB47BC', 500: '#9C27B0', 600: '#8E24AA', 700: '#7B1FA2',
+                            800: '#6A1B9A', 900: '#4A148C',
+                        },
+                        alert: {
+                            error: '#F44336',
+                            success: '#4CAF50',
+                            warning: '#FFEB3B',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'premium': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02)',
+                        'premium-hover': '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8F9FA; }
+        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="text-neutral-900 antialiased">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white border-r border-neutral-200 flex flex-col sticky top-0 h-screen">
+            <div class="p-6 flex items-center gap-3">
+                <div class="w-10 h-10 bg-magenta-500 rounded-xl flex items-center justify-center text-white font-bold text-xl">M</div>
+                <span class="font-extrabold text-xl tracking-tight">Magenta<span class="text-magenta-500">LMS</span></span>
+            </div>
+            
+            <nav class="flex-1 px-4 space-y-1">
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-primary-700 bg-primary-50 rounded-xl font-semibold transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    Dashboard
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-neutral-500 hover:text-primary-600 hover:bg-neutral-50 rounded-xl font-medium transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    My Courses
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-neutral-500 hover:text-primary-600 hover:bg-neutral-50 rounded-xl font-medium transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    Students
+                </a>
+                <a href="#" class="flex items-center gap-3 px-4 py-3 text-neutral-500 hover:text-primary-600 hover:bg-neutral-50 rounded-xl font-medium transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    Analytics
+                </a>
+                <a href="payment-history.html" class="flex items-center gap-3 px-4 py-3 text-neutral-500 hover:text-primary-600 hover:bg-neutral-50 rounded-xl font-medium transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Payment History
+                </a>
+                
+                <!-- Quiz Menu -->
+                <div class="relative group">
+                    <div class="flex items-center justify-between px-4 py-3 text-neutral-500 hover:text-magenta-600 hover:bg-magenta-50 rounded-xl font-medium transition-all cursor-pointer" onclick="document.getElementById('quiz-submenu').classList.toggle('hidden')">
+                        <div class="flex items-center gap-3">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Quiz
+                        </div>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <!-- Submenu -->
+                    <div id="quiz-submenu" class="hidden mt-1 pl-11 pr-4 space-y-1">
+                        <a href="quiz-list.html" class="block px-3 py-2 text-sm text-neutral-500 hover:text-magenta-600 hover:bg-magenta-50 rounded-lg transition-all">Quiz List</a>
+                        <a href="#" class="block px-3 py-2 text-sm text-neutral-500 hover:text-magenta-600 hover:bg-magenta-50 rounded-lg transition-all">Create Quiz</a>
+                    </div>
+                </div>
+                <a href="../landing-page.html" class="flex items-center gap-3 px-4 py-3 text-neutral-500 hover:text-magenta-600 hover:bg-magenta-50 rounded-xl font-medium transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    Landing Page
+                </a>
+            </nav>
+            
+            <div class="p-4 mt-auto border-t border-neutral-100">
+                <button class="w-full flex items-center justify-center gap-2 px-4 py-2 text-neutral-600 hover:text-alert-error hover:bg-neutral-50 rounded-lg transition-all">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-10 overflow-y-auto">
+            <header class="flex justify-between items-center mb-10">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-neutral-900 tracking-tight">Overview Dashboard</h1>
+                    <p class="text-neutral-500 mt-1">Welcome back, Admin! Here's what's happening today.</p>
+                </div>
+                <div class="flex gap-4">
+                    <a href="../landing-page.html" class="px-6 py-2.5 border border-neutral-300 rounded-xl font-semibold text-neutral-700 hover:bg-neutral-50 transition-all">Preview Site</a>
+                    <button class="px-6 py-2.5 bg-magenta-500 text-white rounded-xl font-bold shadow-lg shadow-magenta-200 hover:bg-magenta-600 hover:-translate-y-0.5 transition-all">Create New Course</button>
+                </div>
+            </header>
+
+            <!-- Stats Grid -->
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white p-6 rounded-2xl border border-neutral-100 shadow-premium">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-neutral-500 font-semibold text-xs uppercase tracking-wider">Total Students</span>
+                        <div class="p-2 bg-primary-50 text-primary-600 rounded-lg">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-black text-neutral-900">2,854</div>
+                    <div class="mt-2 text-sm">
+                        <span class="text-green-500 font-bold">+12.5%</span> <span class="text-neutral-400">vs last month</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-neutral-100 shadow-premium">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-neutral-500 font-semibold text-xs uppercase tracking-wider">Active Courses</span>
+                        <div class="p-2 bg-kidz-50 text-kidz-600 rounded-lg">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-black text-neutral-900">42</div>
+                    <div class="mt-2 text-sm text-neutral-400">
+                        <span class="text-neutral-900 font-bold">5</span> <span class="text-neutral-400">pending publication</span>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-neutral-100 shadow-premium">
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-neutral-500 font-semibold text-xs uppercase tracking-wider">Total Revenue</span>
+                        <div class="p-2 bg-joowara-50 text-joowara-600 rounded-lg">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-black text-neutral-900">$18,420</div>
+                    <div class="mt-2 text-sm text-green-500 font-bold">+8.2% increase</div>
+                </div>
+            </section>
+
+            <!-- Courses Section -->
+            <section>
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-2xl font-bold text-neutral-900">Recent Courses</h2>
+                    <button class="text-primary-600 font-semibold hover:underline">View All Courses</button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Course Card 1 -->
+                    <div class="group bg-white rounded-2xl border border-neutral-100 shadow-premium hover:shadow-premium-hover transition-all overflow-hidden cursor-pointer">
+                        <div class="h-32 bg-gradient-to-br from-primary-400 to-primary-700"></div>
+                        <div class="p-5">
+                            <span class="px-2.5 py-1 bg-primary-50 text-primary-700 text-[10px] font-bold uppercase tracking-wider rounded-full">Published</span>
+                            <h3 class="text-lg font-bold mt-2 group-hover:text-primary-600 transition-colors">Mastering React 2026</h3>
+                            <p class="text-neutral-400 text-sm mt-1">Instructor: Dr. Sarah Connor</p>
+                            <div class="mt-4 pt-4 border-t border-neutral-50 flex justify-between items-center">
+                                <span class="text-xs font-bold text-neutral-500">120 Students</span>
+                                <button class="text-neutral-400 hover:text-neutral-900"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 2 -->
+                    <div class="group bg-white rounded-2xl border border-neutral-100 shadow-premium hover:shadow-premium-hover transition-all overflow-hidden cursor-pointer">
+                        <div class="h-32 bg-gradient-to-br from-magenta-400 to-magenta-700"></div>
+                        <div class="p-5">
+                            <span class="px-2.5 py-1 bg-magenta-50 text-magenta-700 text-[10px] font-bold uppercase tracking-wider rounded-full">Drafting</span>
+                            <h3 class="text-lg font-bold mt-2 group-hover:text-magenta-600 transition-colors">Design Ethics</h3>
+                            <p class="text-neutral-400 text-sm mt-1">Instructor: Prof. Mike Ross</p>
+                            <div class="mt-4 pt-4 border-t border-neutral-50 flex justify-between items-center">
+                                <span class="text-xs font-bold text-neutral-500">45 Students</span>
+                                <button class="text-neutral-400 hover:text-neutral-900"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 3 -->
+                    <div class="group bg-white rounded-2xl border border-neutral-100 shadow-premium hover:shadow-premium-hover transition-all overflow-hidden cursor-pointer">
+                        <div class="h-32 bg-gradient-to-br from-kidz-400 to-kidz-700"></div>
+                        <div class="p-5">
+                            <span class="px-2.5 py-1 bg-kidz-50 text-kidz-700 text-[10px] font-bold uppercase tracking-wider rounded-full">New Course</span>
+                            <h3 class="text-lg font-bold mt-2 group-hover:text-kidz-600 transition-colors">Creative Coding for Kids</h3>
+                            <p class="text-neutral-400 text-sm mt-1">Instructor: Lily Evans</p>
+                            <div class="mt-4 pt-4 border-t border-neutral-50 flex justify-between items-center">
+                                <span class="text-xs font-bold text-neutral-500">0 Students</span>
+                                <button class="text-neutral-400 hover:text-neutral-900"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 4 -->
+                    <div class="group bg-white rounded-2xl border border-neutral-100 shadow-premium hover:shadow-premium-hover transition-all overflow-hidden cursor-pointer">
+                        <div class="h-32 bg-gradient-to-br from-joowara-400 to-joowara-700"></div>
+                        <div class="p-5">
+                            <span class="px-2.5 py-1 bg-joowara-50 text-joowara-700 text-[10px] font-bold uppercase tracking-wider rounded-full">Archived</span>
+                            <h3 class="text-lg font-bold mt-2 group-hover:text-joowara-600 transition-colors">History of Design</h3>
+                            <p class="text-neutral-400 text-sm mt-1">Instructor: Robert Langdon</p>
+                            <div class="mt-4 pt-4 border-t border-neutral-50 flex justify-between items-center">
+                                <span class="text-xs font-bold text-neutral-500">89 Students</span>
+                                <button class="text-neutral-400 hover:text-neutral-900"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

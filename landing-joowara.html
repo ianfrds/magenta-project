@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joowara.id - Solusi Terbaik Sukses Ujian</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        joowara: {
+                            50: '#FFF8E1', 100: '#FFECB3', 200: '#FFE082', 300: '#FFD54F',
+                            400: '#FFC107', 500: '#FFB300', 600: '#FFA000', 700: '#FF8F00',
+                            800: '#F57C00', 900: '#E65100',
+                            brand: '#F57C00',
+                        },
+                        navy: {
+                            900: '#0B1120',
+                            800: '#1E293B',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 50px -12px rgba(245, 124, 0, 0.15)',
+                        'premium-hover': '0 30px 60px -12px rgba(245, 124, 0, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+        .hero-gradient { background: radial-gradient(circle at 70% 30%, #FFF8E1 0%, #ffffff 50%); }
+        .text-gradient { background: linear-gradient(135deg, #FFA000 0%, #E65100 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-brand { background: linear-gradient(135deg, #FFA000 0%, #F57C00 100%); transition: all 0.3s ease; }
+        .btn-brand:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(245, 124, 0, 0.4); }
+        .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-10px); }
+        body { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-white text-navy-800 antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-joowara-600 rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg shadow-joowara-200">J</div>
+                <span class="font-display font-extrabold text-2xl tracking-tight text-navy-900">Joowara<span class="text-joowara-600">.id</span></span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-10 text-navy-800">
+                <a href="#about" class="text-sm font-semibold hover:text-joowara-600 transition-colors">About Us</a>
+                <a href="#programs" class="text-sm font-semibold hover:text-joowara-600 transition-colors">Learning Program</a>
+                <a href="#testimonials" class="text-sm font-semibold hover:text-joowara-600 transition-colors">Testimonials</a>
+                <a href="#contact" class="text-sm font-semibold hover:text-joowara-600 transition-colors">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="admin-lms/index.html" class="text-sm font-bold text-navy-800 px-6 py-2.5 hover:bg-joowara-50 rounded-full transition-all">Login</a>
+                <a href="#" class="btn-brand text-white text-sm font-bold px-8 py-3 rounded-full shadow-lg">Gabung Sekarang</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-40 pb-24 hero-gradient overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="relative z-10">
+                <span class="inline-block px-4 py-1.5 bg-joowara-50 text-joowara-600 text-xs font-bold uppercase tracking-widest rounded-full mb-6">Solusi Belajar Terbaik</span>
+                <h1 class="font-display text-6xl lg:text-7xl font-black leading-[1.1] mb-8 text-navy-900">
+                    Bimbingan Belajar Bersama <span class="text-gradient">Joowara.id</span>
+                </h1>
+                <p class="text-lg text-slate-600 leading-relaxed mb-10 max-w-xl">
+                    Solusi terbaik untuk sukses ujian! Program intensif untuk SMP, SMA, UTBK, dan SMK bersama alumni universitas ternama.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#programs" class="btn-brand text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl">Lihat Program Kami</a>
+                    <a href="#" class="px-10 py-4 border-2 border-joowara-100 text-joowara-600 rounded-full font-bold text-lg hover:bg-joowara-50 transition-all">Konsultasi Gratis</a>
+                </div>
+                
+                <div class="mt-12 flex items-center gap-4">
+                    <div class="flex -space-x-3">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=4" class="w-12 h-12 rounded-full border-4 border-white bg-joowara-50"/>
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=5" class="w-12 h-12 rounded-full border-4 border-white bg-joowara-50"/>
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=6" class="w-12 h-12 rounded-full border-4 border-white bg-joowara-50"/>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold">400+ Siswa Puas</p>
+                        <p class="text-xs text-slate-400">Dipercaya oleh ribuan pelajar</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative">
+                <div class="absolute -top-20 -right-20 w-96 h-96 bg-joowara-100 rounded-full blur-3xl opacity-50"></div>
+                <div class="relative rounded-[2.5rem] overflow-hidden shadow-premium group border-8 border-white">
+                    <img src="assets/joowara/hero.png" alt="Siswa Joowara" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+                    <div class="absolute bottom-8 left-8 bg-white/90 backdrop-blur px-6 py-4 rounded-2xl shadow-xl border border-white/50">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-joowara-600 rounded-xl flex items-center justify-center text-white">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2 .712V17a1 1 0 001 1z"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-sm font-black">300+ Pengajar</p>
+                                <p class="text-xs text-slate-500">Alumni PTN Favorit</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners -->
+    <div class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="border-b border-slate-100 pb-12 flex flex-wrap justify-center items-center gap-12 md:gap-20 opacity-40 grayscale">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Logo_Universitas_Indonesia.png" class="h-8" alt="UI"/>
+                <img src="https://upload.wikimedia.org/wikipedia/id/thumb/e/e5/Logo_ITB.svg/1200px-Logo_ITB.svg.png" class="h-8" alt="ITB"/>
+                <img src="https://upload.wikimedia.org/wikipedia/id/thumb/4/44/Logo_UGM_2015.svg/1200px-Logo_UGM_2015.svg.png" class="h-8" alt="UGM"/>
+                <img src="https://upload.wikimedia.org/wikipedia/id/thumb/0/03/Logo_ITS.svg/1200px-Logo_ITS.svg.png" class="h-8" alt="ITS"/>
+                <img src="https://upload.wikimedia.org/wikipedia/id/thumb/e/e4/Logo_Unpad.svg/1200px-Logo_Unpad.svg.png" class="h-8" alt="UNPAD"/>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-24">
+            <div class="lg:w-1/2 relative">
+                <div class="relative rounded-[2.5rem] overflow-hidden shadow-premium group">
+                    <img src="assets/joowara/about.png" alt="Tentang Joowara" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+                    <div class="absolute -top-6 -left-6 w-20 h-20 bg-joowara-brand rounded-2xl flex items-center justify-center text-white shadow-xl animate-bounce" style="animation-duration: 3s;">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3z"></path></svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lg:w-1/2">
+                <span class="text-joowara-600 font-bold text-sm tracking-wider uppercase mb-4 block">Mengenal Lebih Dekat</span>
+                <h2 class="font-display text-5xl font-black mb-8 leading-tight text-navy-900">Solusi Sukses Ujian Bersama <span class="text-joowara-brand">Joowara.id</span></h2>
+                <p class="text-slate-500 text-lg leading-relaxed mb-10">
+                    Joowara didirikan oleh Alumni UI dan ITB yang sangat peduli dengan pendidikan. Kami hadir untuk membantu siswa SMP dan SMA meraih cita-cita mereka melalui metode belajar yang efektif dan intensif.
+                </p>
+                
+                <div class="flex items-center gap-12 pt-10 border-t border-slate-100">
+                    <div>
+                        <p class="text-5xl font-black text-joowara-brand mb-2">300+</p>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Tentor Berpengalaman</p>
+                    </div>
+                    <div class="w-px h-16 bg-slate-200"></div>
+                    <div>
+                        <p class="text-5xl font-black text-joowara-brand mb-2">400+</p>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Siswa Puas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="font-display text-4xl font-black mb-6 text-navy-900">Kenapa Memilih Joowara?</h2>
+                <p class="text-slate-500 leading-relaxed text-lg">Kami menggabungkan kurikulum yang ketat dengan teknik penyampaian yang modern untuk memastikan siswa tidak hanya paham, tapi juga siap menghadapi ujian.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm card-hover">
+                    <div class="w-16 h-16 bg-joowara-50 text-joowara-600 rounded-2xl flex items-center justify-center mb-8 shadow-inner">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-4 text-navy-900">Kurikulum Standar PTN</h3>
+                    <p class="text-slate-500 leading-relaxed">Materi belajar kami dirancang sesuai dengan standar seleksi masuk perguruan tinggi negeri (PTN) terupdate.</p>
+                </div>
+                
+                <div class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm card-hover">
+                    <div class="w-16 h-16 bg-joowara-50 text-joowara-600 rounded-2xl flex items-center justify-center mb-8 shadow-inner">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-4 text-navy-900">Pengajar Berpengalaman</h3>
+                    <p class="text-slate-500 leading-relaxed">Belajar dari alumni UI, ITB, dan UGM yang membawa pengalaman nyata dalam menaklukkan ujian masuk universitas.</p>
+                </div>
+                
+                <div class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm card-hover">
+                    <div class="w-16 h-16 bg-joowara-50 text-joowara-600 rounded-2xl flex items-center justify-center mb-8 shadow-inner">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-4 text-navy-900">Metode Belajar Fleksibel</h3>
+                    <p class="text-slate-500 leading-relaxed">Pilih antara bimbingan tatap muka, kelas sore, atau sesi online interaktif yang sesuai dengan jadwal sekolahmu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h2 class="font-display text-4xl font-black mb-4 text-navy-900">Program Unggulan</h2>
+                    <p class="text-slate-500">Jelajahi berbagai pilihan program bimbingan belajar kami yang didesain untuk kesuksesanmu.</p>
+                </div>
+                <a href="#" class="text-joowara-600 font-bold flex items-center gap-2 hover:gap-4 transition-all">Lihat Semua Program <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Program 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm card-hover border border-slate-100">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="assets/joowara/program-smp.png" class="w-full h-full object-cover" alt="Program SMP"/>
+                        <div class="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur rounded-lg text-xs font-bold uppercase tracking-wider">SMP Kelas 7-9</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-bold text-2xl mb-2 text-navy-900">Program SMP</h3>
+                        <p class="text-sm text-slate-400 mb-8">Fokus MTK, IPA, dan Bahasa Inggris</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-joowara-600 font-black text-2xl">Rp 300rb<span class="text-sm font-normal text-slate-400">/bln</span></span>
+                            <button class="w-12 h-12 bg-slate-50 text-slate-400 rounded-full flex items-center justify-center hover:bg-joowara-600 hover:text-white transition-all"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Program 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm card-hover border border-slate-100">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="assets/joowara/program-sma11.png" class="w-full h-full object-cover" alt="Program SMA 11"/>
+                        <div class="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur rounded-lg text-xs font-bold uppercase tracking-wider">SMA Kelas 11</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-bold text-2xl mb-2 text-navy-900">Program SMA 11</h3>
+                        <p class="text-sm text-slate-400 mb-8">Persiapan UTBK & Masuk PTN</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-joowara-600 font-black text-2xl">Rp 400rb<span class="text-sm font-normal text-slate-400">/bln</span></span>
+                            <button class="w-12 h-12 bg-slate-50 text-slate-400 rounded-full flex items-center justify-center hover:bg-joowara-600 hover:text-white transition-all"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program 3 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm card-hover border border-slate-100">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="assets/joowara/program-sma12.png" class="w-full h-full object-cover" alt="Program SMA 12"/>
+                        <div class="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur rounded-lg text-xs font-bold uppercase tracking-wider">SMA Kelas 12</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-bold text-2xl mb-2 text-navy-900">Program SMA 12</h3>
+                        <p class="text-sm text-slate-400 mb-8">Intensif Akhir Sekolah & UTBK</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-joowara-600 font-black text-2xl">Rp 450rb<span class="text-sm font-normal text-slate-400">/bln</span></span>
+                            <button class="w-12 h-12 bg-slate-50 text-slate-400 rounded-full flex items-center justify-center hover:bg-joowara-600 hover:text-white transition-all"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Section -->
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div class="grid grid-cols-2 gap-6 relative">
+                <div class="absolute inset-0 bg-joowara-100 rounded-full blur-[100px] opacity-20 -z-10"></div>
+                <div class="space-y-6 pt-12">
+                    <div class="bg-joowara-50 p-8 rounded-[2rem] border border-joowara-100 shadow-sm card-hover">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-joowara-600 shadow-sm mb-6">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M9 4.804A7.993 7.993 0 0110 5c.135 0 .267.01.396.03l.317.062c.11.026.221.056.331.09l.352.115c.105.038.209.08.312.128l.334.156c.099.052.197.108.293.168l.31.196c.092.064.183.13.272.202l.282.232c.084.075.166.153.245.234l.25.26c.075.086.148.174.218.265l.21.282c.066.096.128.194.187.294l.165.3c.053.104.102.21.147.317l.118.318c.038.11.072.221.1.332l.068.318A7.988 7.988 0 0118 10a7.988 7.988 0 01-.154 1.54l-.068.318c-.028.111-.062.222-.1.332l-.118.318c-.045.107-.094.213-.147.317l-.165.3c-.059.1-.121.198-.187.294l-.21.282c-.07.091-.143.179-.218.265l-.25.26c-.079.081-.161.159-.245.234l-.282.232c-.089.072-.18.138-.272.202l-.31.196c-.096.06-.194.116-.293.168l-.334.156c-.103.048-.207.09-.312.128l-.352.115c-.11.034-.221.064-.331.09l-.317.062A7.993 7.993 0 0110 15a7.993 7.993 0 01-1-.196v-1.12c0-.528.264-1.012.7-1.3l2.84-1.894a1 1 0 000-1.664L9.7 7.12a1.59 1.59 0 00-.7-1.3V4.804z"></path></svg>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-navy-900">Konseling PTN</h4>
+                        <p class="text-xs text-slate-500">Pendampingan pemilihan jurusan dan universitas sesuai minat & bakat.</p>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-[2rem] card-hover">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-navy-800 shadow-sm mb-6">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a22 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"></path><path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path></svg>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-navy-900">Trial Class</h4>
+                        <p class="text-xs text-slate-500">Coba rasakan serunya belajar di Joowara secara gratis sebelum mendaftar.</p>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div class="bg-navy-900 p-8 rounded-[2rem] text-white card-hover">
+                        <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2">E-Library</h4>
+                        <p class="text-xs text-slate-300">Akses ribuan materi belajar, bank soal, dan rangkuman kapan saja.</p>
+                    </div>
+                    <div class="bg-joowara-600 p-8 rounded-[2rem] text-white card-hover">
+                        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-white mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2">Try Out Akurat</h4>
+                        <p class="text-xs text-white/80">Sistem Try Out dengan penilaian IRT yang akurat untuk prediksi kelulusan.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <span class="text-joowara-600 font-bold text-sm tracking-wider uppercase mb-4 block">Lebih dari Sekadar Bimbel</span>
+                <h2 class="font-display text-5xl font-black mb-8 leading-tight text-navy-900">Solusi Komprehensif Untuk Perjalanan Akademikmu</h2>
+                <p class="text-slate-500 text-lg leading-relaxed mb-10">Kami menyediakan ekosistem 360 derajat untuk mendukung transisi akademismu, mulai dari bimbingan belajar hingga penempatan PTN dan pendampingan psikologis.</p>
+                <ul class="space-y-4 mb-12">
+                    <li class="flex items-center gap-4 font-semibold"><div class="w-6 h-6 bg-joowara-50 text-joowara-600 rounded-full flex items-center justify-center"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div> Pendampingan Pemilihan PTN & Jurusan</li>
+                    <li class="flex items-center gap-4 font-semibold"><div class="w-6 h-6 bg-joowara-50 text-joowara-600 rounded-full flex items-center justify-center"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div> Konsultasi Psikologi Pendidikan</li>
+                    <li class="flex items-center gap-4 font-semibold"><div class="w-6 h-6 bg-joowara-50 text-joowara-600 rounded-full flex items-center justify-center"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div> Workshop Strategi Belajar Efektif</li>
+                </ul>
+                <a href="#" class="btn-brand text-white px-10 py-4 rounded-full font-bold inline-block shadow-lg">Pelajari Layanan Kami</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 bg-joowara-50/30 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="font-display text-4xl font-black mb-16 text-navy-900">Cerita Sukses Alumni</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm relative text-left card-hover">
+                    <div class="flex items-center gap-4 mb-8">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Dwi" class="w-14 h-14 rounded-full bg-slate-100"/>
+                        <div>
+                            <p class="font-bold text-navy-900">Dwi Kartika</p>
+                            <p class="text-xs text-slate-400">Alumni SMP 1</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed italic">"Joowara sangat membantu dalam memahami konsep-konsep yang sulit. Instrukturnya ramah dan sangat peduli dengan perkembangan siswa!"</p>
+                </div>
+
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm relative text-left scale-105 border-2 border-joowara-100 z-10 card-hover">
+                    <div class="flex items-center gap-4 mb-8">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Rina" class="w-14 h-14 rounded-full bg-slate-100"/>
+                        <div>
+                            <p class="font-bold text-navy-900">Rina Septiana</p>
+                            <p class="text-xs text-slate-400">Alumni SMA 8</p>
+                        </div>
+                        <span class="ml-auto px-3 py-1 bg-joowara-500 text-white text-[10px] font-bold rounded-full">Lulus PTN</span>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed italic">"Saya suka bagaimana metode Joowara membantu saya merasa lebih percaya diri menghadapi UTBK. Terima kasih tim Joowara!"</p>
+                </div>
+
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm relative text-left card-hover">
+                    <div class="flex items-center gap-4 mb-8">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Budi" class="w-14 h-14 rounded-full bg-slate-100"/>
+                        <div>
+                            <p class="font-bold text-navy-900">Budi Santoso</p>
+                            <p class="text-xs text-slate-400">Alumni SMA 3</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed italic">"Materi Matematika di Joowara sangat direkomendasikan! Tentornya menjelaskan dengan sangat jernih dan mudah diikuti."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <div class="inline-block px-3 py-1 bg-joowara-100 text-joowara-brand text-[10px] font-black uppercase tracking-widest rounded-lg mb-6">Partnership</div>
+                <h2 class="text-4xl lg:text-5xl font-black text-navy-900 max-w-2xl mx-auto leading-tight">Tertarik Bergabung Dengan Kemitraan Kami?</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <p class="text-slate-500 text-lg leading-relaxed">Kami percaya bahwa kolaborasi adalah kunci untuk mentransformasi pendidikan. Mari bersama membangun masa depan generasi bangsa.</p>
+                    <a href="#" class="btn-brand text-white px-10 py-4 rounded-full font-black text-sm inline-block shadow-lg">Pelajari Lebih Lanjut</a>
+                </div>
+
+                <div class="relative">
+                    <div class="bg-white p-12 rounded-[3rem] shadow-premium border border-joowara-100 text-center relative z-10">
+                        <div class="w-20 h-20 bg-joowara-50 rounded-3xl flex items-center justify-center text-joowara-brand mx-auto mb-6">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                        </div>
+                        <p class="text-7xl font-black text-joowara-brand mb-2">10+</p>
+                        <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Institusi Mempercayai Kami</p>
+                    </div>
+                    <div class="absolute inset-0 bg-joowara-brand rounded-[3rem] rotate-3 -z-10 opacity-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-gradient-to-br from-joowara-600 to-joowara-900 rounded-[3rem] p-12 lg:p-20 text-center text-white relative overflow-hidden shadow-premium">
+                <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                    <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 100 C 20 0, 50 0, 100 100 Z" fill="white"/></svg>
+                </div>
+                <div class="relative z-10">
+                    <h2 class="font-display text-5xl lg:text-6xl font-black mb-8">Siap Memulai Perjalananmu?</h2>
+                    <p class="text-xl text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">Bergabunglah dengan ratusan siswa yang telah bertransformasi dan sukses bersama Joowara.id.</p>
+                    <div class="flex flex-wrap justify-center gap-6">
+                        <a href="#" class="bg-white text-joowara-600 px-12 py-5 rounded-full font-black text-lg shadow-xl hover:scale-105 transition-all">Konsultasi Sekarang</a>
+                        <a href="#" class="border-2 border-white/30 text-white px-12 py-5 rounded-full font-black text-lg hover:bg-white/10 transition-all">Hubungi WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 pt-24 pb-12 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                <div>
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-8 h-8 bg-joowara-600 rounded-lg flex items-center justify-center text-white font-black text-lg">J</div>
+                        <span class="font-display font-extrabold text-xl tracking-tight text-navy-900">Joowara<span class="text-joowara-600">.id</span></span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-8">Mempersiapkan masa depan gemilang melalui bimbingan belajar intensif dan pendampingan akademik profesional.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-400 hover:text-joowara-600 shadow-sm transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                        <a href="#" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-400 hover:text-joowara-600 shadow-sm transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.058-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                        <a href="#" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-400 hover:text-joowara-600 shadow-sm transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-8 text-navy-900">Program</h4>
+                    <ul class="space-y-4 text-sm text-slate-500">
+                        <li><a href="#" class="hover:text-joowara-600 transition-colors">Program SMP</a></li>
+                        <li><a href="#" class="hover:text-joowara-600 transition-colors">Program SMA 11</a></li>
+                        <li><a href="#" class="hover:text-joowara-600 transition-colors">Program SMA 12</a></li>
+                        <li><a href="#" class="hover:text-joowara-600 transition-colors">Persiapan UTBK</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-8 text-navy-900">Layanan</h4>
+                    <ul class="space-y-4 text-sm text-slate-500">
+                        <li><a href="#" class="hover:text-joowara-600 transition-colors">Konseling PTN</a></li>
+                        <li><a href="#" class="hover:text-joowara-600 transition-colors">Try Out Online</a></li>
+                        <li><a href="#" class="hover:text-joowara-600 transition-colors">E-Library</a></li>
+                        <li><a href="#" class="hover:text-joowara-600 transition-colors">Workshop Sekolah</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-8 text-navy-900">Berlangganan</h4>
+                    <p class="text-sm text-slate-500 mb-6">Dapatkan tips belajar dan info PTN terupdate langsung di emailmu.</p>
+                    <div class="relative">
+                        <input type="email" placeholder="Alamat Email" class="w-full pl-4 pr-12 py-3 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-joowara-300 transition-all">
+                        <button class="absolute right-2 top-2 w-8 h-8 bg-joowara-600 text-white rounded-lg flex items-center justify-center hover:bg-joowara-700 transition-all"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-12 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-xs text-slate-400">© 2026 Joowara.id. All rights reserved. Solusi Sukses Ujian.</p>
+                <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-2 text-xs text-slate-400 uppercase tracking-widest">
+                        Solusi Sukses Ujian
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

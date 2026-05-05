@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magenta Language Academy - Speak The World's Language</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        magenta: {
+                            50: '#FFF0F6', 100: '#FFDEEB', 200: '#FCC2D7', 300: '#FAA2C1',
+                            400: '#F783AC', 500: '#F06595', 600: '#E64980', 700: '#D6336C',
+                            800: '#C2255C', 900: '#880E4F',
+                        },
+                        navy: {
+                            900: '#0B1120',
+                            800: '#1E293B',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 50px -12px rgba(230, 73, 128, 0.15)',
+                        'premium-hover': '0 30px 60px -12px rgba(230, 73, 128, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+        .hero-gradient { background: radial-gradient(circle at 70% 30%, #FFF0F6 0%, #ffffff 50%); }
+        .text-gradient { background: linear-gradient(135deg, #E64980 0%, #880E4F 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .btn-magenta { background: linear-gradient(135deg, #E64980 0%, #D6336C 100%); transition: all 0.3s ease; }
+        .btn-magenta:hover { transform: translateY(-2px); box-shadow: 0 10px 20px -5px rgba(230, 73, 128, 0.4); }
+        .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { transform: translateY(-10px); }
+        body { scroll-behavior: smooth; }
+    </style>
+</head>
+<body class="bg-white text-navy-800 antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-magenta-600 rounded-xl flex items-center justify-center text-white font-black text-xl shadow-lg shadow-magenta-200">M</div>
+                <span class="font-display font-extrabold text-2xl tracking-tight">Magenta<span class="text-magenta-600">Language</span></span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-10">
+                <a href="#courses" class="text-sm font-semibold hover:text-magenta-600 transition-colors">Courses</a>
+                <a href="#services" class="text-sm font-semibold hover:text-magenta-600 transition-colors">Services</a>
+                <a href="#about" class="text-sm font-semibold hover:text-magenta-600 transition-colors">About</a>
+                <a href="#contact" class="text-sm font-semibold hover:text-magenta-600 transition-colors">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="admin-lms/index.html" class="text-sm font-bold text-navy-800 px-6 py-2.5 hover:bg-magenta-50 rounded-full transition-all">Login</a>
+                <a href="#" class="btn-magenta text-white text-sm font-bold px-8 py-3 rounded-full shadow-lg">Start Learning</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-40 pb-24 hero-gradient overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="relative z-10">
+                <span class="inline-block px-4 py-1.5 bg-magenta-50 text-magenta-600 text-xs font-bold uppercase tracking-widest rounded-full mb-6">World Class Education</span>
+                <h1 class="font-display text-6xl lg:text-7xl font-black leading-[1.1] mb-8">
+                    Speak The <span class="text-gradient">World's Language</span>
+                </h1>
+                <p class="text-lg text-slate-600 leading-relaxed mb-10 max-w-xl">
+                    Master a new language with the confidence of a native. Our immersive academy offers personalized training for individuals and corporate teams worldwide.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#courses" class="btn-magenta text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl">View Our Courses</a>
+                    <a href="#" class="px-10 py-4 border-2 border-magenta-100 text-magenta-600 rounded-full font-bold text-lg hover:bg-magenta-50 transition-all">Free Assessment</a>
+                </div>
+                
+                <div class="mt-12 flex items-center gap-4">
+                    <div class="flex -space-x-3">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=1" class="w-12 h-12 rounded-full border-4 border-white bg-magenta-50"/>
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=2" class="w-12 h-12 rounded-full border-4 border-white bg-magenta-50"/>
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=3" class="w-12 h-12 rounded-full border-4 border-white bg-magenta-50"/>
+                    </div>
+                    <div>
+                        <p class="text-sm font-bold">12,000+ Students</p>
+                        <p class="text-xs text-slate-400">Trusted by global leaders</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative">
+                <div class="absolute -top-20 -right-20 w-96 h-96 bg-magenta-100 rounded-full blur-3xl opacity-50"></div>
+                <div class="relative rounded-[2.5rem] overflow-hidden shadow-premium group">
+                    <img src="assets/hero-magenta.png" alt="Students Learning" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"/>
+                    <div class="absolute bottom-8 left-8 bg-white/90 backdrop-blur px-6 py-4 rounded-2xl shadow-xl border border-white/50">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-magenta-600 rounded-xl flex items-center justify-center text-white">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-sm font-black">50+ Languages</p>
+                                <p class="text-xs text-slate-500">Expert instructors</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="services" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="font-display text-4xl font-black mb-6">Why Magenta Academy?</h2>
+                <p class="text-slate-500 leading-relaxed">We combine traditional academic rigor with modern communicative techniques to ensure you don't just learn a language—you live it.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm card-hover">
+                    <div class="w-16 h-16 bg-magenta-50 text-magenta-600 rounded-2xl flex items-center justify-center mb-8 shadow-inner">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-4">Certified Excellence</h3>
+                    <p class="text-slate-500 leading-relaxed">All our courses follow the Common European Framework of Reference for Languages (CEFR) standards for global recognition.</p>
+                </div>
+                
+                <div class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm card-hover">
+                    <div class="w-16 h-16 bg-magenta-50 text-magenta-600 rounded-2xl flex items-center justify-center mb-8 shadow-inner">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-4">Native Instructors</h3>
+                    <p class="text-slate-500 leading-relaxed">Learn from qualified native speakers who bring cultural nuance and real-world context to every single session.</p>
+                </div>
+                
+                <div class="bg-white p-10 rounded-[2rem] border border-slate-100 shadow-sm card-hover">
+                    <div class="w-16 h-16 bg-magenta-50 text-magenta-600 rounded-2xl flex items-center justify-center mb-8 shadow-inner">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold mb-4">Flexible Learning</h3>
+                    <p class="text-slate-500 leading-relaxed">Choose between intensive in-person sessions, evening classes, or interactive online learning that fits your busy lifestyle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <h2 class="font-display text-4xl font-black mb-4">Featured Languages</h2>
+                    <p class="text-slate-500">Explore our most popular language pathways designed for rapid fluency.</p>
+                </div>
+                <a href="#" class="text-magenta-600 font-bold flex items-center gap-2 hover:gap-4 transition-all">Explore all 50+ courses <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Course 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm card-hover border border-slate-100">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="English"/>
+                        <div class="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur rounded-lg text-xs font-bold uppercase tracking-wider">A1 - C2</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">English Mastery</h3>
+                        <p class="text-sm text-slate-400 mb-6">Business & Academic focus</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-magenta-600 font-black text-xl">$149<span class="text-sm font-normal text-slate-400">/mo</span></span>
+                            <button class="w-10 h-10 bg-slate-50 text-slate-400 rounded-full flex items-center justify-center hover:bg-magenta-600 hover:text-white transition-all"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg></button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm card-hover border border-slate-100">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="German"/>
+                        <div class="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur rounded-lg text-xs font-bold uppercase tracking-wider">B1 - B2</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">German Proficiency</h3>
+                        <p class="text-sm text-slate-400 mb-6">TestDaF Preparation</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-magenta-600 font-black text-xl">$249<span class="text-sm font-normal text-slate-400">/mo</span></span>
+                            <button class="w-10 h-10 bg-slate-50 text-slate-400 rounded-full flex items-center justify-center hover:bg-magenta-600 hover:text-white transition-all"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm card-hover border border-slate-100">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Mandarin"/>
+                        <div class="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur rounded-lg text-xs font-bold uppercase tracking-wider">HSK 1 - 6</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">Mandarin Core</h3>
+                        <p class="text-sm text-slate-400 mb-6">HSK Exam Readiness</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-magenta-600 font-black text-xl">$299<span class="text-sm font-normal text-slate-400">/mo</span></span>
+                            <button class="w-10 h-10 bg-slate-50 text-slate-400 rounded-full flex items-center justify-center hover:bg-magenta-600 hover:text-white transition-all"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 4 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm card-hover border border-slate-100">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&q=80&w=600" class="w-full h-full object-cover" alt="Japanese"/>
+                        <div class="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur rounded-lg text-xs font-bold uppercase tracking-wider">N5 - N1</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">Japanese Bridge</h3>
+                        <p class="text-sm text-slate-400 mb-6">JLPT Mastery Series</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-magenta-600 font-black text-xl">$199<span class="text-sm font-normal text-slate-400">/mo</span></span>
+                            <button class="w-10 h-10 bg-slate-50 text-slate-400 rounded-full flex items-center justify-center hover:bg-magenta-600 hover:text-white transition-all"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div class="grid grid-cols-2 gap-6">
+                <div class="space-y-6 pt-12">
+                    <div class="bg-magenta-50 p-8 rounded-[2rem] border border-magenta-100">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-magenta-600 shadow-sm mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5a18.022 18.022 0 01-3.827-5.802M10 15a9 9 0 01-8-4.5M10 15a9 9 0 016-12M8 13.166C7.61 14.12 7.017 15 6.433 15.667M21 21l-4.35-4.35M19 11a8 8 0 11-16 0 8 8 0 0116 0z"></path></svg>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2">Translation</h4>
+                        <p class="text-xs text-slate-500">Certified legal, medical, and technical translations in 40+ languages.</p>
+                    </div>
+                    <div class="bg-slate-50 p-8 rounded-[2rem]">
+                        <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-navy-800 shadow-sm mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2">Corporate Training</h4>
+                        <p class="text-xs text-slate-500">Customized curricula for international teams focusing on industry-specific terminology.</p>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div class="bg-slate-900 p-8 rounded-[2rem] text-white">
+                        <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-white mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.065M15 20.354l-1.5-1.5a2 2 0 010-2.828l1.5-1.5M3 11a8 8 0 1116 0 8 8 0 01-16 0z"></path></svg>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2">Study Abroad</h4>
+                        <p class="text-xs text-slate-300">Complete counseling for university admissions in Germany, UK, and France.</p>
+                    </div>
+                    <div class="bg-magenta-600 p-8 rounded-[2rem] text-white">
+                        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-white mb-6">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2">Certification</h4>
+                        <p class="text-xs text-white/80">Authorized testing center for IELTS, TOEFL, and DELE exams.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <span class="text-magenta-600 font-bold text-sm tracking-wider uppercase mb-4 block">More than just classes</span>
+                <h2 class="font-display text-5xl font-black mb-8 leading-tight">Comprehensive Solutions For Your Global Journey</h2>
+                <p class="text-slate-500 text-lg leading-relaxed mb-10">We provide a 360-degree ecosystem to support your international transition, from initial learning to professional placement and legal documentation.</p>
+                <ul class="space-y-4 mb-12">
+                    <li class="flex items-center gap-4 font-semibold"><div class="w-6 h-6 bg-magenta-50 text-magenta-600 rounded-full flex items-center justify-center"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div> Visa documentation & interview coaching</li>
+                    <li class="flex items-center gap-4 font-semibold"><div class="w-6 h-6 bg-magenta-50 text-magenta-600 rounded-full flex items-center justify-center"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div> Multilingual business consulting</li>
+                    <li class="flex items-center gap-4 font-semibold"><div class="w-6 h-6 bg-magenta-50 text-magenta-600 rounded-full flex items-center justify-center"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div> On-site corporate immersions</li>
+                </ul>
+                <a href="#" class="btn-magenta text-white px-10 py-4 rounded-full font-bold inline-block shadow-lg">Learn More About Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-24 bg-magenta-50/30">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="font-display text-4xl font-black mb-16">Success Stories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm relative text-left">
+                    <div class="flex items-center gap-4 mb-8">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=James" class="w-14 h-14 rounded-full bg-slate-100"/>
+                        <div>
+                            <p class="font-bold">Adam Chen</p>
+                            <p class="text-xs text-slate-400">German Student</p>
+                        </div>
+                        <span class="ml-auto px-3 py-1 bg-magenta-50 text-magenta-600 text-[10px] font-bold rounded-full">B2 Level</span>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed italic">"The curriculum is exceptionally structured. I went from zero to B1 in just 5 months of intensive study. Highly recommended for professionals!"</p>
+                    <div class="flex gap-1 mt-6">
+                        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                </div>
+
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm relative text-left scale-105 border-2 border-magenta-100 z-10">
+                    <div class="flex items-center gap-4 mb-8">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sophia" class="w-14 h-14 rounded-full bg-slate-100"/>
+                        <div>
+                            <p class="font-bold">Sophia Miller</p>
+                            <p class="text-xs text-slate-400">French Student</p>
+                        </div>
+                        <span class="ml-auto px-3 py-1 bg-magenta-500 text-white text-[10px] font-bold rounded-full">Featured</span>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed italic">"The counselors assisted with everything from learning the language to my visa application for Paris. It truly is a one-stop shop for students."</p>
+                    <div class="flex gap-1 mt-6">
+                        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                </div>
+
+                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm relative text-left">
+                    <div class="flex items-center gap-4 mb-8">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Kenji" class="w-14 h-14 rounded-full bg-slate-100"/>
+                        <div>
+                            <p class="font-bold">Kenji Sato</p>
+                            <p class="text-xs text-slate-400">IELTS Student</p>
+                        </div>
+                        <span class="ml-auto px-3 py-1 bg-magenta-50 text-magenta-600 text-[10px] font-bold rounded-full">Score 8.5</span>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed italic">"I struggled with my IELTS speaking for years. After 2 months at Magenta, my score jumped from 6.0 to 8.5. The teachers simply the best."</p>
+                    <div class="flex gap-1 mt-6">
+                        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <svg class="w-4 h-4 text-yellow-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-gradient-to-br from-magenta-600 to-magenta-800 rounded-[3rem] p-12 lg:p-20 text-center text-white relative overflow-hidden shadow-premium">
+                <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+                    <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 100 C 20 0, 50 0, 100 100 Z" fill="white"/></svg>
+                </div>
+                <div class="relative z-10">
+                    <h2 class="font-display text-5xl lg:text-6xl font-black mb-8">Ready to Start Your Journey?</h2>
+                    <p class="text-xl text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">Join thousands of students who have already transformed their careers and lives with Magenta Language Academy.</p>
+                    <div class="flex flex-wrap justify-center gap-6">
+                        <a href="#" class="bg-white text-magenta-600 px-12 py-5 rounded-full font-black text-lg shadow-xl hover:scale-105 transition-all">Book Free Consultation</a>
+                        <a href="#" class="border-2 border-white/30 text-white px-12 py-5 rounded-full font-black text-lg hover:bg-white/10 transition-all">Download Brochure</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 pt-24 pb-12 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                <div class="col-span-1 lg:col-span-1">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-8 h-8 bg-magenta-600 rounded-lg flex items-center justify-center text-white font-black text-lg">M</div>
+                        <span class="font-display font-extrabold text-xl tracking-tight">Magenta<span class="text-magenta-600">Language</span></span>
+                    </div>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-8">Empowering global communication through language instruction and cultural consultancy.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-400 hover:text-magenta-600 shadow-sm transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
+                        <a href="#" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-400 hover:text-magenta-600 shadow-sm transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.058-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                        <a href="#" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-400 hover:text-magenta-600 shadow-sm transition-all"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-8">Academy</h4>
+                    <ul class="space-y-4 text-sm text-slate-500">
+                        <li><a href="#" class="hover:text-magenta-600 transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-magenta-600 transition-colors">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-magenta-600 transition-colors">Cookie Policy</a></li>
+                        <li><a href="#" class="hover:text-magenta-600 transition-colors">CEFR Standards</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-8">Support</h4>
+                    <ul class="space-y-4 text-sm text-slate-500">
+                        <li><a href="#" class="hover:text-magenta-600 transition-colors">Global Partners</a></li>
+                        <li><a href="#" class="hover:text-magenta-600 transition-colors">Contact Support</a></li>
+                        <li><a href="#" class="hover:text-magenta-600 transition-colors">FAQs</a></li>
+                        <li><a href="#" class="hover:text-magenta-600 transition-colors">Local Centers</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold mb-8">Newsletter</h4>
+                    <p class="text-sm text-slate-500 mb-6">Stay updated with language tips and academy news.</p>
+                    <div class="relative">
+                        <input type="email" placeholder="Email address" class="w-full pl-4 pr-12 py-3 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-magenta-300 transition-all">
+                        <button class="absolute right-2 top-2 w-8 h-8 bg-magenta-600 text-white rounded-lg flex items-center justify-center hover:bg-magenta-700 transition-all"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg></button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pt-12 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-xs text-slate-400">© 2026 Magenta Language Academy. Empowering Global Communication.</p>
+                <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-2 text-xs text-slate-400">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.065M15 20.354l-1.5-1.5a2 2 0 010-2.828l1.5-1.5M3 11a8 8 0 1116 0 8 8 0 01-16 0z"></path></svg>
+                        English (US)
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-slate-400">
+                        Currency: USD ($)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

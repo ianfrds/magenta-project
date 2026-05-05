@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magenta LMS - Payment History</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neutral: {
+                            50: '#F8F9FA', 100: '#F1F3F5', 200: '#E9ECEF', 300: '#DEE2E6',
+                            400: '#CED4DA', 500: '#ADB5BD', 600: '#868E96', 700: '#495057',
+                            800: '#343A40', 900: '#212529',
+                        },
+                        primary: {
+                            50: '#E7F5FF', 100: '#D0EBFF', 200: '#A5D8FF', 300: '#74C0FC',
+                            400: '#4DABF7', 500: '#339AF0', 600: '#228BE6', 700: '#1C7ED6',
+                            800: '#1971C2', 900: '#0D47A1',
+                        },
+                        magenta: {
+                            50: '#FFF0F6', 100: '#FFDEEB', 200: '#FCC2D7', 300: '#FAA2C1',
+                            400: '#F783AC', 500: '#F06595', 600: '#E64980', 700: '#D6336C',
+                            800: '#C2255C', 900: '#880E4F',
+                        },
+                        alert: {
+                            error: '#F44336',
+                            success: '#4CAF50',
+                            warning: '#FFEB3B',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'premium': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F8F9FA; }
+        .label-text { font-size: 0.75rem; color: #6C757D; font-weight: 600; text-transform: uppercase; } /* Darker gray */
+        .value-text { font-size: 0.9375rem; color: #212529; font-weight: 600; }
+    </style>
+</head>
+<body class="text-neutral-900 antialiased">
+    <div class="flex min-h-screen">
+        <!-- Sidebar (Shared) -->
+        <aside class="w-64 bg-white border-r border-neutral-200 flex flex-col sticky top-0 h-screen">
+            <div class="p-6 flex items-center gap-3">
+                <div class="w-10 h-10 bg-magenta-500 rounded-xl flex items-center justify-center text-white font-bold text-xl">M</div>
+                <span class="font-extrabold text-xl tracking-tight">Magenta<span class="text-magenta-500">LMS</span></span>
+            </div>
+            
+            <nav class="flex-1 px-4 space-y-1">
+                <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-neutral-500 hover:text-primary-600 hover:bg-neutral-50 rounded-xl font-medium transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    Dashboard
+                </a>
+                <a href="payment-history.html" class="flex items-center gap-3 px-4 py-3 text-primary-700 bg-primary-50 rounded-xl font-semibold transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    Payment History
+                </a>
+                <a href="../landing-page.html" class="flex items-center gap-3 px-4 py-3 text-neutral-500 hover:text-magenta-600 hover:bg-magenta-50 rounded-xl font-medium transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    Landing Page
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-10 overflow-y-auto">
+            <header class="flex justify-between items-center mb-10">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-neutral-900 tracking-tight">Payment History</h1>
+                    <p class="text-neutral-600 mt-1">Manage and track all your course orders and installments.</p>
+                </div>
+            </header>
+
+            <!-- Filters & Search -->
+            <div class="bg-white p-4 rounded-2xl border border-neutral-100 shadow-premium mb-8 flex items-center justify-between">
+                <div class="flex gap-4">
+                    <select class="px-4 py-2 bg-neutral-50 border border-neutral-200 rounded-xl text-sm font-semibold text-neutral-700 focus:outline-none focus:ring-2 focus:ring-magenta-500/20">
+                        <option>All Status</option>
+                        <option>Paid</option>
+                        <option>Partially Paid</option>
+                        <option>Pending</option>
+                    </select>
+                    <input type="text" placeholder="Search Order ID..." class="px-4 py-2 bg-neutral-50 border border-neutral-200 rounded-xl text-sm font-medium text-neutral-700 focus:outline-none focus:ring-2 focus:ring-magenta-500/20 w-64">
+                </div>
+                <div class="text-sm font-bold text-neutral-600">Total 124 Orders</div>
+            </div>
+
+            <!-- Order List -->
+            <div class="bg-white rounded-2xl border border-neutral-100 shadow-premium overflow-hidden">
+                <table class="w-full">
+                    <thead>
+                        <tr class="bg-neutral-50 border-b border-neutral-100 text-left">
+                            <th class="px-6 py-4 label-text">Order Info</th>
+                            <th class="px-6 py-4 label-text">Product</th>
+                            <th class="px-6 py-4 label-text">Total Amount</th>
+                            <th class="px-6 py-4 label-text text-center">Status</th>
+                            <th class="px-6 py-4 label-text text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-neutral-50">
+                        <!-- Order Row 1 -->
+                        <tr class="hover:bg-neutral-50 transition-colors group">
+                            <td class="px-6 py-5">
+                                <div class="font-extrabold text-neutral-900">#019DD892</div>
+                                <div class="text-xs font-semibold text-neutral-600 mt-0.5">29 Apr 2026, 16:29</div>
+                            </td>
+                            <td class="px-6 py-5">
+                                <div class="font-bold text-neutral-800">Magenta Language Course - Level C</div>
+                                <div class="text-xs font-medium text-neutral-500">Installment Plan</div>
+                            </td>
+                            <td class="px-6 py-5">
+                                <div class="font-black text-neutral-900">Rp. 309.000</div>
+                                <div class="text-[10px] font-bold text-green-600 uppercase">Paid Rp. 154.500</div>
+                            </td>
+                            <td class="px-6 py-5 text-center">
+                                <span class="px-3 py-1 bg-cyan-50 text-cyan-600 text-[10px] font-bold rounded-full">Partially Paid</span>
+                            </td>
+                            <td class="px-6 py-5 text-right">
+                                <a href="order-detail.html" class="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-neutral-200 rounded-xl text-xs font-bold text-neutral-700 hover:border-magenta-500 hover:text-magenta-500 transition-all shadow-sm">
+                                    View Detail
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- Order Row 2 -->
+                        <tr class="hover:bg-neutral-50 transition-colors group">
+                            <td class="px-6 py-5">
+                                <div class="font-extrabold text-neutral-900">#019DD700</div>
+                                <div class="text-xs font-semibold text-neutral-600 mt-0.5">25 Apr 2026, 10:15</div>
+                            </td>
+                            <td class="px-6 py-5">
+                                <div class="font-bold text-neutral-800">Business English for Professionals</div>
+                                <div class="text-xs font-medium text-neutral-500">Full Payment</div>
+                            </td>
+                            <td class="px-6 py-5">
+                                <div class="font-black text-neutral-900">Rp. 750.000</div>
+                            </td>
+                            <td class="px-6 py-5 text-center">
+                                <span class="px-3 py-1 bg-green-50 text-green-600 text-[10px] font-bold rounded-full">Paid</span>
+                            </td>
+                            <td class="px-6 py-5 text-right">
+                                <a href="#" class="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-neutral-200 rounded-xl text-xs font-bold text-neutral-700 hover:border-magenta-500 hover:text-magenta-500 transition-all shadow-sm">
+                                    View Detail
+                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- More rows... -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
