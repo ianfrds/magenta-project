@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magenta LMS - Create Quiz & Scoring</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neutral: {
+                            50: '#F8F9FA', 100: '#F1F3F5', 200: '#E9ECEF', 300: '#DEE2E6',
+                            400: '#CED4DA', 500: '#ADB5BD', 600: '#868E96', 700: '#495057',
+                            800: '#343A40', 900: '#212529',
+                        },
+                        primary: {
+                            50: '#E7F5FF', 100: '#D0EBFF', 200: '#A5D8FF', 300: '#74C0FC',
+                            400: '#4DABF7', 500: '#339AF0', 600: '#228BE6', 700: '#1C7ED6',
+                            800: '#1971C2', 900: '#0D47A1',
+                        },
+                        magenta: {
+                            50: '#FFF0F6', 100: '#FFDEEB', 200: '#FCC2D7', 300: '#FAA2C1',
+                            400: '#F783AC', 500: '#F06595', 600: '#E64980', 700: '#D6336C',
+                            800: '#C2255C', 900: '#880E4F',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'premium': '0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA;
+        }
+        .tab-active {
+            background-color: #F06595;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(240, 101, 149, 0.2);
+        }
+        .tab-inactive {
+            background-color: transparent;
+            color: #868E96;
+        }
+        .tab-inactive:hover {
+            color: #343A40;
+            background-color: #F1F3F5;
+        }
+    </style>
+</head>
+
+<body class="text-neutral-900 antialiased">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white border-r border-neutral-200 flex flex-col sticky top-0 h-screen">
+            <div class="p-6 flex items-center gap-3">
+                <div class="w-10 h-10 bg-magenta-500 rounded-xl flex items-center justify-center text-white font-bold text-xl">M</div>
+                <span class="font-extrabold text-xl tracking-tight">Magenta<span class="text-magenta-500">LMS</span></span>
+            </div>
+
+            <nav class="flex-1 px-4 space-y-1">
+                <a href="index.html" class="flex items-center gap-3 px-4 py-3 text-neutral-600 hover:text-primary-600 hover:bg-neutral-50 rounded-xl font-medium transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    Dashboard
+                </a>
+                <a href="student-list.html" class="flex items-center gap-3 px-4 py-3 text-neutral-600 hover:text-primary-600 hover:bg-neutral-50 rounded-xl font-medium transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    Student
+                </a>
+                
+                <!-- Quiz Menu -->
+                <div class="relative group">
+                    <div class="flex items-center justify-between px-4 py-3 text-magenta-600 bg-magenta-50 rounded-xl font-medium transition-all cursor-pointer" onclick="document.getElementById('quiz-submenu').classList.toggle('hidden')">
+                        <div class="flex items-center gap-3">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            Quiz
+                        </div>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <!-- Submenu -->
+                    <div id="quiz-submenu" class="mt-1 pl-11 pr-4 space-y-1">
+                        <a href="quiz-list.html" class="block px-3 py-2 text-sm text-neutral-600 hover:text-magenta-600 hover:bg-magenta-50 rounded-lg transition-all">Quiz List</a>
+                        <a href="create-quiz.html" class="block px-3 py-2 text-sm text-magenta-600 bg-magenta-50/50 rounded-lg font-bold transition-all">Create Quiz</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="p-4 mt-auto border-t border-neutral-100">
+                <button class="w-full flex items-center justify-center gap-2 px-4 py-2 text-neutral-600 hover:text-red-500 hover:bg-neutral-50 rounded-lg transition-all">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-10 overflow-y-auto">
+
+            <!-- Top Header -->
+            <header class="flex justify-between items-center mb-8 bg-white p-4 rounded-2xl shadow-sm border border-neutral-100">
+                <div class="flex items-center gap-4">
+                    <span class="font-bold text-sm text-neutral-800">Good Morning, Admin</span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <div class="relative">
+                        <button onclick="toggleRoleModal()" class="flex items-center gap-3 hover:bg-neutral-50 p-1.5 pr-3 rounded-full transition-colors border border-transparent hover:border-neutral-200">
+                            <div class="w-8 h-8 rounded-full bg-magenta-100 text-magenta-600 flex items-center justify-center font-bold text-sm">A</div>
+                            <div class="text-left hidden md:block">
+                                <p class="text-xs font-bold text-neutral-900 leading-none">Admin</p>
+                                <p class="text-[10px] text-neutral-500 mt-1">Admin LMS</p>
+                            </div>
+                            <svg class="w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <header class="mb-10">
+                <h1 class="text-3xl font-extrabold text-neutral-900 tracking-tight">Create Quiz</h1>
+                <p class="text-neutral-600 mt-1">Configure quiz settings and calculate score conversions for IELTS and TOEFL ITP.</p>
+            </header>
+
+            <!-- Quiz Scoring Calculator -->
+            <div class="bg-white rounded-3xl border border-neutral-200 shadow-premium overflow-hidden max-w-4xl">
+                <!-- Tabs -->
+                <div class="flex p-2 bg-neutral-50 border-b border-neutral-200 gap-2">
+                    <button onclick="switchTab('ielts')" id="tab-ielts" class="flex-1 py-3 px-6 text-sm font-bold rounded-xl transition-all tab-active">
+                        IELTS Scoring Logic
+                    </button>
+                    <button onclick="switchTab('toefl')" id="tab-toefl" class="flex-1 py-3 px-6 text-sm font-bold rounded-xl transition-all tab-inactive">
+                        TOEFL ITP Scoring Logic
+                    </button>
+                </div>
+
+                <div class="p-8">
+                    <!-- IELTS Form -->
+                    <div id="form-ielts" class="space-y-8">
+                        <div>
+                            <h2 class="text-xl font-bold text-neutral-900 mb-2">Calculate IELTS Band Score</h2>
+                            <p class="text-sm text-neutral-500">Input the number of correct answers (raw score) to get the converted band score.</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-8">
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-neutral-700 uppercase tracking-wide mb-2">Listening (0-40)</label>
+                                    <input type="number" id="ielts-listen" min="0" max="40" placeholder="Correct Answers" class="w-full px-4 py-3 rounded-xl border border-neutral-300 focus:ring-2 focus:ring-magenta-500 focus:border-magenta-500 outline-none transition-all font-medium">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-neutral-700 uppercase tracking-wide mb-2">Reading Academic (0-40)</label>
+                                    <input type="number" id="ielts-read" min="0" max="40" placeholder="Correct Answers" class="w-full px-4 py-3 rounded-xl border border-neutral-300 focus:ring-2 focus:ring-magenta-500 focus:border-magenta-500 outline-none transition-all font-medium">
+                                </div>
+                                <button onclick="calculateIelts()" class="w-full py-3 bg-magenta-600 hover:bg-magenta-700 text-white font-bold rounded-xl transition-colors mt-4">Calculate Score</button>
+                            </div>
+                            
+                            <!-- IELTS Result -->
+                            <div class="bg-neutral-50 rounded-2xl p-6 border border-neutral-200 flex flex-col justify-center items-center text-center">
+                                <p class="text-sm font-bold text-neutral-500 uppercase tracking-widest mb-6">Conversion Results</p>
+                                <div class="grid grid-cols-2 gap-8 w-full mb-6">
+                                    <div>
+                                        <p class="text-xs font-bold text-neutral-500 mb-1">Listening Band</p>
+                                        <p id="ielts-listen-res" class="text-3xl font-black text-neutral-900">-</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-neutral-500 mb-1">Reading Band</p>
+                                        <p id="ielts-read-res" class="text-3xl font-black text-neutral-900">-</p>
+                                    </div>
+                                </div>
+                                <div class="w-full pt-6 border-t border-neutral-200">
+                                    <p class="text-xs font-bold text-magenta-600 uppercase tracking-widest mb-1">Overall Band</p>
+                                    <p id="ielts-overall-res" class="text-5xl font-black text-magenta-600">-</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TOEFL Form -->
+                    <div id="form-toefl" class="space-y-8 hidden">
+                        <div>
+                            <h2 class="text-xl font-bold text-neutral-900 mb-2">Calculate TOEFL ITP Score</h2>
+                            <p class="text-sm text-neutral-500">Input the number of correct answers for each section to get the total scaled score.</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-8">
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-neutral-700 uppercase tracking-wide mb-2">Section 1: Listening (0-50)</label>
+                                    <input type="number" id="toefl-s1" min="0" max="50" placeholder="Correct Answers" class="w-full px-4 py-3 rounded-xl border border-neutral-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all font-medium">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-neutral-700 uppercase tracking-wide mb-2">Section 2: Structure (0-40)</label>
+                                    <input type="number" id="toefl-s2" min="0" max="40" placeholder="Correct Answers" class="w-full px-4 py-3 rounded-xl border border-neutral-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all font-medium">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-neutral-700 uppercase tracking-wide mb-2">Section 3: Reading (0-50)</label>
+                                    <input type="number" id="toefl-s3" min="0" max="50" placeholder="Correct Answers" class="w-full px-4 py-3 rounded-xl border border-neutral-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition-all font-medium">
+                                </div>
+                                <button onclick="calculateToefl()" class="w-full py-3 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-xl transition-colors mt-4">Calculate Total Score</button>
+                            </div>
+                            
+                            <!-- TOEFL Result -->
+                            <div class="bg-primary-50 rounded-2xl p-6 border border-primary-100 flex flex-col justify-center items-center text-center">
+                                <p class="text-sm font-bold text-primary-700 uppercase tracking-widest mb-6">Conversion Results</p>
+                                <div class="grid grid-cols-3 gap-4 w-full mb-6">
+                                    <div class="bg-white rounded-xl p-3 shadow-sm border border-primary-100">
+                                        <p class="text-[10px] font-bold text-neutral-500 mb-1">Sec 1 Scaled</p>
+                                        <p id="toefl-s1-res" class="text-2xl font-black text-primary-900">-</p>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-3 shadow-sm border border-primary-100">
+                                        <p class="text-[10px] font-bold text-neutral-500 mb-1">Sec 2 Scaled</p>
+                                        <p id="toefl-s2-res" class="text-2xl font-black text-primary-900">-</p>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-3 shadow-sm border border-primary-100">
+                                        <p class="text-[10px] font-bold text-neutral-500 mb-1">Sec 3 Scaled</p>
+                                        <p id="toefl-s3-res" class="text-2xl font-black text-primary-900">-</p>
+                                    </div>
+                                </div>
+                                <div class="w-full pt-6 border-t border-primary-200">
+                                    <p class="text-xs font-bold text-primary-700 uppercase tracking-widest mb-1">Final Total Score</p>
+                                    <p id="toefl-total-res" class="text-6xl font-black text-primary-600">-</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Role Switch Modal -->
+    <div id="roleModal" class="fixed inset-0 bg-neutral-900/50 backdrop-blur-sm hidden items-center justify-center z-50 transition-opacity opacity-0">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden transform scale-95 transition-all transition-transform">
+            <div class="p-6 border-b border-neutral-100 flex justify-between items-center">
+                <h3 class="font-bold text-lg text-neutral-900">Switch Role</h3>
+                <button onclick="toggleRoleModal()" class="text-neutral-400 hover:text-neutral-700 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div class="p-2">
+                <a href="../admin-crm/admin-crm.html" class="flex items-center gap-4 p-4 hover:bg-neutral-50 rounded-xl transition-colors w-full text-left group cursor-pointer">
+                    <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm group-hover:bg-blue-100">C</div>
+                    <div>
+                        <p class="text-sm font-bold text-neutral-900">Superadmin (CRM)</p>
+                        <p class="text-xs text-neutral-500">Access customer relationship management</p>
+                    </div>
+                </a>
+                <a href="../admin-lms/index.html" class="flex items-center gap-4 p-4 hover:bg-neutral-50 rounded-xl transition-colors w-full text-left group cursor-pointer">
+                    <div class="w-10 h-10 rounded-full bg-magenta-50 text-magenta-600 flex items-center justify-center font-bold text-sm group-hover:bg-magenta-100">L</div>
+                    <div>
+                        <p class="text-sm font-bold text-neutral-900">Admin LMS</p>
+                        <p class="text-xs text-neutral-500">Access learning management system</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logic Script -->
+    <script>
+        function toggleRoleModal() {
+            const modal = document.getElementById('roleModal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    modal.children[0].classList.remove('scale-95');
+                    modal.children[0].classList.add('scale-100');
+                }, 10);
+            } else {
+                modal.classList.add('opacity-0');
+                modal.children[0].classList.add('scale-95');
+                modal.children[0].classList.remove('scale-100');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }, 300);
+            }
+        }
+
+        function switchTab(tab) {
+            const tabIelts = document.getElementById('tab-ielts');
+            const tabToefl = document.getElementById('tab-toefl');
+            const formIelts = document.getElementById('form-ielts');
+            const formToefl = document.getElementById('form-toefl');
+
+            if (tab === 'ielts') {
+                tabIelts.className = 'flex-1 py-3 px-6 text-sm font-bold rounded-xl transition-all tab-active';
+                tabToefl.className = 'flex-1 py-3 px-6 text-sm font-bold rounded-xl transition-all tab-inactive';
+                formIelts.classList.remove('hidden');
+                formToefl.classList.add('hidden');
+            } else {
+                tabToefl.className = 'flex-1 py-3 px-6 text-sm font-bold rounded-xl transition-all tab-active !bg-primary-600 !shadow-primary-200';
+                tabIelts.className = 'flex-1 py-3 px-6 text-sm font-bold rounded-xl transition-all tab-inactive';
+                formToefl.classList.remove('hidden');
+                formIelts.classList.add('hidden');
+            }
+        }
+
+        // --- IELTS SCORING LOGIC ---
+        function calculateIelts() {
+            const listenRaw = parseInt(document.getElementById('ielts-listen').value);
+            const readRaw = parseInt(document.getElementById('ielts-read').value);
+
+            // Validation
+            if (isNaN(listenRaw) || listenRaw < 0 || listenRaw > 40) {
+                alert("Please enter a valid Listening score between 0 and 40.");
+                return;
+            }
+            if (isNaN(readRaw) || readRaw < 0 || readRaw > 40) {
+                alert("Please enter a valid Reading score between 0 and 40.");
+                return;
+            }
+
+            // Listening Conversion Array (Index = Raw Score, Value = Band)
+            const listenBands = [
+                0.0, 1.0, 2.0, 2.0, 2.5, 2.5, 3.0, 3.0, 3.5, 3.5, // 0-9
+                4.0, 4.0, 4.0, 4.5, 4.5, 4.5, 5.0, 5.0, 5.5, 5.5, // 10-19
+                5.5, 5.5, 5.5, 6.0, 6.0, 6.0, 6.5, 6.5, 6.5, 6.5, // 20-29
+                7.0, 7.0, 7.5, 7.5, 7.5, 8.0, 8.0, 8.5, 8.5, 9.0, 9.0 // 30-40
+            ];
+
+            // Reading Academic Conversion Array
+            const readBands = [
+                0.0, 1.0, 2.0, 2.0, 2.5, 2.5, 3.0, 3.0, 3.5, 3.5, // 0-9
+                4.0, 4.0, 4.0, 4.5, 4.5, 5.0, 5.0, 5.0, 5.0, 5.5, // 10-19
+                5.5, 5.5, 5.5, 6.0, 6.0, 6.0, 6.0, 6.5, 6.5, 6.5, // 20-29
+                7.0, 7.0, 7.0, 7.5, 7.5, 8.0, 8.0, 8.5, 8.5, 9.0, 9.0 // 30-40
+            ];
+
+            const listenScore = listenBands[listenRaw];
+            const readScore = readBands[readRaw];
+            
+            // Assuming writing and speaking are identical to listening for dummy overall calc if needed, 
+            // but the requirement only asks for Listening and Reading.
+            const overall = ((listenScore + readScore) / 2).toFixed(1);
+
+            document.getElementById('ielts-listen-res').innerText = listenScore.toFixed(1);
+            document.getElementById('ielts-read-res').innerText = readScore.toFixed(1);
+            document.getElementById('ielts-overall-res').innerText = overall;
+        }
+
+        // --- TOEFL ITP SCORING LOGIC ---
+        function calculateToefl() {
+            const s1 = parseInt(document.getElementById('toefl-s1').value);
+            const s2 = parseInt(document.getElementById('toefl-s2').value);
+            const s3 = parseInt(document.getElementById('toefl-s3').value);
+
+            if (isNaN(s1) || s1 < 0 || s1 > 50) { alert("Section 1 must be between 0 and 50."); return; }
+            if (isNaN(s2) || s2 < 0 || s2 > 40) { alert("Section 2 must be between 0 and 40."); return; }
+            if (isNaN(s3) || s3 < 0 || s3 > 50) { alert("Section 3 must be between 0 and 50."); return; }
+
+            // Approx TOEFL ITP Conversion maps based on ETS standard tables
+            // Note: Users can adjust these specific values if their source tables differ slightly.
+            
+            // Section 1: Listening (Max 50)
+            const mapS1 = [
+                31, 31, 31, 31, 31, 31, 31, 32, 32, 32, // 0-9
+                33, 33, 35, 37, 38, 41, 41, 42, 43, 44, // 10-19
+                45, 45, 46, 47, 47, 48, 48, 49, 49, 50, // 20-29
+                51, 51, 52, 52, 53, 54, 54, 55, 56, 57, // 30-39
+                57, 58, 59, 60, 61, 62, 63, 65, 66, 67, 68 // 40-50
+            ];
+
+            // Section 2: Structure (Max 40)
+            const mapS2 = [
+                31, 31, 31, 31, 31, 31, 31, 32, 33, 35, // 0-9
+                36, 37, 38, 39, 40, 40, 41, 42, 43, 43, // 10-19
+                44, 45, 46, 47, 48, 49, 50, 51, 52, 53, // 20-29
+                54, 55, 56, 57, 58, 60, 61, 63, 65, 67, 68 // 30-40
+            ];
+
+            // Section 3: Reading (Max 50)
+            const mapS3 = [
+                31, 31, 31, 31, 31, 31, 31, 32, 32, 32, // 0-9
+                33, 33, 35, 37, 38, 41, 41, 42, 43, 44, // 10-19
+                45, 45, 46, 47, 47, 48, 48, 49, 49, 50, // 20-29
+                51, 51, 52, 52, 53, 54, 54, 55, 56, 57, // 30-39
+                57, 58, 59, 60, 61, 62, 63, 65, 66, 67, 67 // 40-50
+            ];
+
+            const scaledS1 = mapS1[s1];
+            const scaledS2 = mapS2[s2];
+            const scaledS3 = mapS3[s3];
+
+            // Total formula: ((S1 + S2 + S3) / 3) * 10
+            const totalScore = Math.round(((scaledS1 + scaledS2 + scaledS3) / 3) * 10);
+
+            document.getElementById('toefl-s1-res').innerText = scaledS1;
+            document.getElementById('toefl-s2-res').innerText = scaledS2;
+            document.getElementById('toefl-s3-res').innerText = scaledS3;
+            document.getElementById('toefl-total-res').innerText = totalScore;
+        }
+    </script>
+</body>
+</html>
