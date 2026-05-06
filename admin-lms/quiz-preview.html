@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOEFL Prep Pro - Magenta LMS</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="quiz-data.js"></script>
     <script>
@@ -44,12 +46,14 @@
         .nav-item {
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .nav-item.active {
             background: #f43f5e;
             color: white;
             box-shadow: 0 10px 15px -3px rgba(244, 63, 94, 0.3);
             transform: translateY(-2px);
         }
+
         .nav-item.completed {
             background: #f1f5f9;
             color: #f43f5e;
@@ -58,13 +62,15 @@
 
         .option-btn {
             transition: all 0.2s ease;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #ebebeb;
         }
+
         .option-btn:hover {
             border-color: #f43f5e;
             background: #fff1f2;
         }
-        .peer:checked + .option-btn {
+
+        .peer:checked+.option-btn {
             border-color: #f43f5e;
             background: #fff1f2;
             box-shadow: 0 0 0 1px #f43f5e;
@@ -76,33 +82,56 @@
             border-radius: 99px;
             overflow: hidden;
         }
+
         .progress-bar-fill {
             transition: width 0.6s cubic-bezier(0.65, 0, 0.35, 1);
             background: linear-gradient(90deg, #f43f5e, #fb7185);
             box-shadow: 0 0 10px rgba(244, 63, 94, 0.4);
         }
 
-        .custom-scroll::-webkit-scrollbar { width: 5px; }
-        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
-        .custom-scroll::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+        .custom-scroll::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .custom-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
 
         @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
-        .float-anim { animation: float 6s ease-in-out infinite; }
+
+        .float-anim {
+            animation: float 6s ease-in-out infinite;
+        }
     </style>
 </head>
+
 <body class="p-4 md:p-8 overflow-hidden antialiased">
 
     <!-- Results Screen -->
-    <div id="results-screen" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-md p-6">
+    <div id="results-screen"
+        class="hidden fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-md p-6">
         <div class="max-w-lg w-full bg-white rounded-[2rem] p-12 text-center shadow-2xl border border-slate-100">
             <div class="text-7xl mb-6">🎉</div>
             <h2 class="text-3xl font-bold text-slate-900 mb-2">Practice Completed</h2>
-            <p class="text-slate-500 mb-10">You've finished the TOEFL session. Here is your summary.</p>
-            
+            <p class="text-slate-600 mb-10">You've finished the TOEFL session. Here is your summary.</p>
+
             <div class="grid grid-cols-2 gap-4 mb-10">
                 <div class="bg-slate-50 p-6 rounded-2xl">
                     <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">Score</p>
@@ -115,28 +144,35 @@
             </div>
 
             <div class="space-y-3">
-                <button onclick="location.reload()" class="w-full bg-magenta-500 text-white py-4 rounded-xl font-bold shadow-lg hover:bg-magenta-600 transition-all">Try Again</button>
-                <button onclick="window.location.href='quiz-list.html'" class="w-full text-slate-400 font-medium hover:text-slate-600 transition-colors">Return to Dashboard</button>
+                <button onclick="location.reload()"
+                    class="w-full bg-magenta-500 text-white py-4 rounded-xl font-bold shadow-lg hover:bg-magenta-600 transition-all">Try
+                    Again</button>
+                <button onclick="window.location.href='quiz-list.html'"
+                    class="w-full text-slate-400 font-medium hover:text-slate-600 transition-colors">Return to
+                    Dashboard</button>
             </div>
         </div>
     </div>
 
     <!-- Main Container -->
-    <div class="max-w-6xl mx-auto w-full h-full flex flex-col gap-6">
-        
+    <div class="max-w-[1440px] mx-auto w-full h-full flex flex-col gap-6">
+
         <!-- Navbar -->
         <nav class="flex items-center justify-between px-2">
             <div class="flex items-center gap-4">
-                <div class="w-10 h-10 bg-magenta-500 rounded-xl flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-magenta-500/20">M</div>
+                <div
+                    class="w-10 h-10 bg-magenta-500 rounded-xl flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-magenta-500/20">
+                    M</div>
                 <div>
                     <h1 class="text-lg font-bold text-slate-800 tracking-tight">TOEFL Prep Pro</h1>
-                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Advanced Learning Management</p>
+                    <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Advanced Learning
+                        Management</p>
                 </div>
             </div>
 
             <div class="flex items-center gap-8">
                 <div class="flex items-center gap-3">
-                    <span class="text-sm font-bold text-slate-400" id="progress-text">0 / 30</span>
+                    <span class="text-sm font-bold text-slate-600" id="progress-text">0 / 30</span>
                     <div class="w-48 progress-bar-bg">
                         <div id="progress-bar" class="progress-bar-fill h-full" style="width: 0%"></div>
                     </div>
@@ -144,23 +180,26 @@
                 <div class="h-10 w-px bg-slate-200"></div>
                 <div class="flex items-center gap-4">
                     <div class="flex flex-col items-end">
-                        <span class="text-xs font-bold text-slate-800">Admin</span>
-                        <span class="text-[9px] font-bold text-magenta-500 uppercase tracking-wider">Premium Access</span>
+                        <span class="text-xs font-bold text-slate-900">Admin</span>
+                        <span class="text-[9px] font-bold text-magenta-500 uppercase tracking-wider">Premium
+                            Access</span>
                     </div>
-                    <div class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-400 border border-slate-200">A</div>
+                    <div
+                        class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center text-slate-400 border border-slate-200">
+                        A</div>
                 </div>
             </div>
         </nav>
 
         <div class="flex-1 flex gap-8 overflow-hidden">
             <!-- Sidebar -->
-            <aside class="w-64 flex flex-col gap-6">
+            <aside class="w-100 flex flex-col gap-6">
                 <div class="glass-card rounded-3xl p-6 flex-1 flex flex-col overflow-hidden">
                     <div class="flex items-center justify-between mb-4">
-                        <h3 class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Question Map</h3>
-                        <span id="xp-display" class="text-[10px] font-bold text-magenta-500 uppercase">0 XP</span>
+                        <h3 class="text-[12px] font-bold text-slate-500 uppercase tracking-widest">Question Map</h3>
+                        <span id="xp-display" class="text-[12px] font-bold text-magenta-500 uppercase">0 XP</span>
                     </div>
-                    
+
                     <div id="question-map" class="flex-1 grid grid-cols-4 gap-2 overflow-y-auto pr-2 custom-scroll">
                         <!-- Navigation dots generated by JS -->
                     </div>
@@ -170,73 +209,57 @@
                             <span class="text-xl">💡</span>
                             <p class="text-[10px] font-bold text-slate-800 uppercase tracking-wider">Pro Tip</p>
                         </div>
-                        <p id="foxy-hint" class="text-[11px] text-slate-400 leading-relaxed italic">"Double-check structural markers before choosing your answer."</p>
+                        <p id="foxy-hint" class="text-[11px] text-slate-500 leading-relaxed italic">"Double-check
+                            structural markers before choosing your answer."</p>
                     </div>
                 </div>
 
                 <div class="glass-card rounded-2xl p-4 flex items-center justify-between">
                     <div class="flex items-center gap-3">
                         <span class="text-lg">⏱️</span>
-                        <span id="timer" class="text-sm font-bold text-slate-700">90:00</span>
+                        <span id="timer" class="text-sm font-bold text-slate-900">90:00</span>
                     </div>
-                    <button class="w-8 h-8 rounded-lg bg-slate-50 text-slate-400 hover:text-magenta-500 transition-colors">
-                        <svg class="w-4 h-4 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    <button
+                        class="w-8 h-8 rounded-lg bg-slate-50 text-slate-400 hover:text-magenta-500 transition-colors">
+                        <svg class="w-4 h-4 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z">
+                            </path>
+                        </svg>
                     </button>
                 </div>
             </aside>
 
             <!-- Main Content -->
             <main class="flex-1 flex flex-col gap-6 overflow-hidden">
-
-            <!-- Top Header -->
-            <header class="flex justify-between items-center mb-8 bg-white p-4 rounded-2xl shadow-sm border border-neutral-100">
-                <div class="flex items-center gap-4">
-                    <span class="font-bold text-sm text-neutral-800">Good Morning, Admin</span>
-                </div>
-                <div class="flex items-center gap-6">
-                    <div class="text-sm font-semibold text-neutral-600 hidden md:block">
-                        Senin, 5 November 2024
-                    </div>
-                    <div class="h-6 w-px bg-neutral-200 hidden md:block"></div>
-                    <button class="relative text-neutral-500 hover:text-neutral-800 transition-colors">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
-                        <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 border-2 border-white rounded-full"></span>
-                    </button>
-                    <div class="relative">
-                        <button onclick="toggleRoleModal()" class="flex items-center gap-3 hover:bg-neutral-50 p-1.5 pr-3 rounded-full transition-colors border border-transparent hover:border-neutral-200">
-                            <div class="w-8 h-8 rounded-full bg-magenta-100 text-magenta-600 flex items-center justify-center font-bold text-sm">A</div>
-                            <div class="text-left hidden md:block">
-                                <p class="text-xs font-bold text-neutral-900 leading-none">Admin</p>
-                                <p class="text-[10px] text-neutral-500 mt-1">Admin LMS</p>
-                            </div>
-                            <svg class="w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </button>
-                    </div>
-                </div>
-            </header>
-
                 <div class="glass-card flex-1 rounded-[2.5rem] p-12 overflow-y-auto custom-scroll relative">
-                    <div id="section-badge" class="absolute top-10 right-10 px-4 py-1.5 bg-slate-50 text-slate-400 rounded-full text-[9px] font-bold uppercase tracking-widest border border-slate-100">
+                    <div id="section-badge"
+                        class="absolute top-10 right-10 px-4 py-1.5 bg-slate-100 text-slate-600 rounded-full text-[9px] font-bold uppercase tracking-widest border border-slate-200">
                         STRUCTURE
                     </div>
 
-                    <div id="question-container" class="max-w-2xl mx-auto">
+                    <div id="question-container" class="w-full">
                         <!-- Dynamic Content Injector -->
                     </div>
                 </div>
 
                 <!-- Footer -->
                 <footer class="flex items-center justify-between pb-2">
-                    <button id="prev-btn" onclick="prevQuestion()" class="px-8 py-4 text-sm font-bold text-slate-400 hover:text-slate-600 transition-colors disabled:opacity-30">
+                    <button id="prev-btn" onclick="prevQuestion()"
+                        class="px-8 py-4 text-sm font-bold text-slate-500 hover:text-slate-700 transition-colors disabled:opacity-30">
                         Back
                     </button>
-                    
+
                     <div class="flex items-center gap-2">
-                        <div class="w-1.5 h-1.5 bg-magenta-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(244,63,94,0.6)]"></div>
-                        <span class="text-[9px] font-bold text-slate-300 uppercase tracking-widest">Automatic Save Enabled</span>
+                        <div
+                            class="w-1.5 h-1.5 bg-magenta-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(244,63,94,0.6)]">
+                        </div>
+                        <span class="text-[9px] font-bold text-slate-500 uppercase tracking-widest">Automatic Save
+                            Enabled</span>
                     </div>
 
-                    <button id="next-btn" onclick="nextQuestion()" class="bg-magenta-500 text-white px-12 py-4 rounded-2xl font-bold shadow-lg hover:bg-magenta-600 transition-all text-sm">
+                    <button id="next-btn" onclick="nextQuestion()"
+                        class="bg-magenta-500 text-white px-12 py-4 rounded-2xl font-bold shadow-lg hover:bg-magenta-600 transition-all text-sm">
                         <span id="next-btn-text">Next Question</span>
                     </button>
                 </footer>
@@ -273,10 +296,10 @@
                 const btn = document.createElement('button');
                 const isAnswered = answers[i] !== null && answers[i] !== "";
                 const isActive = i === currentIdx;
-                
-                btn.className = `nav-item h-10 w-full rounded-xl text-[11px] font-bold border border-slate-100 flex items-center justify-center 
-                    ${isActive ? 'active' : isAnswered ? 'completed' : 'bg-white text-slate-300 hover:border-magenta-200 hover:text-magenta-500'}`;
-                
+
+                btn.className = `nav-item h-12 w-full rounded-xl text-[14px] font-bold border border-slate-100 flex items-center justify-center 
+                    ${isActive ? 'active' : isAnswered ? 'completed' : 'bg-white text-slate-500 hover:border-magenta-200 hover:text-magenta-500'}`;
+
                 btn.innerText = i + 1;
                 btn.onclick = () => loadQuestion(i);
                 map.appendChild(btn);
@@ -287,7 +310,7 @@
             currentIdx = idx;
             const q = QUIZ_DATA.questions[idx];
             const container = document.getElementById('question-container');
-            
+
             document.getElementById('section-badge').innerText = q.section;
             document.getElementById('progress-text').innerText = `${idx + 1} / 30`;
             document.getElementById('progress-bar').style.width = ((idx + 1) / 30 * 100) + "%";
@@ -302,7 +325,7 @@
             `;
 
             if (q.passage) {
-                html += `<div class="bg-slate-50/50 p-8 rounded-3xl border border-slate-100 mb-10 text-sm text-slate-600 leading-relaxed italic">${q.passage}</div>`;
+                html += `<div class="bg-slate-50/50 p-8 rounded-3xl border border-slate-100 mb-10 text-sm text-slate-700 leading-relaxed italic">${q.passage}</div>`;
             }
 
             if (q.type === 'multiple_choice' || q.type === 'listening' || q.type === 'reading' || q.type === 'video') {
@@ -327,17 +350,17 @@
                     `;
                 }
 
-                html += `<div class="grid grid-cols-1 gap-3">`;
+                html += `<div class="grid grid-cols-2 gap-4">`;
                 q.options.forEach((opt, i) => {
                     const isSelected = answers[idx] === i;
                     html += `
                         <label class="block">
                             <input type="radio" name="toefl" class="sr-only peer" onchange="saveAnswer(${i})" ${isSelected ? 'checked' : ''}>
-                            <div class="option-btn p-5 rounded-xl flex items-center gap-4 cursor-pointer bg-white">
-                                <div class="w-6 h-6 rounded-full border border-slate-200 flex items-center justify-center text-[9px] font-bold text-slate-400 peer-checked:bg-magenta-500 peer-checked:border-magenta-500 peer-checked:text-white transition-colors">
+                            <div class="option-btn p-6 rounded-xl flex items-center gap-4 cursor-pointer bg-white">
+                                <div class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-[11px] font-bold text-slate-400 peer-checked:bg-magenta-500 peer-checked:border-magenta-500 peer-checked:text-white transition-colors">
                                     ${String.fromCharCode(65 + i)}
                                 </div>
-                                <span class="text-sm font-medium text-slate-600 peer-checked:text-slate-900">${opt}</span>
+                                <span class="text-base font-medium text-slate-700 peer-checked:text-slate-900">${opt}</span>
                             </div>
                         </label>
                     `;
@@ -350,14 +373,14 @@
                         class="w-full h-64 p-8 rounded-3xl border border-slate-200 bg-slate-50/30 text-sm font-medium focus:border-magenta-500 focus:bg-white outline-none transition-all placeholder:text-slate-300"
                         placeholder="Write your response here..."
                     >${answers[idx] || ''}</textarea>
-                    <p class="mt-4 text-[9px] font-bold text-slate-300 uppercase tracking-widest text-right">Target: ${q.min_words || 50} Words</p>
+                    <p class="mt-4 text-[9px] font-bold text-slate-500 uppercase tracking-widest text-right">Target: ${q.min_words || 50} Words</p>
                 `;
             }
 
             container.innerHTML = html;
             document.getElementById('prev-btn').disabled = idx === 0;
             document.getElementById('next-btn-text').innerText = idx === 29 ? "Complete Test" : "Next Question";
-            
+
             renderMap();
         }
 
@@ -388,7 +411,7 @@
             document.getElementById('result-score').innerText = score;
             document.getElementById('result-points').innerText = `+${score * 2}`;
             document.getElementById('results-screen').classList.remove('hidden');
-            
+
             confetti({
                 particleCount: 150,
                 spread: 70,
@@ -401,24 +424,35 @@
     </script>
 
     <!-- Role Switch Modal -->
-    <div id="roleModal" class="fixed inset-0 bg-neutral-900/50 backdrop-blur-sm hidden items-center justify-center z-50 transition-opacity opacity-0">
-        <div class="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden transform scale-95 transition-all transition-transform">
+    <div id="roleModal"
+        class="fixed inset-0 bg-neutral-900/50 backdrop-blur-sm hidden items-center justify-center z-50 transition-opacity opacity-0">
+        <div
+            class="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden transform scale-95 transition-all transition-transform">
             <div class="p-6 border-b border-neutral-100 flex justify-between items-center">
                 <h3 class="font-bold text-lg text-neutral-900">Switch Role</h3>
                 <button onclick="toggleRoleModal()" class="text-neutral-400 hover:text-neutral-700 transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
                 </button>
             </div>
             <div class="p-2">
-                <a href="../admin-crm/admin-crm.html" class="flex items-center gap-4 p-4 hover:bg-neutral-50 rounded-xl transition-colors w-full text-left group cursor-pointer">
-                    <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm group-hover:bg-blue-100">C</div>
+                <a href="../admin-crm/admin-crm.html"
+                    class="flex items-center gap-4 p-4 hover:bg-neutral-50 rounded-xl transition-colors w-full text-left group cursor-pointer">
+                    <div
+                        class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm group-hover:bg-blue-100">
+                        C</div>
                     <div>
                         <p class="text-sm font-bold text-neutral-900">Superadmin (CRM)</p>
                         <p class="text-xs text-neutral-500">Access customer relationship management</p>
                     </div>
                 </a>
-                <a href="../admin-lms/index.html" class="flex items-center gap-4 p-4 hover:bg-neutral-50 rounded-xl transition-colors w-full text-left group cursor-pointer">
-                    <div class="w-10 h-10 rounded-full bg-magenta-50 text-magenta-600 flex items-center justify-center font-bold text-sm group-hover:bg-magenta-100">L</div>
+                <a href="../admin-lms/index.html"
+                    class="flex items-center gap-4 p-4 hover:bg-neutral-50 rounded-xl transition-colors w-full text-left group cursor-pointer">
+                    <div
+                        class="w-10 h-10 rounded-full bg-magenta-50 text-magenta-600 flex items-center justify-center font-bold text-sm group-hover:bg-magenta-100">
+                        L</div>
                     <div>
                         <p class="text-sm font-bold text-neutral-900">Admin LMS</p>
                         <p class="text-xs text-neutral-500">Access learning management system</p>
@@ -452,4 +486,5 @@
     </script>
 
 </body>
+
 </html>

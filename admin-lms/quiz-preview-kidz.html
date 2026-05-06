@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Kidz - Magenta LMS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Nunito', 'sans-serif'] },
+                    colors: {
+                        kidz: {
+                            amethyst: '#9956DE',
+                            slateBlue: '#7274ED',
+                            summerSky: '#1FA7E1',
+                            downy: '#6ED1CF',
+                            pastelGreen: '#75D06A',
+                            texasRose: '#FFB356',
+                            monaLisa: '#FF8B8B',
+                            illusion: '#FB96BB',
+                            darkBg: '#3a1c5e',
+                            darkerBg: '#2a1245'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Nunito', sans-serif; background-color: #3a1c5e; color: white; overflow: hidden; }
+        .bg-pattern {
+            background-image: radial-gradient(rgba(255,255,255,0.05) 2px, transparent 2px);
+            background-size: 40px 40px;
+        }
+        .option-card {
+            transition: transform 0.1s, filter 0.2s;
+            cursor: pointer;
+            box-shadow: inset 0 -6px 0 rgba(0,0,0,0.2), 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .option-card:hover {
+            filter: brightness(1.1);
+        }
+        .option-card:active { 
+            transform: scale(0.98) translateY(4px); 
+            box-shadow: inset 0 -2px 0 rgba(0,0,0,0.2), 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .draggable { cursor: grab; box-shadow: inset 0 -4px 0 rgba(0,0,0,0.2); transition: transform 0.1s; }
+        .draggable:active { cursor: grabbing; transform: scale(0.95); }
+        .draggable.dragging { opacity: 0.5; }
+        .dropzone {
+            display: inline-block;
+            min-width: 100px;
+            height: 40px;
+            border: 2px dashed rgba(255,255,255,0.5);
+            border-radius: 10px;
+            vertical-align: middle;
+            background: rgba(0,0,0,0.2);
+            transition: all 0.2s;
+            margin: 0 8px;
+            text-align: center;
+            line-height: 36px;
+        }
+        .dropzone.drag-over {
+            background: rgba(255,255,255,0.3);
+            border-color: white;
+            transform: scale(1.05);
+        }
+        .dropzone.filled {
+            border: none;
+            background: transparent;
+        }
+        .dropped-word {
+            display: inline-block;
+            background: #FFB356;
+            color: #2a1245;
+            padding: 0 12px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 1rem;
+            line-height: 36px;
+            box-shadow: inset 0 -3px 0 rgba(0,0,0,0.2);
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .glass-panel {
+            background: rgba(42, 18, 69, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body class="bg-kidz-darkBg bg-pattern h-screen w-screen flex flex-col antialiased relative">
+
+    <!-- START SCREEN -->
+    <div id="start-screen" class="absolute inset-0 z-40 flex flex-col items-center justify-center bg-kidz-darkBg bg-pattern p-8">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-black text-white mb-2 drop-shadow-lg">Pilih Petualanganmu!</h1>
+            <p class="text-lg text-kidz-summerSky font-bold">Pilih kategori untuk mulai bermain</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl w-full">
+            <button onclick="startQuiz('Montessori')" class="option-card bg-kidz-amethyst rounded-2xl p-6 flex flex-col items-center justify-center gap-4 group">
+                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🧩</div>
+                <span class="text-xl font-black text-white text-center">Montessori</span>
+            </button>
+            <button onclick="startQuiz('Calistung')" class="option-card bg-kidz-texasRose rounded-2xl p-6 flex flex-col items-center justify-center gap-4 group">
+                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🔢</div>
+                <span class="text-xl font-black text-white text-center">Baca, Tulis, Hitung</span>
+            </button>
+            <button onclick="startQuiz('English')" class="option-card bg-kidz-summerSky rounded-2xl p-6 flex flex-col items-center justify-center gap-4 group">
+                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🔤</div>
+                <span class="text-xl font-black text-white text-center">English for Kidz</span>
+            </button>
+        </div>
+        
+        <div class="mt-12">
+            <button onclick="window.location.href='quiz-list-kidz.html'" class="px-8 py-3 rounded-full bg-white/10 text-white font-bold hover:bg-white/20 transition-colors border border-white/20">
+                Kembali
+            </button>
+        </div>
+    </div>
+
+    <!-- GAME SCREEN -->
+    <div id="game-screen" class="hidden flex-col h-full w-full">
+        <!-- Top Header -->
+        <header class="flex justify-between items-center p-6 shrink-0">
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 bg-black/30 rounded-full px-4 py-2 border border-white/10">
+                    <span class="text-2xl">🔥</span>
+                    <span id="score-display" class="font-black text-kidz-texasRose text-xl">0 XP</span>
+                </div>
+                <span id="category-badge" class="px-4 py-2 bg-kidz-amethyst text-white font-bold rounded-full text-sm shadow-lg">Kategori</span>
+            </div>
+            
+            <!-- Progress Pill & Question Text inside Header -->
+            <div class="absolute left-1/2 -translate-x-1/2 top-6 flex flex-col items-center w-full max-w-4xl px-4 pointer-events-none">
+                <div class="bg-kidz-darkerBg border-2 border-kidz-slateBlue rounded-full px-6 py-2 mb-4 shadow-xl flex items-center gap-3">
+                    <span id="progress-text" class="font-black text-kidz-summerSky text-lg tracking-widest">1 / 10</span>
+                </div>
+            </div>
+
+            <div class="flex gap-4">
+                <button onclick="window.location.href='quiz-list-kidz.html'" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20 transition-all border border-white/10">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 flex flex-col items-center justify-start px-8 pt-20 pb-8 overflow-hidden relative">
+            
+            <!-- Question Box -->
+            <div class="glass-panel w-full max-w-4xl rounded-3xl p-6 md:p-8 mb-6 flex flex-col items-center justify-center min-h-[120px] text-center shadow-2xl z-10">
+                <h2 id="question-text" class="text-xl md:text-2xl font-black text-white leading-tight">
+                    Pertanyaan akan muncul di sini...
+                </h2>
+            </div>
+
+            <!-- Answer Area (Dynamic based on type) -->
+            <div id="answer-area" class="w-full max-w-5xl flex-1 flex flex-col justify-end pb-4">
+                <!-- Injected via JS -->
+            </div>
+
+        </main>
+    </div>
+
+    <!-- RESULTS SCREEN -->
+    <div id="results-screen" class="hidden absolute inset-0 z-50 flex items-center justify-center bg-kidz-darkBg bg-pattern p-6">
+        <div class="max-w-lg w-full bg-white rounded-[3rem] p-12 text-center shadow-2xl">
+            <div class="text-8xl mb-6 animate-bounce">🌟</div>
+            <h2 class="text-4xl font-black text-kidz-darkerBg mb-2">Hebat Sekali!</h2>
+            <p class="text-lg text-slate-500 font-bold mb-10">Kamu berhasil menyelesaikan petualangan ini!</p>
+
+            <div class="bg-kidz-amethyst/10 p-6 rounded-2xl mb-8 border-2 border-kidz-amethyst/20">
+                <p class="text-xs font-black text-kidz-amethyst uppercase tracking-widest mb-1">Total XP Diperoleh</p>
+                <p id="final-score" class="text-4xl font-black text-kidz-amethyst drop-shadow-sm">+0</p>
+            </div>
+
+            <div class="space-y-4">
+                <button onclick="location.reload()" class="w-full bg-kidz-texasRose text-kidz-darkerBg py-5 rounded-2xl font-black text-xl shadow-[0_6px_0_#e6a14e] hover:-translate-y-1 hover:shadow-[0_8px_0_#e6a14e] active:translate-y-2 active:shadow-none transition-all">
+                    Main Lagi!
+                </button>
+                <button onclick="window.location.href='quiz-list-kidz.html'" class="w-full py-4 text-slate-400 font-bold hover:text-slate-600 transition-colors">
+                    Kembali ke Menu
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- DUMMY DATA FOR KIDZ ---
+        const KIDZ_DATA = {
+            'Montessori': [
+                {
+                    type: 'mcq',
+                    text: 'Benda mana yang bentuknya BUNDAR?',
+                    options: ['Bola', 'Buku', 'Meja', 'Pintu'],
+                    colors: ['bg-kidz-pastelGreen', 'bg-kidz-amethyst', 'bg-kidz-summerSky', 'bg-kidz-monaLisa'],
+                    answer: 0
+                },
+                {
+                    type: 'dragdrop',
+                    text: 'Sapi menghasilkan [   ] untuk kita minum.',
+                    draggableWords: ['Susu', 'Jus', 'Kopi', 'Air'],
+                    answer: 'Susu'
+                },
+                {
+                    type: 'mcq',
+                    text: 'Warna apa yang sama dengan warna Daun?',
+                    options: ['Merah', 'Kuning', 'Hijau', 'Biru'],
+                    colors: ['bg-kidz-monaLisa', 'bg-kidz-texasRose', 'bg-kidz-pastelGreen', 'bg-kidz-summerSky'],
+                    answer: 2
+                }
+            ],
+            'Calistung': [
+                {
+                    type: 'mcq',
+                    text: 'Berapa hasil dari 2 + 3 ?',
+                    options: ['4', '5', '6', '7'],
+                    colors: ['bg-kidz-amethyst', 'bg-kidz-texasRose', 'bg-kidz-summerSky', 'bg-kidz-downy'],
+                    answer: 1
+                },
+                {
+                    type: 'dragdrop',
+                    text: 'Budi pergi ke [   ] untuk belajar.',
+                    draggableWords: ['Pasar', 'Sekolah', 'Taman', 'Tidur'],
+                    answer: 'Sekolah'
+                },
+                {
+                    type: 'mcq',
+                    text: 'Huruf apa setelah huruf C ?',
+                    options: ['A', 'B', 'D', 'E'],
+                    colors: ['bg-kidz-illusion', 'bg-kidz-slateBlue', 'bg-kidz-pastelGreen', 'bg-kidz-monaLisa'],
+                    answer: 2
+                }
+            ],
+            'English': [
+                {
+                    type: 'dragdrop',
+                    text: 'An apple is [   ].',
+                    draggableWords: ['Red', 'Blue', 'Square', 'Fast'],
+                    answer: 'Red'
+                },
+                {
+                    type: 'mcq',
+                    text: 'What is "Kucing" in English?',
+                    options: ['Dog', 'Cat', 'Bird', 'Fish'],
+                    colors: ['bg-kidz-summerSky', 'bg-kidz-amethyst', 'bg-kidz-monaLisa', 'bg-kidz-pastelGreen'],
+                    answer: 1
+                },
+                {
+                    type: 'dragdrop',
+                    text: 'I have two [   ] to see.',
+                    draggableWords: ['Ears', 'Noses', 'Eyes', 'Hands'],
+                    answer: 'Eyes'
+                }
+            ]
+        };
+
+        // --- GAME STATE ---
+        let currentCategory = '';
+        let currentQuestions = [];
+        let currentIdx = 0;
+        let score = 0;
+
+        // --- CORE FUNCTIONS ---
+        function startQuiz(category) {
+            currentCategory = category;
+            currentQuestions = KIDZ_DATA[category];
+            currentIdx = 0;
+            score = 0;
+
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('game-screen').classList.remove('hidden');
+            document.getElementById('game-screen').classList.add('flex');
+            document.getElementById('category-badge').innerText = category;
+            
+            updateScoreDisplay();
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            if (currentIdx >= currentQuestions.length) {
+                showResults();
+                return;
+            }
+
+            const q = currentQuestions[currentIdx];
+            document.getElementById('progress-text').innerText = `${currentIdx + 1} / ${currentQuestions.length}`;
+            
+            const questionTextEl = document.getElementById('question-text');
+            const answerAreaEl = document.getElementById('answer-area');
+            answerAreaEl.innerHTML = '';
+
+            if (q.type === 'mcq') {
+                questionTextEl.innerHTML = q.text;
+                
+                let gridHtml = `<div class="grid grid-cols-2 gap-4 w-full h-full pb-4">`;
+                q.options.forEach((opt, i) => {
+                    const colorClass = q.colors[i % q.colors.length];
+                    gridHtml += `
+                        <button onclick="handleAnswer(${i === q.answer})" class="option-card ${colorClass} rounded-2xl flex items-center justify-center p-4 min-h-[80px] md:min-h-[100px]">
+                            <span class="text-lg md:text-xl font-black text-white drop-shadow-md pointer-events-none">${opt}</span>
+                        </button>
+                    `;
+                });
+                gridHtml += `</div>`;
+                answerAreaEl.innerHTML = gridHtml;
+            } 
+            else if (q.type === 'dragdrop') {
+                // Split text to find [   ]
+                const parts = q.text.split('[   ]');
+                questionTextEl.innerHTML = `${parts[0]}<div id="dropzone" class="dropzone" ondragover="allowDrop(event)" ondragleave="dragLeave(event)" ondrop="drop(event, '${q.answer}')"></div>${parts[1]}`;
+
+                let pillsHtml = `<div class="flex flex-wrap justify-center gap-3 mt-6 w-full p-6 glass-panel rounded-2xl">`;
+                // Shuffle draggable words for fun
+                const shuffled = [...q.draggableWords].sort(() => Math.random() - 0.5);
+                shuffled.forEach(word => {
+                    pillsHtml += `
+                        <div class="draggable bg-kidz-texasRose text-kidz-darkerBg px-4 py-2 rounded-lg font-black text-lg" 
+                             draggable="true" 
+                             ondragstart="drag(event)" 
+                             id="word-${word}">
+                            ${word}
+                        </div>
+                    `;
+                });
+                pillsHtml += `</div>`;
+                
+                // Add a Next button that is initially hidden/disabled, or auto-advance on correct drop
+                answerAreaEl.innerHTML = pillsHtml;
+            }
+        }
+
+        function handleAnswer(isCorrect) {
+            if (isCorrect) {
+                score += 100;
+                updateScoreDisplay();
+                playSound('correct');
+            } else {
+                playSound('wrong');
+            }
+            
+            // Advance to next after a short delay to see animation
+            setTimeout(() => {
+                currentIdx++;
+                loadQuestion();
+            }, 400);
+        }
+
+        // --- DRAG AND DROP LOGIC ---
+        function allowDrop(ev) {
+            ev.preventDefault();
+            ev.target.classList.add('drag-over');
+        }
+
+        function dragLeave(ev) {
+            ev.target.classList.remove('drag-over');
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+            ev.target.classList.add('dragging');
+        }
+
+        document.addEventListener('dragend', (ev) => {
+            if(ev.target.classList.contains('draggable')) {
+                ev.target.classList.remove('dragging');
+            }
+        });
+
+        function drop(ev, correctAnswer) {
+            ev.preventDefault();
+            ev.target.classList.remove('drag-over');
+            
+            const data = ev.dataTransfer.getData("text");
+            const draggedElement = document.getElementById(data);
+            const word = draggedElement.innerText.trim();
+
+            if (word === correctAnswer) {
+                // Correct
+                ev.target.innerHTML = `<span class="dropped-word" onclick="resetDrop(this, '${data}')">${word}</span>`;
+                draggedElement.style.display = 'none';
+                ev.target.classList.add('filled');
+                
+                score += 100;
+                updateScoreDisplay();
+                playSound('correct');
+                
+                // Auto advance on correct drop
+                setTimeout(() => {
+                    currentIdx++;
+                    loadQuestion();
+                }, 1000);
+            } else {
+                // Wrong - bounce back visually (just play sound for now)
+                playSound('wrong');
+            }
+        }
+
+        function resetDrop(el, draggedId) {
+            // Optional: allow user to click dropped word to reset it, though we auto-advance now
+            const dropzone = el.parentElement;
+            dropzone.innerHTML = '';
+            dropzone.classList.remove('filled');
+            document.getElementById(draggedId).style.display = 'inline-block';
+        }
+
+        // --- UTILS ---
+        function updateScoreDisplay() {
+            document.getElementById('score-display').innerText = `${score} XP`;
+        }
+
+        function showResults() {
+            document.getElementById('game-screen').classList.add('hidden');
+            document.getElementById('game-screen').classList.remove('flex');
+            
+            document.getElementById('results-screen').classList.remove('hidden');
+            document.getElementById('results-screen').classList.add('flex');
+            
+            document.getElementById('final-score').innerText = `+${score}`;
+
+            confetti({
+                particleCount: 200,
+                spread: 100,
+                origin: { y: 0.6 },
+                colors: ['#9956DE', '#7274ED', '#1FA7E1', '#FFB356', '#FB96BB']
+            });
+        }
+
+        function playSound(type) {
+            // Placeholder for audio, using visual cue for now if needed
+            // console.log(`Playing ${type} sound`);
+        }
+    </script>
+</body>
+</html>
