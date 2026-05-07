@@ -143,7 +143,7 @@
     </header>
 
     <!-- Main Content Grid -->
-    <main class="w-full max-w-7xl mx-auto pb-20 space-y-12">
+    <main class="w-full max-w-7xl mx-auto pb-48 space-y-12 relative z-10">
 
         <!-- Separated Activity Hub Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -414,7 +414,60 @@
                 modal.classList.remove('flex');
             }, 300);
         }
+
+        // Music Player Logic
+        let isPlaying = false;
+
+        function toggleMusic() {
+            const music = document.getElementById('bgMusic');
+            const musicBtn = document.getElementById('musicToggle');
+            const playIcon = document.getElementById('playIcon');
+            const pauseIcon = document.getElementById('pauseIcon');
+
+            if (isPlaying) {
+                music.pause();
+                playIcon.classList.remove('hidden');
+                pauseIcon.classList.add('hidden');
+                musicBtn.classList.remove('animate-pulse');
+            } else {
+                music.play().catch(e => {
+                    console.error("Playback failed:", e);
+                    alert("Ops! Music file not found or browser blocked it.");
+                });
+                playIcon.classList.add('hidden');
+                pauseIcon.classList.remove('hidden');
+                musicBtn.classList.add('animate-pulse');
+            }
+            isPlaying = !isPlaying;
+        }
     </script>
+
+    <!-- Music Player Controls -->
+    <audio id="bgMusic" loop>
+        <source src="assets/kidz/kids%20dashboard/Shaun%20The%20Sheep%20Theme.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="musicToggle" onclick="toggleMusic()" 
+        class="fixed bottom-8 right-8 w-16 h-16 bg-magenta-500 rounded-full border-4 border-white shadow-2xl z-[1001] flex items-center justify-center text-white bubble-btn group overflow-hidden">
+        <div class="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <!-- Play Icon -->
+        <svg id="playIcon" class="w-8 h-8 relative z-10" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"></path>
+        </svg>
+        <!-- Pause Icon -->
+        <svg id="pauseIcon" class="w-8 h-8 relative z-10 hidden" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
+        </svg>
+    </button>
+
+    <!-- Fixed Grass Footer -->
+    <footer class="fixed bottom-0 left-0 w-full z-[99] pointer-events-none transform translate-y-4">
+        <img src="assets/kidz/kids dashboard/rumput.svg" class="w-full h-auto object-cover opacity-90" alt="Grass">
+    </footer>
+    <!-- Fixed Sky Header -->
+    <div class="fixed top-0 left-0 w-full z-[999] pointer-events-none">
+        <img src="assets/kidz/kids dashboard/sky.svg" class="w-full h-auto object-cover" alt="Sky">
+    </div>
 </body>
 
 </html>
