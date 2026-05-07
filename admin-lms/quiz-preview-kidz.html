@@ -101,23 +101,28 @@
 
     <!-- START SCREEN -->
     <div id="start-screen" class="absolute inset-0 z-40 flex flex-col items-center justify-center bg-kidz-darkBg bg-pattern p-8">
+        <div class="mb-6 animate-bounce">
+            <img src="assets/mascot.png" alt="Mascot" class="w-48 h-48 drop-shadow-2xl">
+        </div>
         <div class="text-center mb-8">
-            <h1 class="text-4xl font-black text-white mb-2 drop-shadow-lg">Pilih Petualanganmu!</h1>
-            <p class="text-lg text-kidz-summerSky font-bold">Pilih kategori untuk mulai bermain</p>
+            <h1 class="text-5xl font-black text-white mb-2 drop-shadow-lg">Magenta Kidz!</h1>
+            <p class="text-xl text-kidz-summerSky font-bold">Pilih Level Belajarmu</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl w-full">
-            <button onclick="startQuiz('Montessori')" class="option-card bg-kidz-amethyst rounded-2xl p-6 flex flex-col items-center justify-center gap-4 group">
-                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🧩</div>
-                <span class="text-xl font-black text-white text-center">Montessori</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl w-full">
+            <button onclick="startQuiz('Level Starter')" class="option-card bg-kidz-amethyst rounded-3xl p-8 flex flex-col items-center justify-center gap-4 group">
+                <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center text-4xl group-hover:scale-110 transition-transform">🌟</div>
+                <div class="text-center">
+                    <span class="text-2xl font-black text-white block">Level Starter</span>
+                    <span class="text-white/70 font-bold text-sm">Vocab & Grammar Dasar</span>
+                </div>
             </button>
-            <button onclick="startQuiz('Calistung')" class="option-card bg-kidz-texasRose rounded-2xl p-6 flex flex-col items-center justify-center gap-4 group">
-                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🔢</div>
-                <span class="text-xl font-black text-white text-center">Baca, Tulis, Hitung</span>
-            </button>
-            <button onclick="startQuiz('English')" class="option-card bg-kidz-summerSky rounded-2xl p-6 flex flex-col items-center justify-center gap-4 group">
-                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">🔤</div>
-                <span class="text-xl font-black text-white text-center">English for Kidz</span>
+            <button onclick="startQuiz('Level Rising')" class="option-card bg-kidz-summerSky rounded-3xl p-8 flex flex-col items-center justify-center gap-4 group">
+                <div class="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center text-4xl group-hover:scale-110 transition-transform">🚀</div>
+                <div class="text-center">
+                    <span class="text-2xl font-black text-white block">Level Rising</span>
+                    <span class="text-white/70 font-bold text-sm">Public Speaking & Project</span>
+                </div>
             </button>
         </div>
         
@@ -198,69 +203,52 @@
     <script>
         // --- DUMMY DATA FOR KIDZ ---
         const KIDZ_DATA = {
-            'Montessori': [
+            'Level Starter': [
                 {
-                    type: 'mcq',
-                    text: 'Benda mana yang bentuknya BUNDAR?',
-                    options: ['Bola', 'Buku', 'Meja', 'Pintu'],
-                    colors: ['bg-kidz-pastelGreen', 'bg-kidz-amethyst', 'bg-kidz-summerSky', 'bg-kidz-monaLisa'],
-                    answer: 0
-                },
-                {
-                    type: 'dragdrop',
-                    text: 'Sapi menghasilkan [   ] untuk kita minum.',
-                    draggableWords: ['Susu', 'Jus', 'Kopi', 'Air'],
-                    answer: 'Susu'
+                    type: 'speaking',
+                    mascot: 'assets/mascot.png',
+                    text: 'Hi friends! Let\'s learn some colors today. Listen carefully!',
+                    audio: 'audio/welcome.mp3',
+                    extra: 'Click the speaker to hear me talk!'
                 },
                 {
                     type: 'mcq',
-                    text: 'Warna apa yang sama dengan warna Daun?',
-                    options: ['Merah', 'Kuning', 'Hijau', 'Biru'],
-                    colors: ['bg-kidz-monaLisa', 'bg-kidz-texasRose', 'bg-kidz-pastelGreen', 'bg-kidz-summerSky'],
-                    answer: 2
-                }
-            ],
-            'Calistung': [
-                {
-                    type: 'mcq',
-                    text: 'Berapa hasil dari 2 + 3 ?',
-                    options: ['4', '5', '6', '7'],
-                    colors: ['bg-kidz-amethyst', 'bg-kidz-texasRose', 'bg-kidz-summerSky', 'bg-kidz-downy'],
+                    text: 'Which fruit is RED?',
+                    options: ['Banana', 'Apple', 'Grape', 'Orange'],
+                    colors: ['bg-kidz-texasRose', 'bg-kidz-monaLisa', 'bg-kidz-amethyst', 'bg-kidz-summerSky'],
                     answer: 1
                 },
                 {
-                    type: 'dragdrop',
-                    text: 'Budi pergi ke [   ] untuk belajar.',
-                    draggableWords: ['Pasar', 'Sekolah', 'Taman', 'Tidur'],
-                    answer: 'Sekolah'
+                    type: 'voicenote',
+                    text: 'Can you say "I LOVE APPLE"?',
+                    mascot: 'assets/mascot.png',
+                    instruction: 'Press the microphone and speak!'
                 },
                 {
-                    type: 'mcq',
-                    text: 'Huruf apa setelah huruf C ?',
-                    options: ['A', 'B', 'D', 'E'],
-                    colors: ['bg-kidz-illusion', 'bg-kidz-slateBlue', 'bg-kidz-pastelGreen', 'bg-kidz-monaLisa'],
-                    answer: 2
+                    type: 'dragdrop',
+                    text: 'The sky is [   ].',
+                    draggableWords: ['Blue', 'Green', 'Yellow', 'Pink'],
+                    answer: 'Blue'
                 }
             ],
-            'English': [
+            'Level Rising': [
                 {
-                    type: 'dragdrop',
-                    text: 'An apple is [   ].',
-                    draggableWords: ['Red', 'Blue', 'Square', 'Fast'],
-                    answer: 'Red'
+                    type: 'speaking',
+                    mascot: 'assets/mascot.png',
+                    text: 'Welcome to Level Rising! Today we will practice Storytelling.',
+                    extra: 'Watch the video example first!'
                 },
                 {
-                    type: 'mcq',
-                    text: 'What is "Kucing" in English?',
-                    options: ['Dog', 'Cat', 'Bird', 'Fish'],
-                    colors: ['bg-kidz-summerSky', 'bg-kidz-amethyst', 'bg-kidz-monaLisa', 'bg-kidz-pastelGreen'],
-                    answer: 1
+                    type: 'project',
+                    title: 'Vlogging Challenge',
+                    text: 'Tell us about your favorite toy! Record a short video or voice note.',
+                    mascot: 'assets/mascot.png',
+                    typeLabel: 'VLOG'
                 },
                 {
-                    type: 'dragdrop',
-                    text: 'I have two [   ] to see.',
-                    draggableWords: ['Ears', 'Noses', 'Eyes', 'Hands'],
-                    answer: 'Eyes'
+                    type: 'voicenote',
+                    text: 'Act like a Reporter: "The weather today is sunny!"',
+                    instruction: 'Record your news report!'
                 }
             ]
         };
@@ -300,7 +288,82 @@
             const answerAreaEl = document.getElementById('answer-area');
             answerAreaEl.innerHTML = '';
 
-            if (q.type === 'mcq') {
+            if (q.type === 'speaking') {
+                questionTextEl.innerHTML = q.text;
+                answerAreaEl.innerHTML = `
+                    <div class="flex flex-col items-center justify-center gap-8 mb-12">
+                        <div class="relative">
+                            <img src="${q.mascot}" class="w-56 h-56 animate-pulse">
+                            <div class="absolute -top-4 -right-4 bg-white text-kidz-amethyst p-3 rounded-full shadow-xl cursor-pointer hover:scale-110 transition-transform" onclick="simulateSpeech()">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M14 8.83v6.34L11.83 13H9v-2h2.83L14 8.83M16 4l-5 5H7v6h4l5 5V4z"></path></svg>
+                            </div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/20 max-w-md text-center">
+                            <p class="font-bold text-kidz-summerSky italic">${q.extra}</p>
+                        </div>
+                        <button onclick="handleAnswer(true)" class="px-10 py-4 bg-kidz-pastelGreen text-white font-black text-xl rounded-2xl shadow-[0_6px_0_#4ea146] hover:-translate-y-1 hover:shadow-[0_8px_0_#4ea146] active:translate-y-2 active:shadow-none transition-all">
+                            Next Material ➔
+                        </button>
+                    </div>
+                `;
+            }
+            else if (q.type === 'voicenote') {
+                questionTextEl.innerHTML = q.text;
+                answerAreaEl.innerHTML = `
+                    <div class="flex flex-col items-center justify-center gap-8 mb-12">
+                        <div class="flex items-center gap-4">
+                             <img src="assets/mascot.png" class="w-24 h-24">
+                             <div class="bg-white/10 p-4 rounded-2xl border border-white/20">
+                                <p class="font-bold">${q.instruction}</p>
+                             </div>
+                        </div>
+                        
+                        <div id="recorder-ui" class="w-full max-w-sm bg-white/5 border-2 border-dashed border-white/20 rounded-[2rem] p-8 flex flex-col items-center gap-6">
+                            <div id="record-btn" onclick="toggleRecording()" class="w-24 h-24 bg-kidz-monaLisa rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(255,139,139,0.3)] cursor-pointer hover:scale-105 transition-all">
+                                <div id="mic-icon" class="w-10 h-10 bg-white rounded-full"></div>
+                            </div>
+                            <div id="recording-status" class="font-black text-xl text-white tracking-widest hidden">RECORDING...</div>
+                            <div id="waveform" class="flex gap-1 h-8 items-center hidden">
+                                <div class="w-1 bg-white rounded-full animate-bounce h-4" style="animation-delay: 0.1s"></div>
+                                <div class="w-1 bg-white rounded-full animate-bounce h-8" style="animation-delay: 0.2s"></div>
+                                <div class="w-1 bg-white rounded-full animate-bounce h-6" style="animation-delay: 0.3s"></div>
+                                <div class="w-1 bg-white rounded-full animate-bounce h-10" style="animation-delay: 0.4s"></div>
+                                <div class="w-1 bg-white rounded-full animate-bounce h-4" style="animation-delay: 0.5s"></div>
+                            </div>
+                        </div>
+
+                        <button id="next-speak-btn" onclick="handleAnswer(true)" class="hidden px-10 py-4 bg-kidz-pastelGreen text-white font-black text-xl rounded-2xl shadow-[0_6px_0_#4ea146] hover:-translate-y-1 hover:shadow-[0_8px_0_#4ea146] active:translate-y-2 active:shadow-none transition-all">
+                            Submit Voice Note
+                        </button>
+                    </div>
+                `;
+            }
+            else if (q.type === 'project') {
+                questionTextEl.innerHTML = q.text;
+                answerAreaEl.innerHTML = `
+                    <div class="flex flex-col items-center justify-center gap-8 mb-12">
+                        <div class="bg-kidz-slateBlue px-4 py-1 rounded-full text-xs font-black tracking-widest text-white mb-[-20px] z-20 shadow-lg">${q.typeLabel}</div>
+                        <div class="glass-panel p-8 rounded-[2rem] border-2 border-kidz-slateBlue/50 w-full max-w-2xl text-center">
+                            <h3 class="text-3xl font-black text-white mb-6">${q.title}</h3>
+                            <div class="flex justify-center gap-6 mb-8">
+                                <div class="w-32 h-32 bg-white/5 rounded-2xl border border-white/10 flex flex-col items-center justify-center gap-2 hover:bg-white/10 cursor-pointer transition-all">
+                                    <span class="text-3xl">📷</span>
+                                    <span class="text-[10px] font-bold">VIDEO</span>
+                                </div>
+                                <div class="w-32 h-32 bg-white/5 rounded-2xl border border-white/10 flex flex-col items-center justify-center gap-2 hover:bg-white/10 cursor-pointer transition-all">
+                                    <span class="text-3xl">🎙️</span>
+                                    <span class="text-[10px] font-bold">VOICE</span>
+                                </div>
+                            </div>
+                            <p class="text-white/60 text-sm font-bold italic">Upload your project or record live!</p>
+                        </div>
+                        <button onclick="handleAnswer(true)" class="px-10 py-4 bg-kidz-pastelGreen text-white font-black text-xl rounded-2xl shadow-[0_6px_0_#4ea146] hover:-translate-y-1 hover:shadow-[0_8px_0_#4ea146] active:translate-y-2 active:shadow-none transition-all">
+                            Done! ➔
+                        </button>
+                    </div>
+                `;
+            }
+            else if (q.type === 'mcq') {
                 questionTextEl.innerHTML = q.text;
                 
                 let gridHtml = `<div class="grid grid-cols-2 gap-4 w-full h-full pb-4">`;
@@ -439,6 +502,48 @@
         function playSound(type) {
             // Placeholder for audio, using visual cue for now if needed
             // console.log(`Playing ${type} sound`);
+        }
+
+        let isRecording = false;
+        function toggleRecording() {
+            const btn = document.getElementById('record-btn');
+            const status = document.getElementById('recording-status');
+            const waveform = document.getElementById('waveform');
+            const micIcon = document.getElementById('mic-icon');
+            const nextBtn = document.getElementById('next-speak-btn');
+
+            isRecording = !isRecording;
+
+            if (isRecording) {
+                btn.classList.add('animate-pulse');
+                btn.classList.remove('bg-kidz-monaLisa');
+                btn.classList.add('bg-red-500');
+                status.classList.remove('hidden');
+                waveform.classList.remove('hidden');
+                waveform.classList.add('flex');
+                micIcon.classList.add('rounded-sm');
+                micIcon.classList.remove('rounded-full');
+            } else {
+                btn.classList.remove('animate-pulse');
+                btn.classList.add('bg-kidz-monaLisa');
+                btn.classList.remove('bg-red-500');
+                status.classList.add('hidden');
+                waveform.classList.add('hidden');
+                waveform.classList.remove('flex');
+                micIcon.classList.remove('rounded-sm');
+                micIcon.classList.add('rounded-full');
+                nextBtn.classList.remove('hidden');
+            }
+        }
+
+        function simulateSpeech() {
+            // Simulate mascot speaking using Web Speech API if available
+            const q = currentQuestions[currentIdx];
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(q.text);
+                utterance.lang = 'en-US';
+                window.speechSynthesis.speak(utterance);
+            }
         }
     </script>
 </body>

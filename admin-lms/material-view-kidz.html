@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Viewer - Magenta Kidz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../assets/flipbook code/jquery.js"></script>
+    <script src="../assets/flipbook code/turn.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Nunito', 'sans-serif'] },
+                    colors: {
+                        kidz: {
+                            amethyst: '#9956DE',
+                            slateBlue: '#7274ED',
+                            summerSky: '#1FA7E1',
+                            downy: '#6ED1CF',
+                            pastelGreen: '#75D06A',
+                            texasRose: '#FFB356',
+                            monaLisa: '#FF8B8B',
+                            illusion: '#FB96BB',
+                            darkBg: '#3a1c5e',
+                            darkerBg: '#2a1245'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Nunito', sans-serif; background-color: #3a1c5e; color: white; overflow-x: hidden; }
+        .bg-pattern {
+            background-color: #3a1c5e;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(153, 86, 222, 0.2) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(31, 167, 225, 0.2) 0%, transparent 20%),
+                linear-gradient(45deg, rgba(255,255,255,0.02) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0.02) 75%, transparent 75%, transparent);
+            background-size: 200px 200px, 300px 300px, 40px 40px;
+        }
+        
+        .bg-pattern::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+            z-index: -1;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10q5 0 5 5t-5 5-5-5 5-5zM40 40q5 0 5 5t-5 5-5-5 5-5zM70 10q5 0 5 5t-5 5-5-5 5-5zM10 70q5 0 5 5t-5 5-5-5 5-5zM70 70q5 0 5 5t-5 5-5-5 5-5z' fill='%23ffffff' fill-opacity='1'/%3E%3Ccircle cx='25' cy='15' r='2' fill='%23ffffff'/%3E%3Ccircle cx='85' cy='45' r='3' fill='%23ffffff'/%3E%3Ccircle cx='45' cy='85' r='2' fill='%23ffffff'/%3E%3Crect x='15' y='45' width='4' height='4' transform='rotate(45 17 47)' fill='%23ffffff'/%3E%3Crect x='75' y='15' width='5' height='5' transform='rotate(20 77.5 17.5)' fill='%23ffffff'/%3E%3C/svg%3E");
+        }
+        
+        /* Flip Book Styles (turn.js) */
+        .flipbook-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+        }
+        .flipbook-wrapper:fullscreen {
+            max-width: none;
+            width: 100vw;
+            height: 100vh;
+            background-color: #3a1c5e;
+        }
+        .flipbook {
+            transition: margin-left 0.2s ease-in-out;
+        }
+        .flipbook .page {
+            width: 1200px;
+            height: 675px;
+            background-color: white;
+            line-height: 1.5;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0,0,0,0.4);
+        }
+        .flipbook .page img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Overlay Controls */
+        .nav-overlay {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 100px;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            z-index: 100;
+            transition: all 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .nav-overlay:hover {
+            background: rgba(0,0,0,0.6);
+            width: 70px;
+        }
+        .nav-prev { left: 20px; }
+        .nav-next { right: 20px; }
+
+        .top-controls {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            z-index: 101;
+        }
+        
+        .glass-panel {
+            background: rgba(42, 18, 69, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .btn-kidz {
+            box-shadow: inset 0 -6px 0 rgba(0,0,0,0.2), 0 10px 20px rgba(0,0,0,0.3);
+            transition: all 0.1s;
+        }
+        .btn-kidz:active {
+            transform: translateY(4px);
+            box-shadow: inset 0 -2px 0 rgba(0,0,0,0.2), 0 4px 10px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body class="bg-kidz-darkBg bg-pattern min-h-screen flex flex-col antialiased relative">
+
+    <!-- Header -->
+    <header class="flex justify-between items-center p-6 shrink-0 z-50">
+        <div class="flex items-center gap-4">
+            <button onclick="window.location.href='material-list-kidz.html'" class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center hover:bg-white/20 transition-all border border-white/10">
+                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            </button>
+            <h1 id="material-title" class="text-2xl font-black text-white drop-shadow-lg">Material Viewer</h1>
+        </div>
+        <div id="page-indicator" class="bg-black/30 px-6 py-2 rounded-full border border-white/10 font-black text-kidz-summerSky tracking-widest">
+            1 / 10
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col items-center justify-center p-8 relative">
+        
+        <!-- FLIP BOOK CONTAINER (Category 1) -->
+        <div id="flip-container" class="hidden flex flex-col items-center w-full max-w-[95vw]">
+            <div class="flipbook-wrapper shadow-2xl rounded-3xl overflow-hidden group" id="fullscreen-target">
+                <!-- Top Controls -->
+                <div class="top-controls">
+                    <button onclick="window.location.href='material-list-kidz.html'" class="bg-black/40 backdrop-blur-md text-white px-4 py-2 rounded-xl border border-white/20 font-bold hover:bg-black/60 transition-all flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                        Kembali
+                    </button>
+                    <button onclick="toggleFullscreen('fullscreen-target')" class="bg-black/40 backdrop-blur-md text-white p-2 rounded-xl border border-white/20 hover:bg-black/60 transition-all">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path></svg>
+                    </button>
+                </div>
+
+                <!-- Navigation Overlays -->
+                <div onclick="prevPage()" class="nav-overlay nav-prev">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </div>
+                <div onclick="nextPage()" class="nav-overlay nav-next">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </div>
+
+                <div id="flipbook" class="flipbook">
+                    <!-- Pages will be injected via JS -->
+                </div>
+            </div>
+        </div>
+
+        <!-- AUDIO STORY CONTAINER (Category 2) -->
+        <div id="audio-container" class="hidden flex flex-col items-center w-full max-w-[95vw]">
+            <div class="relative w-full max-w-[1200px] shadow-2xl rounded-3xl overflow-hidden group" id="fullscreen-target-audio">
+                <!-- Top Controls -->
+                <div class="top-controls">
+                    <button onclick="window.location.href='material-list-kidz.html'" class="bg-black/40 backdrop-blur-md text-white px-4 py-2 rounded-xl border border-white/20 font-bold hover:bg-black/60 transition-all flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                        Kembali
+                    </button>
+                    <button onclick="toggleFullscreen('fullscreen-target-audio')" class="bg-black/40 backdrop-blur-md text-white p-2 rounded-xl border border-white/20 hover:bg-black/60 transition-all">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"></path></svg>
+                    </button>
+                </div>
+
+                <!-- Navigation Overlays -->
+                <div onclick="prevScene()" class="nav-overlay nav-prev">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </div>
+                <div onclick="nextScene()" class="nav-overlay nav-next">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </div>
+
+                <!-- Scene Image -->
+                <img id="scene-image" src="" alt="Scene" class="w-full aspect-video object-cover">
+                
+                <!-- Audio Controls Overlay -->
+                <div class="absolute bottom-10 left-10 right-10">
+                    <div class="bg-white/90 backdrop-blur px-8 py-6 rounded-3xl border-2 border-kidz-amethyst shadow-xl flex items-center gap-6">
+                        <button onclick="playSceneAudio()" class="w-16 h-16 bg-kidz-amethyst rounded-full flex items-center justify-center text-white shadow-lg hover:scale-110 transition-all">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+                        </button>
+                        <p id="scene-text" class="text-neutral-800 font-bold text-xl leading-relaxed">Loading story...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const type = urlParams.get('type') || 'flip';
+
+        const FLIP_DATA = [
+            { img: '../assets/storybook/Scene_1.png', text: 'Page 1' },
+            { img: '../assets/storybook/Scene_2.png', text: 'Page 2' },
+            { img: '../assets/storybook/Scene_3.png', text: 'Page 3' },
+            { img: '../assets/storybook/Scene_4.png', text: 'Page 4' },
+            { img: '../assets/storybook/Scene_5.png', text: 'Page 5' },
+            { img: '../assets/storybook/Scene_6.png', text: 'Page 6' },
+            { img: '../assets/storybook/Scene_7.png', text: 'Page 7' },
+            { img: '../assets/storybook/Scene_8.png', text: 'Page 8' },
+            { img: '../assets/storybook/Scene_9.png', text: 'Page 9' },
+            { img: '../assets/storybook/Scene_10.png', text: 'Page 10' }
+        ];
+
+        const AUDIO_DATA = [
+            { img: '../assets/storybook/Scene_1.png', text: 'Once upon a time, in a magical playground...' },
+            { img: '../assets/storybook/Scene_2.png', text: 'A group of friends discovered a rocket ship!' },
+            { img: '../assets/storybook/Scene_3.png', text: 'They decided to fly to the moon and back!' }
+        ];
+
+        let currentIdx = 0;
+
+        function init() {
+            if (type === 'flip') {
+                document.getElementById('flip-container').classList.remove('hidden');
+                document.getElementById('material-title').innerText = 'The Jungle Adventure';
+                renderFlipBook();
+                updateIndicator(currentIdx + 1, FLIP_DATA.length);
+            } else {
+                document.getElementById('audio-container').classList.remove('hidden');
+                document.getElementById('material-title').innerText = 'Trip to the Moon';
+                loadScene();
+                updateIndicator(currentIdx + 1, AUDIO_DATA.length);
+            }
+        }
+
+        // --- FLIP BOOK LOGIC ---
+        function renderFlipBook() {
+            const book = $('#flipbook');
+            book.empty();
+            
+            FLIP_DATA.forEach((data, i) => {
+                book.append(`
+                    <div class="page" style="background-image: url('${data.img}'); background-size: cover; background-position: center;">
+                        <img src="${data.img}" alt="Page ${i + 1}" class="w-full h-full object-cover">
+                    </div>
+                `);
+            });
+
+            // Initialize turn.js
+            setTimeout(() => {
+                book.turn({
+                    width: 1200,
+                    height: 675,
+                    display: 'single',
+                    autoCenter: true,
+                    acceleration: true,
+                    gradients: true,
+                    elevation: 50,
+                    when: {
+                        turned: function(e, page) {
+                            updateIndicator(page, book.turn('pages'));
+                        }
+                    }
+                });
+            }, 100);
+        }
+
+        function toggleFullscreen(id) {
+            const elem = document.getElementById(id);
+            if (!document.fullscreenElement) {
+                elem.requestFullscreen().catch(err => {
+                    alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        function nextPage() {
+            $('#flipbook').turn('next');
+        }
+
+        function prevPage() {
+            $('#flipbook').turn('previous');
+        }
+
+        // --- AUDIO STORY LOGIC ---
+        function loadScene() {
+            const scene = AUDIO_DATA[currentIdx];
+            document.getElementById('scene-image').src = scene.img;
+            document.getElementById('scene-text').innerText = scene.text;
+            updateIndicator(currentIdx + 1, AUDIO_DATA.length);
+        }
+
+        function nextScene() {
+            currentIdx = (currentIdx + 1) % AUDIO_DATA.length;
+            loadScene();
+        }
+
+        function prevScene() {
+            currentIdx = (currentIdx - 1 + AUDIO_DATA.length) % AUDIO_DATA.length;
+            loadScene();
+        }
+
+        function playSceneAudio() {
+            const text = AUDIO_DATA[currentIdx].text;
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function updateIndicator(curr, total) {
+            document.getElementById('page-indicator').innerText = `${curr} / ${total}`;
+        }
+
+        init();
+    </script>
+</body>
+</html>
