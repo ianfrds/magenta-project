@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magenta Kidz Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        magenta: {
+                            50: '#fff1f2', 100: '#ffe4e6', 200: '#fecdd3', 300: '#fda4af', 400: '#fb7185',
+                            500: '#f43f5e', 600: '#e11d48', 700: '#be123c', 800: '#9f1239', 900: '#881337',
+                        },
+                        kidz: {
+                            purple: '#9C27B0',
+                            orange: '#FF9800',
+                            yellow: '#FFC107',
+                            green: '#4CAF50',
+                            blue: '#2196F3',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                        'bubble': '0 10px 25px -5px rgba(0, 0, 0, 0.2), inset 0 -4px 0 rgba(0,0,0,0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            /* Use the requested background image */
+            background-image: url('assets/kidz/kids dashboard/Red and Brown Illustrated Kids Presentation.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Glassmorphism for panels to make text readable over the busy background */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .bubble-btn {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bubble-btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.3), inset 0 -6px 0 rgba(0,0,0,0.15);
+        }
+        
+        .bubble-btn:active {
+            transform: translateY(2px) scale(0.98);
+            box-shadow: inset 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Fun floating animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+        .mic-pulse::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background-color: inherit;
+            animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased p-6 md:p-10 flex flex-col items-center">
+
+    <!-- Header Navigation -->
+    <header class="w-full max-w-7xl glass-panel rounded-full px-8 py-4 flex items-center justify-between mb-10 sticky top-4 z-50">
+        <a href="index.html" class="flex items-center gap-3 text-slate-600 hover:text-magenta-600 transition-colors bg-white/50 p-2 pr-4 rounded-full font-bold">
+            <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            </div>
+            Back to Portal
+        </a>
+        
+        <div class="flex items-center gap-6">
+            <!-- Current Rank Badge -->
+            <div class="flex items-center gap-3 bg-white/60 px-4 py-2 rounded-2xl border border-white shadow-sm">
+                <img src="assets/kidz/kids dashboard/1rank_starter.png" class="w-10 h-10 object-contain animate-pulse" alt="Rank">
+                <div class="text-left hidden sm:block">
+                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">Current Rank</p>
+                    <p class="text-sm font-black text-kidz-purple">Starter</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="text-right hidden md:block">
+                    <p class="text-sm font-black text-slate-800">Hi, Little Explorer! 👋</p>
+                    <p class="text-[10px] font-bold text-kidz-purple uppercase tracking-widest">Master of English</p>
+                </div>
+                <div class="w-14 h-14 bg-yellow-300 rounded-full border-4 border-white shadow-md flex items-center justify-center text-2xl animate-bounce">
+                    🦊
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="w-full max-w-7xl mx-auto pb-20 space-y-12">
+        
+        <!-- Welcome Banner & Rank Progress -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="lg:col-span-2 glass-panel rounded-[3rem] p-10 relative overflow-hidden flex flex-col justify-center">
+                <div class="absolute -right-10 -top-10 w-48 h-48 bg-magenta-400 rounded-full mix-blend-multiply filter blur-2xl opacity-50"></div>
+                <div class="absolute -left-10 -bottom-10 w-48 h-48 bg-yellow-400 rounded-full mix-blend-multiply filter blur-2xl opacity-50"></div>
+                
+                <div class="relative z-10 text-center md:text-left">
+                    <h1 class="text-5xl font-black text-slate-900 mb-4 leading-tight">Ready to Learn <br><span class="text-transparent bg-clip-text bg-gradient-r from-magenta-500 to-kidz-purple">English Today?</span></h1>
+                    <p class="text-lg font-bold text-slate-600 max-w-xl">Pick an adventure below and let's start our fun journey together!</p>
+                </div>
+            </div>
+
+            <!-- Rank Progress Card -->
+            <div class="glass-panel rounded-[3rem] p-8 flex flex-col items-center justify-center text-center border-4 border-white">
+                <h3 class="text-xl font-black text-slate-800 mb-6">Rank Collection</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="relative group">
+                        <img src="assets/kidz/kids dashboard/1rank_starter.png" class="w-16 h-16 object-contain drop-shadow-md" alt="Starter">
+                        <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[8px] font-black px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">STARTER</span>
+                    </div>
+                    <div class="relative group opacity-40 grayscale">
+                        <img src="assets/kidz/kids dashboard/2rank_learner.png" class="w-16 h-16 object-contain" alt="Learner">
+                        <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[8px] font-black px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">LEARNER</span>
+                    </div>
+                    <div class="relative group opacity-40 grayscale">
+                        <img src="assets/kidz/kids dashboard/3rank_scholar.png" class="w-16 h-16 object-contain" alt="Scholar">
+                        <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[8px] font-black px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">SCHOLAR</span>
+                    </div>
+                    <div class="relative group opacity-40 grayscale">
+                        <img src="assets/kidz/kids dashboard/4rank_expert.png" class="w-16 h-16 object-contain" alt="Expert">
+                        <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[8px] font-black px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">EXPERT</span>
+                    </div>
+                    <div class="relative group opacity-40 grayscale">
+                        <img src="assets/kidz/kids dashboard/5rank_master.png" class="w-16 h-16 object-contain" alt="Master">
+                        <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-[8px] font-black px-2 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">MASTER</span>
+                    </div>
+                </div>
+                <p class="mt-6 text-xs font-bold text-slate-400">Complete quizzes to unlock new ranks!</p>
+            </div>
+        </div>
+
+        <!-- Menu Material Section -->
+        <div>
+            <div class="flex items-center gap-4 mb-6 ml-4">
+                <div class="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center text-2xl">📚</div>
+                <h2 class="text-3xl font-black text-white" style="text-shadow: 0 4px 10px rgba(0,0,0,0.3);">Learning Materials</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Material 1: Flip Book -->
+                    <a href="admin-lms/material-view-kidz.html?type=flip" class="bubble-btn glass-panel text-left p-6 rounded-[2.5rem] bg-gradient-to-br from-white/90 to-blue-50/90 border-4 border-blue-200 group block relative overflow-hidden">
+                        <div class="absolute -right-6 -top-6 w-24 h-24 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl opacity-40"></div>
+                        <div class="w-14 h-14 bg-blue-500 text-white rounded-[1.25rem] flex items-center justify-center text-2xl shadow-inner mb-4 animate-float">📖</div>
+                        <h3 class="text-xl font-black text-slate-800 mb-1 group-hover:text-blue-600 transition-colors">The Jungle Adventure</h3>
+                        <p class="text-xs font-bold text-slate-500 mb-4">10 Static Pages PDF Flip</p>
+                        <span class="inline-block px-3 py-1.5 bg-blue-100 text-blue-700 text-[10px] font-black uppercase tracking-widest rounded-full">Flip Book</span>
+                    </a>
+
+                    <!-- Material 2: Audio Story -->
+                    <a href="admin-lms/material-view-kidz.html?type=audio" class="bubble-btn glass-panel text-left p-6 rounded-[2.5rem] bg-gradient-to-br from-white/90 to-purple-50/90 border-4 border-purple-200 group block relative overflow-hidden">
+                        <div class="absolute -right-6 -top-6 w-24 h-24 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-40"></div>
+                        <div class="w-14 h-14 bg-purple-500 text-white rounded-[1.25rem] flex items-center justify-center text-2xl shadow-inner mb-4 animate-float" style="animation-delay: 0.5s;">🎧</div>
+                        <h3 class="text-xl font-black text-slate-800 mb-1 group-hover:text-purple-600 transition-colors">Space Explorer</h3>
+                        <p class="text-xs font-bold text-slate-500 mb-4">Interactive Audio Story</p>
+                        <span class="inline-block px-3 py-1.5 bg-purple-100 text-purple-700 text-[10px] font-black uppercase tracking-widest rounded-full">Audio Story</span>
+                    </a>
+                    
+                    <!-- Material 3: Canva Presentation -->
+                    <a href="admin-lms/material-view-kidz.html?type=canva" class="bubble-btn glass-panel text-left p-6 rounded-[2.5rem] bg-gradient-to-br from-white/90 to-orange-50/90 border-4 border-orange-200 group block relative overflow-hidden">
+                        <div class="absolute -right-6 -top-6 w-24 h-24 bg-orange-400 rounded-full mix-blend-multiply filter blur-xl opacity-40"></div>
+                        <div class="w-14 h-14 bg-orange-500 text-white rounded-[1.25rem] flex items-center justify-center text-2xl shadow-inner mb-4 animate-float" style="animation-delay: 1s;">🎨</div>
+                        <h3 class="text-xl font-black text-slate-800 mb-1 group-hover:text-orange-600 transition-colors">Colorful Asking Game</h3>
+                        <p class="text-xs font-bold text-slate-500 mb-4">Interactive Canva Slides</p>
+                        <span class="inline-block px-3 py-1.5 bg-orange-100 text-orange-700 text-[10px] font-black uppercase tracking-widest rounded-full">Presentation</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Menu Quiz Section -->
+            <div>
+                <div class="flex items-center gap-4 mb-6 ml-4 mt-10">
+                    <div class="w-12 h-12 bg-white rounded-2xl shadow-sm flex items-center justify-center text-2xl">🎮</div>
+                    <h2 class="text-3xl font-black text-white" style="text-shadow: 0 4px 10px rgba(0,0,0,0.3);">Quiz Missions</h2>
+                </div>
+                
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Quiz 1 -->
+                <a href="admin-lms/quiz-preview-kidz.html" class="bubble-btn glass-panel p-6 rounded-[2.5rem] border-4 border-green-200 bg-gradient-to-br from-white/90 to-green-50/90 group block">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-green-500 text-white rounded-2xl flex items-center justify-center text-xl shadow-inner">A</div>
+                        <span class="px-2.5 py-1 bg-green-100 text-green-700 text-[10px] font-black uppercase tracking-widest rounded-full">Level Starter</span>
+                    </div>
+                    <h4 class="font-black text-slate-800 text-lg mb-2 group-hover:text-green-600 transition-colors">Vocabulary Adventure</h4>
+                    <p class="text-xs font-bold text-slate-500">4 Exciting Questions</p>
+                </a>
+                
+                <!-- Quiz 2 -->
+                <a href="admin-lms/quiz-preview-kidz.html" class="bubble-btn glass-panel p-6 rounded-[2.5rem] border-4 border-magenta-200 bg-gradient-to-br from-white/90 to-magenta-50/90 group block">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-magenta-500 text-white rounded-2xl flex items-center justify-center text-xl shadow-inner">🎙️</div>
+                        <span class="px-2.5 py-1 bg-magenta-100 text-magenta-700 text-[10px] font-black uppercase tracking-widest rounded-full">Level Rising</span>
+                    </div>
+                    <h4 class="font-black text-slate-800 text-lg mb-2 group-hover:text-magenta-600 transition-colors">Public Speaking Test</h4>
+                    <p class="text-xs font-bold text-slate-500">Voice Note Mode</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal for showing dummy interactions -->
+    <div id="classModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center z-[100] p-4 opacity-0 transition-opacity">
+        <div class="bg-white rounded-[3rem] p-10 max-w-lg w-full text-center shadow-2xl transform scale-95 transition-transform" id="modalContent">
+            <div class="w-24 h-24 bg-magenta-100 text-magenta-500 rounded-[2rem] flex items-center justify-center text-4xl mx-auto mb-6">
+                ✨
+            </div>
+            <h2 class="text-3xl font-black text-slate-900 mb-2" id="modalTitle">Class Title</h2>
+            <p class="text-slate-500 font-bold mb-8">This module is coming soon! Prepare your microphone and camera!</p>
+            <button onclick="closeClassModal()" class="bubble-btn w-full py-4 bg-slate-900 text-white font-black rounded-2xl text-lg hover:bg-slate-800">
+                Got it!
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function openClassModal(title) {
+            const modal = document.getElementById('classModal');
+            const modalContent = document.getElementById('modalContent');
+            document.getElementById('modalTitle').innerText = title;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Trigger animation
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeClassModal() {
+            const modal = document.getElementById('classModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+    </script>
+</body>
+</html>
