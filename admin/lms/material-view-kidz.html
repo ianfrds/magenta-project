@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Material Viewer - Magenta Kidz</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="../assets/flipbook code/jquery.js"></script>
-    <script src="../assets/flipbook code/turn.js"></script>
+    <script src="../../assets/flipbook code/jquery.js"></script>
+    <script src="../../assets/flipbook code/turn.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
@@ -34,7 +34,7 @@
     <style>
         body { 
             font-family: 'Nunito', sans-serif; 
-            background-image: url('../assets/kidz/kids dashboard/night-scene.png');
+            background-image: url('../../assets/kidz/kids dashboard/night-scene.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -157,7 +157,7 @@
     <!-- Header -->
     <header class="flex justify-between items-center p-6 shrink-0 z-50">
         <div class="flex items-center gap-4">
-            <button onclick="window.location.href='../kidz-dashboard.html'" class="w-14 h-14 bg-magenta-500 rounded-2xl flex items-center justify-center hover:scale-110 transition-all border-4 border-white shadow-xl">
+            <button onclick="window.location.href='../../portals/kidz-dashboard.html'" class="w-14 h-14 bg-magenta-500 rounded-2xl flex items-center justify-center hover:scale-110 transition-all border-4 border-white shadow-xl">
                 <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
             </button>
             <h1 id="material-title" class="text-3xl font-black text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.5)]">Material Viewer</h1>
@@ -253,22 +253,22 @@
         const type = urlParams.get('type') || 'flip';
 
         const FLIP_DATA = [
-            { img: '../assets/storybook/Scene_1.png', text: 'Page 1' },
-            { img: '../assets/storybook/Scene_2.png', text: 'Page 2' },
-            { img: '../assets/storybook/Scene_3.png', text: 'Page 3' },
-            { img: '../assets/storybook/Scene_4.png', text: 'Page 4' },
-            { img: '../assets/storybook/Scene_5.png', text: 'Page 5' },
-            { img: '../assets/storybook/Scene_6.png', text: 'Page 6' },
-            { img: '../assets/storybook/Scene_7.png', text: 'Page 7' },
-            { img: '../assets/storybook/Scene_8.png', text: 'Page 8' },
-            { img: '../assets/storybook/Scene_9.png', text: 'Page 9' },
-            { img: '../assets/storybook/Scene_10.png', text: 'Page 10' }
+            { img: '../../assets/storybook/Scene_1.png', text: 'Page 1' },
+            { img: '../../assets/storybook/Scene_2.png', text: 'Page 2' },
+            { img: '../../assets/storybook/Scene_3.png', text: 'Page 3' },
+            { img: '../../assets/storybook/Scene_4.png', text: 'Page 4' },
+            { img: '../../assets/storybook/Scene_5.png', text: 'Page 5' },
+            { img: '../../assets/storybook/Scene_6.png', text: 'Page 6' },
+            { img: '../../assets/storybook/Scene_7.png', text: 'Page 7' },
+            { img: '../../assets/storybook/Scene_8.png', text: 'Page 8' },
+            { img: '../../assets/storybook/Scene_9.png', text: 'Page 9' },
+            { img: '../../assets/storybook/Scene_10.png', text: 'Page 10' }
         ];
 
         const AUDIO_DATA = [
-            { img: '../assets/storybook/Scene_1.png', text: 'Once upon a time, in a magical playground...' },
-            { img: '../assets/storybook/Scene_2.png', text: 'A group of friends discovered a rocket ship!' },
-            { img: '../assets/storybook/Scene_3.png', text: 'They decided to fly to the moon and back!' }
+            { img: '../../assets/storybook/Scene_1.png', text: 'Once upon a time, in a magical playground...' },
+            { img: '../../assets/storybook/Scene_2.png', text: 'A group of friends discovered a rocket ship!' },
+            { img: '../../assets/storybook/Scene_3.png', text: 'They decided to fly to the moon and back!' }
         ];
 
         let currentIdx = 0;

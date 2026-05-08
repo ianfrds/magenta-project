@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CRM - Branch Product Management</title>
+<title>CRM - Student List</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script>
@@ -22,24 +22,13 @@ tailwind.config = {
 </script>
 <style>
   body { font-family:'Inter',sans-serif; background:#F1F5F9; }
-  .nav-active { background:#EEF2FF; color:#4338CA; font-weight:600; }
-  .nav-active svg { color:#4338CA; }
-  .badge-active { background:#DCFCE7; color:#16A34A; }
-  .badge-inactive { background:#FEE2E2; color:#DC2626; }
-  .progress-bar { height:5px; border-radius:99px; background:#E2E8F0; overflow:hidden; }
-  .progress-fill { height:100%; background:linear-gradient(90deg,#6366F1,#818CF8); border-radius:99px; transition:width .4s; }
-  .btn-primary { background:#1E3A8A; color:#fff; border-radius:8px; font-weight:600; font-size:13px; display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 14px;transition:.2s; }
-  .btn-primary:hover { background:#1e40af; }
-  .btn-outline { border:1.5px solid #CBD5E1; color:#475569; border-radius:8px; font-weight:500; font-size:13px; display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 14px;transition:.2s; }
-  .btn-outline:hover { border-color:#6366F1; color:#4338CA; }
-  .branch-card { background:#fff; border-radius:14px; border:1px solid #E2E8F0; box-shadow:0 1px 3px rgba(0,0,0,0.05); transition:.2s; }
-  .branch-card:hover { box-shadow:0 4px 16px rgba(0,0,0,0.10); transform:translateY(-2px); }
   .sidebar-section { font-size:10px; font-weight:700; color:#94A3B8; letter-spacing:.08em; padding:16px 16px 6px; }
+  .nav-active { background:#EEF2FF; color:#4338CA; font-weight:600; }
+  .btn-primary { background:#1E3A8A; color:#fff; border-radius:8px; font-weight:600; font-size:13px; display:flex;align-items:center;justify-content:center;gap:6px;padding:8px 14px;transition:.2s; }
 </style>
 </head>
 <body class="text-neutral-900 antialiased">
 <div class="flex min-h-screen">
-
   <!-- Sidebar -->
   <aside class="w-56 bg-white border-r border-neutral-200 flex flex-col sticky top-0 h-screen shrink-0">
     <div class="p-5 flex items-center gap-2 border-b border-neutral-100">
@@ -51,7 +40,7 @@ tailwind.config = {
     <nav class="flex-1 overflow-y-auto pb-4">
       <div class="sidebar-section">DASHBOARD</div>
       <div class="px-3">
-        <a href="admin-crm.html" class="nav-active flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm transition-all">
+        <a href="admin-crm.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-50 hover:text-neutral-800 text-sm font-medium transition-all">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
           Dashboard CRM
         </a>
@@ -86,7 +75,7 @@ tailwind.config = {
 
       <div class="sidebar-section">OTHERS</div>
       <div class="px-3 space-y-0.5">
-        <a href="student-list.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-neutral-600 hover:bg-neutral-50 hover:text-neutral-800 text-sm font-medium transition-all">
+        <a href="student-list.html" class="nav-active flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm transition-all">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
           Student
         </a>
@@ -131,165 +120,46 @@ tailwind.config = {
                 </div>
             </header>
 
-
-    <!-- Topbar -->
     <header class="bg-white border-b border-neutral-200 px-8 py-3 flex items-center justify-between sticky top-0 z-10">
-      <div>
-        <p class="text-xs text-neutral-500">Hi, Good Sore</p>
-        <p class="text-sm font-bold text-neutral-800">Super Administrator <span class="text-primary-600 font-semibold">(Super Admin)</span></p>
-      </div>
-      <div class="flex items-center gap-6">
-        <span id="topbar-datetime" class="text-sm text-neutral-600 font-medium"></span>
-        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=admin" class="w-9 h-9 rounded-full bg-primary-100 object-cover border-2 border-primary-200"/>
-      </div>
+      <h1 class="text-xl font-extrabold text-neutral-900">Student List</h1>
+      <button class="btn-primary">Add New Student</button>
     </header>
 
-    <!-- Page Content -->
-    <div class="flex-1 p-8">
-      <div class="mb-6">
-        <h1 class="text-2xl font-extrabold text-neutral-900 tracking-tight">Branch Product Management</h1>
-        <p class="text-sm text-neutral-600 mt-1">Kelola ketersediaan produk dan penyesuaian harga khusus untuk setiap cabang.</p>
-      </div>
-
-      <!-- Toolbar -->
-      <div class="flex items-center justify-between mb-6 gap-4">
-        <div class="relative flex-1 max-w-sm">
-          <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35"/></svg>
-          <input id="search-branch" type="text" placeholder="Cari Nama Cabang..." class="w-full pl-10 pr-4 py-2.5 bg-white border border-neutral-200 rounded-xl text-sm text-neutral-700 placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-400 transition-all">
-        </div>
-        <div class="flex items-center gap-3">
-          <div class="relative">
-            <select id="per-page" class="appearance-none bg-white border border-neutral-200 rounded-xl pl-4 pr-9 py-2.5 text-sm text-neutral-700 font-medium focus:outline-none focus:ring-2 focus:ring-primary-300 cursor-pointer">
-              <option value="6">6 per halaman</option>
-              <option value="9">9 per halaman</option>
-              <option value="12" selected>10 per halaman</option>
-            </select>
-            <svg class="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </div>
-        </div>
-      </div>
-
-      <!-- Branch Cards Grid -->
-      <div id="branch-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-8"></div>
-
-      <!-- Pagination -->
-      <div class="flex items-center justify-between">
-        <p class="text-sm text-neutral-600">Menampilkan <span id="showing-count" class="font-semibold text-neutral-800"></span> cabang</p>
-        <div class="flex gap-1.5" id="pagination"></div>
+    <div class="p-8">
+      <div class="bg-white rounded-xl border border-neutral-200 shadow-sm overflow-hidden">
+        <table class="w-full text-left">
+          <thead class="bg-neutral-50 border-b border-neutral-200">
+            <tr>
+              <th class="px-6 py-4 text-xs font-bold text-neutral-600 uppercase">Student</th>
+              <th class="px-6 py-4 text-xs font-bold text-neutral-600 uppercase">Education</th>
+              <th class="px-6 py-4 text-xs font-bold text-neutral-600 uppercase text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-neutral-100">
+            <tr>
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-primary-100 flex items-center justify-center text-primary-700 font-bold">FA</div>
+                  <div>
+                    <div class="text-sm font-bold text-neutral-900">Felix Anderson</div>
+                    <div class="text-xs text-neutral-600">felix.a@example.com</div>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4">
+                <div class="text-sm font-medium text-neutral-700">Senior High School</div>
+                <div class="text-xs text-neutral-600">Grade 12</div>
+              </td>
+              <td class="px-6 py-4 text-right">
+                <a href="student-detail.html" class="text-primary-600 font-bold text-sm hover:underline">View Detail</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </main>
 </div>
-
-<script>
-// Datetime
-function updateTime() {
-  const now = new Date();
-  const days = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
-  const months = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-  const h = String(now.getHours()).padStart(2,'0');
-  const m = String(now.getMinutes()).padStart(2,'0');
-  const s = String(now.getSeconds()).padStart(2,'0');
-  document.getElementById('topbar-datetime').textContent = `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()} • ${h}:${m}:${s} WIB`;
-}
-updateTime(); setInterval(updateTime, 1000);
-
-// Data
-const branches = [
-  { id:1, name:'Branch Jakarta Pusat', status:'inactive', products:0, maxProducts:10, logo:'JKT' },
-  { id:2, name:'Magenta Semolowaru', status:'active', products:3, maxProducts:10, logo:'MS' },
-  { id:3, name:'Head Office Jakarta', status:'active', products:3, maxProducts:10, logo:'HO' },
-  { id:4, name:'Branch Kab. Tapanuli Tengah', status:'active', products:0, maxProducts:10, logo:'TT' },
-  { id:5, name:'Branch Kab. Solok', status:'active', products:5, maxProducts:10, logo:'SL' },
-  { id:6, name:'Branch Kab. Pesisir Selatan', status:'inactive', products:0, maxProducts:10, logo:'PS' },
-  { id:7, name:'Branch Surabaya Barat', status:'active', products:7, maxProducts:10, logo:'SB' },
-  { id:8, name:'Branch Medan Utara', status:'active', products:2, maxProducts:10, logo:'MU' },
-  { id:9, name:'Branch Bandung Selatan', status:'inactive', products:0, maxProducts:10, logo:'BS' },
-  { id:10, name:'Branch Yogyakarta', status:'active', products:8, maxProducts:10, logo:'YK' },
-  { id:11, name:'Branch Makassar', status:'active', products:4, maxProducts:10, logo:'MK' },
-  { id:12, name:'Branch Bali Selatan', status:'active', products:6, maxProducts:10, logo:'BL' },
-];
-
-const logoColors = ['#6366F1','#8B5CF6','#EC4899','#F59E0B','#10B981','#3B82F6','#EF4444','#14B8A6','#F97316','#84CC16','#06B6D4','#A855F7'];
-
-let currentPage = 1;
-let filtered = [...branches];
-
-function renderBranchCard(b, idx) {
-  const pct = b.maxProducts > 0 ? Math.round((b.products / b.maxProducts) * 100) : 0;
-  const isActive = b.status === 'active';
-  const color = logoColors[idx % logoColors.length];
-  return `
-  <div class="branch-card p-5" data-id="${b.id}">
-    <div class="flex items-start gap-3 mb-4">
-      <div class="w-11 h-11 rounded-xl flex items-center justify-center text-white font-bold text-xs shrink-0" style="background:${color}20;">
-        <span style="color:${color}">${b.logo}</span>
-      </div>
-      <div class="flex-1 min-w-0">
-        <h3 class="font-bold text-neutral-800 text-sm leading-snug">${b.name}</h3>
-        <span class="inline-flex items-center gap-1 mt-1.5 px-2 py-0.5 rounded-full text-xs font-semibold ${isActive ? 'badge-active' : 'badge-inactive'}">
-          <span class="w-1.5 h-1.5 rounded-full ${isActive ? 'bg-green-500' : 'bg-red-400'}"></span>
-          ${isActive ? 'Active' : 'Inactive'}
-        </span>
-      </div>
-    </div>
-
-    <div class="bg-neutral-50 rounded-xl px-4 py-3 mb-4">
-      <div class="flex items-center justify-between mb-2">
-        <span class="text-xs text-neutral-600">Produk Terhubung:</span>
-        <span class="text-sm font-bold text-neutral-800">${b.products} Products</span>
-      </div>
-      <div class="progress-bar">
-        <div class="progress-fill" style="width:${pct}%"></div>
-      </div>
-    </div>
-
-    <div class="flex flex-col gap-2">
-      <button onclick="viewProducts(${b.id})" class="btn-primary w-full">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h7"/></svg>
-        List Produk
-      </button>
-      <button onclick="goToManage(${b.id},'${b.name}')" class="btn-outline w-full">
-        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 2v-2m0 2a2 2 0 100 4m0-4a2 2 0 110 4m12-6v-2m0 2a2 2 0 100 4m0-4a2 2 0 110 4"/></svg>
-        Kelola Produk Cabang
-      </button>
-    </div>
-  </div>`;
-}
-
-function render() {
-  const query = document.getElementById('search-branch').value.toLowerCase();
-  filtered = branches.filter(b => b.name.toLowerCase().includes(query));
-  const total = filtered.length;
-  const start = (currentPage - 1) * 10;
-  const paginated = filtered.slice(start, start + 10);
-  document.getElementById('branch-grid').innerHTML = paginated.map((b, i) => renderBranchCard(b, branches.indexOf(b))).join('');
-  document.getElementById('showing-count').textContent = `${paginated.length} dari ${total}`;
-  renderPagination(total);
-}
-
-function renderPagination(total) {
-  const pages = Math.ceil(total / 10);
-  let html = '';
-  for (let i = 1; i <= pages; i++) {
-    html += `<button onclick="goPage(${i})" class="w-9 h-9 rounded-lg text-sm font-semibold transition-all ${i === currentPage ? 'bg-primary-600 text-white' : 'bg-white text-neutral-600 border border-neutral-200 hover:border-primary-300 hover:text-primary-600'}">${i}</button>`;
-  }
-  document.getElementById('pagination').innerHTML = html;
-}
-
-function goPage(p) { currentPage = p; render(); }
-
-function viewProducts(id) {
-  alert('Menampilkan list produk untuk cabang ID: ' + id);
-}
-
-function goToManage(id, name) {
-  window.location.href = `kelola-produk-cabang.html?id=${id}&name=${encodeURIComponent(name)}`;
-}
-
-document.getElementById('search-branch').addEventListener('input', () => { currentPage = 1; render(); });
-render();
-</script>
 
     <!-- Role Switch Modal -->
     <div id="roleModal" class="fixed inset-0 bg-neutral-900/50 backdrop-blur-sm hidden items-center justify-center z-50 transition-opacity opacity-0">
@@ -301,14 +171,14 @@ render();
                 </button>
             </div>
             <div class="p-2">
-                <a href="../admin-crm/admin-crm.html" class="flex items-center gap-4 p-4 hover:bg-neutral-50 rounded-xl transition-colors w-full text-left group cursor-pointer">
+                <a href="admin-crm.html" class="flex items-center gap-4 p-4 hover:bg-neutral-50 rounded-xl transition-colors w-full text-left group cursor-pointer">
                     <div class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm group-hover:bg-blue-100">C</div>
                     <div>
                         <p class="text-sm font-bold text-neutral-900">Superadmin (CRM)</p>
                         <p class="text-xs text-neutral-500">Access customer relationship management</p>
                     </div>
                 </a>
-                <a href="../admin-lms/index.html" class="flex items-center gap-4 p-4 hover:bg-neutral-50 rounded-xl transition-colors w-full text-left group cursor-pointer">
+                <a href="../lms/index.html" class="flex items-center gap-4 p-4 hover:bg-neutral-50 rounded-xl transition-colors w-full text-left group cursor-pointer">
                     <div class="w-10 h-10 rounded-full bg-magenta-50 text-magenta-600 flex items-center justify-center font-bold text-sm group-hover:bg-magenta-100">L</div>
                     <div>
                         <p class="text-sm font-bold text-neutral-900">Admin LMS</p>

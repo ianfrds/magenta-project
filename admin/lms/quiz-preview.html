@@ -376,10 +376,35 @@
             `;
 
             if (q.passage) {
-                html += `<div class="bg-slate-50/50 p-8 rounded-3xl border border-slate-100 mb-10 text-sm text-slate-700 leading-relaxed italic">${q.passage}</div>`;
+                html += `<div class="bg-slate-50/50 p-8 rounded-3xl border border-slate-100 mb-10 text-sm text-slate-700 leading-relaxed italic whitespace-pre-line">${q.passage}</div>`;
             }
 
-            if (q.type === 'multiple_choice' || q.type === 'listening' || q.type === 'reading' || q.type === 'video') {
+            if (q.subQuestions) {
+                html += `<div class="space-y-8">`;
+                q.subQuestions.forEach((sub, sIdx) => {
+                    html += `
+                        <div class="p-8 rounded-[2rem] bg-white border border-slate-100 shadow-sm">
+                            <p class="text-base font-bold text-slate-800 mb-6 leading-relaxed">${sub.text}</p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    `;
+                    sub.options.forEach((opt, oIdx) => {
+                        const isSelected = (answers[idx] && typeof answers[idx] === 'object') ? answers[idx][sIdx] === oIdx : false;
+                        html += `
+                            <label class="block">
+                                <input type="radio" name="sub_${sIdx}" class="sr-only peer" onchange="saveAnswer(${oIdx}, ${sIdx})" ${isSelected ? 'checked' : ''}>
+                                <div class="option-btn p-5 rounded-2xl border border-slate-100 flex items-center gap-4 cursor-pointer hover:bg-slate-50 peer-checked:border-magenta-500 peer-checked:bg-magenta-50 transition-all">
+                                    <div class="w-8 h-8 rounded-full border border-slate-200 flex items-center justify-center text-[11px] font-bold text-slate-400 peer-checked:bg-magenta-500 peer-checked:text-white">
+                                        ${String.fromCharCode(65 + oIdx)}
+                                    </div>
+                                    <span class="text-sm font-medium text-slate-600">${opt}</span>
+                                </div>
+                            </label>
+                        `;
+                    });
+                    html += `</div></div>`;
+                });
+                html += `</div>`;
+            } else if (q.type === 'multiple_choice' || q.type === 'listening' || q.type === 'reading' || q.type === 'video') {
                 if (q.type === 'listening') {
                     html += `
                         <div class="bg-slate-900 p-6 rounded-2xl mb-10 flex items-center gap-6 text-white shadow-xl">
@@ -435,9 +460,24 @@
             renderMap();
         }
 
-        function saveAnswer(val) {
-            answers[currentIdx] = val;
-            const filled = answers.filter(a => a !== null && a !== "").length;
+        function saveAnswer(val, subIdx = null) {
+            if (subIdx !== null) {
+                if (typeof answers[currentIdx] !== 'object' || answers[currentIdx] === null) {
+                    answers[currentIdx] = {};
+                }
+                answers[currentIdx][subIdx] = val;
+            } else {
+                answers[currentIdx] = val;
+            }
+            
+            const filled = answers.filter(a => {
+                if (a === null || a === "") return false;
+                if (typeof a === 'object') {
+                    return Object.keys(a).length > 0;
+                }
+                return true;
+            }).length;
+            
             document.getElementById('xp-display').innerText = `${filled * 100} XP`;
             renderMap();
         }
@@ -525,7 +565,7 @@
                 </button>
             </div>
             <div class="p-2">
-                <a href="../admin-crm/admin-crm.html"
+                <a href="../crm/admin-crm.html"
                     class="flex items-center gap-4 p-4 hover:bg-neutral-50 rounded-xl transition-colors w-full text-left group cursor-pointer">
                     <div
                         class="w-10 h-10 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm group-hover:bg-blue-100">
@@ -535,7 +575,7 @@
                         <p class="text-xs text-neutral-500">Access customer relationship management</p>
                     </div>
                 </a>
-                <a href="../admin-lms/index.html"
+                <a href="index.html"
                     class="flex items-center gap-4 p-4 hover:bg-neutral-50 rounded-xl transition-colors w-full text-left group cursor-pointer">
                     <div
                         class="w-10 h-10 rounded-full bg-magenta-50 text-magenta-600 flex items-center justify-center font-bold text-sm group-hover:bg-magenta-100">
